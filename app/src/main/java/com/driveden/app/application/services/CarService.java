@@ -9,7 +9,9 @@ import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
+import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.FuelTypeRepository;
+import com.driveden.app.infrastructure.out.persistence.repositories.implement.TransmissionTypeRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +21,7 @@ public class CarService {
 
     private final CarSpecsClient carSpecsClient;
     private final FuelTypeRepository fuelTypeRepository;
+    private final TransmissionTypeRepository transmissionTypeRepository;
 
     public String getCarSpecs(String model) {
         return carSpecsClient.getCarSpecs(model);
@@ -40,6 +43,9 @@ public class CarService {
         return fuelTypeRepository.findAll();
     }
 
+    public List<transmissionTypeDomain> getAllTransmissionTypes() {
+        return transmissionTypeRepository.findAll();
+    }
 
 
 }

@@ -8,6 +8,7 @@ import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
+import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -67,6 +68,17 @@ public class CarsController {
             carService.getAllFuelTypes(),
             HttpStatus.OK,
             "Fuel types retrieved successfully"
+        );
+
+    }
+
+    @GetMapping("/transmission-type")
+    public CustomResponse<List<transmissionTypeDomain>> getAllTransmissionTypes() {
+
+        return new CustomResponse<List<transmissionTypeDomain>>(
+            carService.getAllTransmissionTypes(),
+            HttpStatus.OK,
+            "Transmission types retrieved successfully"
         );
 
     }
