@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.AuthService;
@@ -41,5 +42,15 @@ public class AuthController {
     @GetMapping("/me")
     public CustomResponse<?> me(Authentication authentication){
         return new CustomResponse<Object>(authentication.getPrincipal(), HttpStatus.ACCEPTED, "Hiii");
+    }
+
+    @PostMapping("/send-code")
+    public void sendCode(@RequestParam String email) {
+        authService.createAndSendCode(email);
+    }
+
+    @PostMapping("/verify-code")
+    public boolean verify(@RequestParam String email, @RequestParam String code) {
+        return authService.verifyCode(email, code);
     }
 }
