@@ -45,12 +45,21 @@ public class AuthController {
     }
 
     @PostMapping("/send-code")
-    public void sendCode(@RequestParam String email) {
+    public CustomResponse<?> sendCode(@RequestParam String email) {
         authService.createAndSendCode(email);
+        return new CustomResponse<>("Codigo de verificación enviado", HttpStatus.OK, "Código de verificación enviado");
     }
 
     @PostMapping("/verify-code")
-    public boolean verify(@RequestParam String email, @RequestParam String code) {
-        return authService.verifyCode(email, code);
+    public CustomResponse<?> verify(@RequestParam String email, @RequestParam String code) {
+        boolean isValid = authService.verifyCode(email, code);
+        return new CustomResponse<>(isValid, HttpStatus.OK, isValid ? "Código válido" : "Código inválido");
     }
+
+    @PostMapping("/change-password")
+    public CustomResponse<?> changePassword(@RequestParam String email, @RequestParam String code, @RequestParam String newPassword) {
+        boolean success = authService.verifyCodeAndSetPassword(email, code, newPassword);
+        return new CustomResponse<>(success, HttpStatus.OK, "Contraseña actualizada correctamente");
+    }
+    
 }

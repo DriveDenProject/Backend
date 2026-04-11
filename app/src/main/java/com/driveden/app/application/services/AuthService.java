@@ -99,4 +99,27 @@ public class AuthService {
 
         return true;
     }
+
+    public boolean verifyCodeAndSetPassword(String email, String code, String newPassword) {
+
+        EmailVerification record = emailVerificationCodeRepo
+            .findTopByEmailAndCodeAndUsedFalseOrderByIdDesc(email, code);
+
+        if (record == null) throw new CustomException("Código de verificación o Usuario inválido", HttpStatus.BAD_REQUEST);
+
+        if (record.getExpiresAt().isBefore(LocalDateTime.now())) {
+            throw new CustomException("Código de verificación expirado", HttpStatus.BAD_REQUEST);
+        }
+
+        Users user = usersRepository.findByEmail(email)
+            .orElseThrow(() -> new CustomException("Usuario no encontrado", HttpStatus.NOT_FOUND));
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        usersRepository.save(user);
+
+        record.setUsed(true);
+        emailVerificationCodeRepo.save(record);
+
+        return true;
+    }
 }
