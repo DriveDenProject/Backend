@@ -41,6 +41,24 @@ public class TokenService  {
         }
     }
 
+    public String generateRefreshToken(Users user){
+        try {
+            var algorithm = Algorithm.HMAC256(SECRET_KEY);
+            return JWT.create()
+                .withIssuer("DRIVEDEN API")
+                .withSubject(user.getId().toString())
+                .withClaim("type", "refresh")
+                .withExpiresAt(refreshExpiration())
+                .sign(algorithm);
+        } catch (JWTCreationException exception){
+            throw new RuntimeException("Error al generar refresh token: ", exception);
+        }
+    }
+
+    public Instant refreshExpiration(){
+        return Instant.now().plusSeconds(60 * 60 * 24 * 7); // 7 días
+    }
+
     public Instant fechaExpiracion(){
                 //A partir de Ahora
                 //Agregar 2 horas
@@ -73,6 +91,10 @@ public class TokenService  {
             .withIssuer("DRIVEDEN API")
             .build()
             .verify(token);
-}
+    }
+
+    public String getTokenType(String token){
+        return verifyToken(token).getClaim("type").asString();
+    }
     
 }

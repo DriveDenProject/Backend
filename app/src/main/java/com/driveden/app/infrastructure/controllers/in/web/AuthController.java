@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.AuthService;
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.utils.CustomResponse;
@@ -30,6 +31,11 @@ public class AuthController {
         AuthResponseDTO authResponse = authService.login(loginDTO);
 
         return new CustomResponse<AuthResponseDTO>(authResponse, HttpStatus.OK, "Login successful");
+    }
+
+    @PostMapping("/refresh")
+    public CustomResponse<AuthResponseDTO> refresh(@RequestBody AuthRefreshRequestDTO request) {
+        return new CustomResponse<AuthResponseDTO>(authService.refresh(request), HttpStatus.OK, "Tokens actualizados");
     }
 
     @GetMapping("/me")

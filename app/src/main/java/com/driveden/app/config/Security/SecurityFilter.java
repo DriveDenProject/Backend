@@ -38,6 +38,14 @@ public class SecurityFilter extends OncePerRequestFilter {
             //Obtener Payload del Token
             DecodedJWT decodedJWT = tokenService.verifyToken(tokenJWT);
 
+            String type = decodedJWT.getClaim("type").asString();
+
+            //Solo permitir access tokens
+            if(type != null && type.equals("refresh")){
+                filterChain.doFilter(request, response);
+                return;
+            }
+
             //Construir DTO
             AuthenticatedUser user = new AuthenticatedUser(
                 Long.valueOf(tokenService.getSubject(tokenJWT)),

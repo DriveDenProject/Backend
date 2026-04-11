@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.domain.users.model.Users;
@@ -31,8 +33,31 @@ public class AuthService {
             throw new CustomException("Invalid credentials", HttpStatus.UNAUTHORIZED);
         }
 
-        String token = tokenService.generateToken(user);
+        String accessToken = tokenService.generateToken(user);
+        String refreshToken = tokenService.generateRefreshToken(user);
 
-        return new AuthResponseDTO(user.getEmail(), token, "Login successful");
+        return new AuthResponseDTO(user.getEmail(), accessToken, refreshToken, "Login successful");
+    }
+    
+    public AuthResponseDTO refresh(AuthRefreshRequestDTO request){
+
+        String refreshToken = request.getRefreshToken();
+
+        DecodedJWT decoded = tokenService.verifyToken(refreshToken);
+
+        String type = decoded.getClaim("type").asString();
+        if(type == null || !type.equals("refresh")){
+            throw new RuntimeException("Token inválido");
+        }
+
+        Long userId = Long.valueOf(decoded.getSubject());
+
+        Users user = usersRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        String newAccessToken = tokenService.generateToken(user);
+        String newRefreshToken = tokenService.generateRefreshToken(user);
+
+        return new AuthResponseDTO(user.getEmail(), newAccessToken, newRefreshToken, "Tokens actualizados");
     }
 }

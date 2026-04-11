@@ -23,9 +23,14 @@ public class UsersRepository {
             .map(UsersMapper::entitytoDomain);
     }
 
-    public Users save(Users user) {
+    public Optional<Users> findById(Long id) {
+        //Retornar el user encontrado convertido a un objeto de dominio
+        return usersJpa.findById(id)
+            //Si no se encuentra un usuario con ese id, retornar null
+            .map(UsersMapper::entitytoDomain);
+    }
 
-    
+    public Users save(Users user) {
         //Retornar el user guardado convertido a un objeto de dominio
         return UsersMapper.entitytoDomain(
             //Guardar User en la DB
