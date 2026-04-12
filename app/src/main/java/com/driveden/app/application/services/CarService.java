@@ -13,11 +13,19 @@ import com.driveden.app.domain.cars.model.vehicleDetailsDomain;
 import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
+import com.driveden.app.domain.users.model.UserVehicleDomain;
+import com.driveden.app.domain.users.model.Users;
+import com.driveden.app.infrastructure.out.persistence.entity.UserVehicleEntity;
+import com.driveden.app.infrastructure.out.persistence.entity.UsersEntity;
 import com.driveden.app.infrastructure.out.persistence.entity.VehicleDetailsEntity;
+import com.driveden.app.infrastructure.out.persistence.entity.VehicleEntity;
+import com.driveden.app.infrastructure.out.persistence.mappers.UserVehicleMapper;
+import com.driveden.app.infrastructure.out.persistence.mappers.UsersMapper;
 import com.driveden.app.infrastructure.out.persistence.mappers.VehicleDetailsMapper;
 import com.driveden.app.infrastructure.out.persistence.mappers.VehicleMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.FuelTypeRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.TransmissionTypeRepository;
+import com.driveden.app.infrastructure.out.persistence.repositories.implement.UserVehicleRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.VehicleDetailsRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.VehicleRepository;
 
@@ -33,6 +41,8 @@ public class CarService {
     private final TransmissionTypeRepository transmissionTypeRepository;
     private final VehicleDetailsRepository vehicleDetailsRepository;
     private final VehicleRepository vehicleRepository;
+    private final UserVehicleRepository userVehicleRepository;
+    private final UsersService usersService;
 
     public String getCarSpecs(String model) {
         return carSpecsClient.getCarSpecs(model);
@@ -59,19 +69,55 @@ public class CarService {
     }
 
     @Transactional
-    public vehicleDomain registerVehicle(carRegisterRequestDTO carRegisterRequestDTO) {
+    public vehicleDomain registerVehicle(
+            carRegisterRequestDTO carRegisterRequestDTO,
+            Long userId
+    ) {
 
-            //Mapper DTO to Domain
-            vehicleDomain vehicleDomain = VehicleMapper.fromDTOtoDomain(carRegisterRequestDTO);
-            //Save to DB
-            vehicleDomain savedVehicle = vehicleRepository.save(vehicleDomain);
-            //Maper to VehicleDetailsDomain
-            vehicleDetailsDomain savedVehicleDetails = VehicleDetailsMapper.fromDTOtoDomain(carRegisterRequestDTO, savedVehicle.getId());
-            //Save VehicleDetails to DB
-            VehicleDetailsEntity entity = VehicleDetailsMapper.toEntity(savedVehicleDetails);
-            vehicleDetailsRepository.save(entity);
-            //Retornar el vehículo guardado con detalles
-            return savedVehicle; 
+        // 1. Guardar vehículo
+        vehicleDomain vehicleDomain = VehicleMapper.fromDTOtoDomain(carRegisterRequestDTO);
+        vehicleDomain savedVehicle = vehicleRepository.save(vehicleDomain);
+
+        // 2. Guardar detalles
+        vehicleDetailsDomain savedVehicleDetails =
+                VehicleDetailsMapper.fromDTOtoDomain(carRegisterRequestDTO, savedVehicle.getId());
+
+        VehicleDetailsEntity detailsEntity =
+                VehicleDetailsMapper.toEntity(savedVehicleDetails);
+
+        vehicleDetailsRepository.save(detailsEntity);
+
+        UserVehicleDomain userHasMainVehicle = userVehicleRepository.findByIdUserIdAndIsPrimaryTrue(userId);
+
+        // 3. RELACIONAR CON EL USUARIO
+        UserVehicleDomain userVehicleDomain = UserVehicleDomain.builder()
+                .userId(userId)
+                .vehicleId(savedVehicle.getId())
+                .build();
+
+        if(userHasMainVehicle != null) {
+            userVehicleDomain.setIsPrimary(false);
+        }else{
+            userVehicleDomain.setIsPrimary(true);
+        }
+        
+
+
+        //Obtener UserEntity 
+        Users user = usersService.findUserById(userId);
+        UsersEntity usersEntity = UsersMapper.domaintoEntity(user);
+
+        //Obtener VehicleEntity
+        VehicleEntity vehicleEntity = VehicleMapper.toEntity(savedVehicle);
+
+        //Mapper UserVehicleDomain a UserVehicleEntity
+        UserVehicleEntity userVehicleEntity =
+                UserVehicleMapper.toEntity(userVehicleDomain, usersEntity, vehicleEntity);
+
+        userVehicleRepository.save(userVehicleEntity);
+
+        // 4. retornar
+        return savedVehicle;
     }
 
 }

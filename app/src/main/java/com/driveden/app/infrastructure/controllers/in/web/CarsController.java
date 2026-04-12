@@ -12,6 +12,7 @@ import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
+import com.driveden.app.utils.TokenService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 
 
@@ -32,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CarsController {
 
     private final CarService carService;
+    private final TokenService tokenService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -89,14 +92,19 @@ public class CarsController {
     }
 
     @PostMapping("/register")
-    public CustomResponse<vehicleDomain> registerVehicle(@RequestBody carRegisterRequestDTO carRegisterRequestDTO) {
+    public CustomResponse<vehicleDomain> registerVehicle(
+            @RequestBody carRegisterRequestDTO carRegisterRequestDTO,
+            @RequestHeader("Authorization") String authHeader
+    ) {
+
+        String token = authHeader.replace("Bearer ", "");
+        String userId = tokenService.getSubject(token); // tu método actual
 
         return new CustomResponse<>(
-            carService.registerVehicle(carRegisterRequestDTO),
+            carService.registerVehicle(carRegisterRequestDTO, Long.parseLong(userId)),
             HttpStatus.CREATED,
             "Vehicle registered successfully"
         );
-        
     }
 
 }

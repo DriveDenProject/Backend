@@ -62,4 +62,12 @@ public class UsersService {
         //founduser.get() devuelve el objeto Users dentro del Optional, y luego se convierte a DTO antes de retornarlo
         return UsersMapper.domaintoDTO(founduser.get());
     }
+
+    public Users findUserById(Long id) {
+        Optional<Users> foundUser = UsersRepository.findById(id);
+        if (foundUser.isEmpty()) {
+            throw new CustomException("User not found", HttpStatus.NOT_FOUND);
+        }
+        return foundUser.get();
+    }
 }
