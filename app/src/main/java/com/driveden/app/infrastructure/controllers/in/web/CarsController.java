@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.CarService;
+import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
+import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
@@ -18,6 +20,9 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -82,6 +87,16 @@ public class CarsController {
         );
 
     }
-    
+
+    @PostMapping("/register")
+    public CustomResponse<vehicleDomain> registerVehicle(@RequestBody carRegisterRequestDTO carRegisterRequestDTO) {
+
+        return new CustomResponse<>(
+            carService.registerVehicle(carRegisterRequestDTO),
+            HttpStatus.CREATED,
+            "Vehicle registered successfully"
+        );
+        
+    }
 
 }

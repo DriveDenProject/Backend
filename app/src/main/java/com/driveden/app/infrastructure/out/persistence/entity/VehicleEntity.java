@@ -14,14 +14,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "fuel_types")
-public class FuelTypesEntity {
+@Table(name = "vehicles")
+public class VehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "brand")
+    private String brand;
 
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "year")
+    private Integer year;
+
+    @Column(name = "nick_name")
+    private String nickName;
 }

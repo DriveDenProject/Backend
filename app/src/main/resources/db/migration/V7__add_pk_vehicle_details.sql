@@ -1,0 +1,1 @@
+ALTER TABLE vehicle_details ADD COLUMN id SERIAL PRIMARY KEY;
