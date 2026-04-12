@@ -1,5 +1,6 @@
 package com.driveden.app.application.services;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EmailService {
 
+    @Value("${email.sender}")
+    private String senderEmail;
+
     private final JavaMailSender mailSender;
 
     public void sendVerificationCode(String to, String code) {
@@ -21,7 +25,7 @@ public class EmailService {
 
             String html = generateHTML(code);
 
-            helper.setFrom("valderramacabezasc@gmail.com");
+            helper.setFrom(senderEmail);
             helper.setTo(to);
             helper.setSubject("Código de verificación");
             helper.setText(html, true);
