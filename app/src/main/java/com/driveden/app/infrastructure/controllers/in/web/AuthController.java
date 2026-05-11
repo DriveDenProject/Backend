@@ -14,6 +14,7 @@ import com.driveden.app.application.services.AuthService;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
+import com.driveden.app.domain.auth.dto.ChangePasswordDTO;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.utils.CustomResponse;
 
@@ -57,7 +58,7 @@ public class AuthController {
     }
 
     @PostMapping("/change-password")
-    public CustomResponse<?> changePassword(@RequestParam String email, @RequestParam String code, @RequestParam String newPassword) {
+    public CustomResponse<?> changePassword(@RequestParam String email, @RequestParam String code, @RequestBody ChangePasswordDTO newPassword) {
         boolean success = authService.verifyCodeAndSetPassword(email, code, newPassword);
         return new CustomResponse<>(success, HttpStatus.OK, "Contraseña actualizada correctamente");
     }

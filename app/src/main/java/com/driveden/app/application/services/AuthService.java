@@ -11,6 +11,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
+import com.driveden.app.domain.auth.dto.ChangePasswordDTO;
 import com.driveden.app.domain.auth.model.EmailVerification;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.domain.users.model.Users;
@@ -100,7 +101,7 @@ public class AuthService {
         return true;
     }
 
-    public boolean verifyCodeAndSetPassword(String email, String code, String newPassword) {
+    public boolean verifyCodeAndSetPassword(String email, String code, ChangePasswordDTO newPassword) {
 
         EmailVerification record = emailVerificationCodeRepo
             .findTopByEmailAndCodeAndUsedFalseOrderByIdDesc(email, code);
@@ -114,7 +115,7 @@ public class AuthService {
         Users user = usersRepository.findByEmail(email)
             .orElseThrow(() -> new CustomException("Usuario no encontrado", HttpStatus.NOT_FOUND));
 
-        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setPassword(passwordEncoder.encode(newPassword.newPassword()));
         usersRepository.save(user);
 
         record.setUsed(true);
