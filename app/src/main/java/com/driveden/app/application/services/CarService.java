@@ -2,9 +2,11 @@ package com.driveden.app.application.services;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.driveden.app.client.CarSpecsClient;
+import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
@@ -74,6 +76,12 @@ public class CarService {
             Long userId
     ) {
 
+        // Obtener User
+        Users user = usersService.findUserById(userId);
+        if(user == null){
+            throw new CustomException("User not Found", HttpStatus.NOT_FOUND);
+        }
+
         // 1. Guardar vehículo
         vehicleDomain vehicleDomain = VehicleMapper.fromDTOtoDomain(carRegisterRequestDTO);
         vehicleDomain savedVehicle = vehicleRepository.save(vehicleDomain);
@@ -104,7 +112,6 @@ public class CarService {
 
 
         //Obtener UserEntity 
-        Users user = usersService.findUserById(userId);
         UsersEntity usersEntity = UsersMapper.domaintoEntity(user);
 
         //Obtener VehicleEntity
