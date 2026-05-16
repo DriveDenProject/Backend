@@ -1,9 +1,11 @@
 package com.driveden.app.infrastructure.controllers.in.web;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.CarService;
+import com.driveden.app.domain.auth.dto.AuthenticatedUser;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
@@ -12,18 +14,18 @@ import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
-import com.driveden.app.utils.TokenService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 
 
@@ -31,10 +33,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")
+@Validated
 public class CarsController {
 
     private final CarService carService;
-    private final TokenService tokenService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -93,15 +95,13 @@ public class CarsController {
 
     @PostMapping("/register")
     public CustomResponse<vehicleDomain> registerVehicle(
-            @RequestBody carRegisterRequestDTO carRegisterRequestDTO,
-            @RequestHeader("Authorization") String authHeader
+            @Valid @RequestBody carRegisterRequestDTO carRegisterRequestDTO,
+            Authentication authentication
     ) {
-
-        String token = authHeader.replace("Bearer ", "");
-        String userId = tokenService.getSubject(token); // tu método actual
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
 
         return new CustomResponse<>(
-            carService.registerVehicle(carRegisterRequestDTO, Long.parseLong(userId)),
+            carService.registerVehicle(carRegisterRequestDTO, authenticatedUser.id()),
             HttpStatus.CREATED,
             "Vehicle registered successfully"
         );

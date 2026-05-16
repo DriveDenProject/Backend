@@ -4,11 +4,11 @@ import java.util.Optional;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.driveden.app.domain.users.dto.UserDTO;
 import com.driveden.app.common.exception.CustomException;
-import com.driveden.app.config.Security.SecurityConfig;
 import com.driveden.app.domain.users.dto.RegisterUserDTO;
 import com.driveden.app.domain.users.model.Users;
 import com.driveden.app.infrastructure.out.persistence.mappers.UsersMapper;
@@ -22,16 +22,13 @@ import lombok.RequiredArgsConstructor;
 public class UsersService {
 
     private final UsersRepository UsersRepository;
-    private final SecurityConfig securityConfig;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserDTO registerUser(RegisterUserDTO userDTO) {
 
         Users userToRegister = UsersMapper.registerDtoToDomain(userDTO);
-        //Encriptar la contraseña antes de guardar el nuevo usuario
-        userToRegister.setPassword(
-            securityConfig.passwordEncoder().encode(userToRegister.getPassword())
-        );
+        userToRegister.setPassword(passwordEncoder.encode(userToRegister.getPassword()));
 
         try {
     
