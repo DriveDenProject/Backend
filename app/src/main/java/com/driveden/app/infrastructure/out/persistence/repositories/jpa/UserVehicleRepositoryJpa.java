@@ -34,15 +34,11 @@ public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntit
             V.model AS model,
             V.year AS year
         FROM UserVehicleEntity UV
-        JOIN VehicleEntity V
-            ON UV.id.vehicleId = V.id
-        JOIN UsersEntity U
-            ON UV.id.userId = U.id
-        WHERE UV.isPrimary = TRUE
+        JOIN UV.user U
+        JOIN UV.vehicle V
+        WHERE UV.isPrimary = true
         AND U.id = :userId
     """)
-    UserDetailsProjection findPrimaryVehicleByUserId(
-        @Param("userId") Long userId
-    );
+    Optional<UserDetailsProjection> findPrimaryVehicleDetailsByUserId(@Param("userId") Long userId);
 
 }

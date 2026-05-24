@@ -61,19 +61,15 @@ public class UsersController {
     }
 
     @GetMapping("/primary-vehicle")
-    public CustomResponse<UserDetailsDTO> getPrimaryVehicleDetailsByUserId(
-        Authentication authentication
-    ) {
-        
-        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+    public CustomResponse<UserDetailsDTO> getPrimaryVehicleDetails(Authentication authentication) {
 
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+        
         return new CustomResponse<UserDetailsDTO>(
             usersService.getPrimaryVehicleDetailsByUserId(authenticatedUser.id()),
             HttpStatus.OK,
             "Primary vehicle details retrieved successfully"
         );
     }
-
-
 
 }

@@ -24,8 +24,8 @@ import lombok.RequiredArgsConstructor;
 public class UsersService {
 
     private final UsersRepository UsersRepository;
-    private final UserVehicleRepository userVehicleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserVehicleRepository userVehicleRepository;
 
     @Transactional
     public UserDTO registerUser(RegisterUserDTO userDTO) {
@@ -72,18 +72,14 @@ public class UsersService {
     }
 
     public UserDetailsDTO getPrimaryVehicleDetailsByUserId(Long userId) {
-        var detailsProjection = userVehicleRepository.findPrimaryVehicleByUserId(userId);
-
-        if (detailsProjection == null) {
-            throw new CustomException("Primary vehicle not found for user", HttpStatus.NOT_FOUND);
-        }
-        
-        return new UserDetailsDTO(
-            detailsProjection.getUsername(),
-            detailsProjection.getNickname(),
-            detailsProjection.getBrand(),
-            detailsProjection.getModel(),
-            detailsProjection.getYear()
-        );
+        return userVehicleRepository.findPrimaryVehicleDetailsByUserId(userId)
+            .map(projection -> new UserDetailsDTO(
+                projection.getUsername(),
+                projection.getNickname(),
+                projection.getBrand(),
+                projection.getModel(),
+                projection.getYear()
+            ))
+            .orElseThrow(() -> new CustomException("Primary vehicle not found for user", HttpStatus.NOT_FOUND));
     }
 }

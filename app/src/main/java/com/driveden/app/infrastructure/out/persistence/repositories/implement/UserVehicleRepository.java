@@ -1,5 +1,7 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.implement;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.domain.users.model.UserVehicleDomain;
@@ -36,8 +38,12 @@ public class UserVehicleRepository {
                 .orElse(null);
     }
 
-    public UserDetailsProjection findPrimaryVehicleByUserId(Long userId) {
-        return userVehicleRepositoryJpa.findPrimaryVehicleByUserId(userId);
+    public Optional<UserDetailsProjection> findPrimaryVehicleDetailsByUserId(Long userId) {
+        return userVehicleRepositoryJpa.findPrimaryVehicleDetailsByUserId(userId);
+    }
+
+    public boolean existsByUserIdAndVehicleId(Long userId, Long vehicleId) {
+        return userVehicleRepositoryJpa.existsByIdUserIdAndIdVehicleId(userId, vehicleId);
     }
 
 }

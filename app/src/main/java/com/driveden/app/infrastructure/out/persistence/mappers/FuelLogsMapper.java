@@ -1,0 +1,77 @@
+package com.driveden.app.infrastructure.out.persistence.mappers;
+
+import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
+import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
+import com.driveden.app.infrastructure.out.persistence.entity.FuelLogsEntity;
+
+public class FuelLogsMapper {
+
+    public static FuelLogsDomain toDomain(FuelLogsEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+
+        return new FuelLogsDomain(
+                entity.getId(),
+                entity.getPriceTotal(),
+                entity.getPricePerGallon(),
+                entity.getGallons(),
+                entity.getKmAtFill(),
+                entity.getFilledAt(),
+                entity.getGasStation(),
+                entity.getVehicleId()
+        );
+    }
+
+    public static FuelLogsEntity toEntity(FuelLogsDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        FuelLogsEntity entity = new FuelLogsEntity();
+        entity.setId(domain.getId());
+        entity.setPriceTotal(domain.getPriceTotal());
+        entity.setPricePerGallon(domain.getPricePerGallon());
+        entity.setGallons(domain.getGallons());
+        entity.setKmAtFill(domain.getKmAtFill());
+        entity.setFilledAt(domain.getFilledAt());
+        entity.setGasStation(domain.getGasStation());
+        entity.setVehicleId(domain.getVehicleId());
+        return entity;
+    }
+
+    public static FuelLogsDomain fromDTOtoDomain(RegisterFuelLogDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+
+        return new FuelLogsDomain(
+                null,
+                dto.getPriceTotal(),
+                dto.getPricePerGallon(),
+                dto.getGallons(),
+                dto.getKmAtFill(),
+                dto.getFilledAt(),
+                dto.getGasStation(),
+                dto.getVehicleId()
+        );
+    }
+
+    public static FuelLogResponseDTO toResponseDTO(FuelLogsDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new FuelLogResponseDTO(
+                domain.getId(),
+                domain.getVehicleId(),
+                domain.getGallons(),
+                domain.getPriceTotal(),
+                domain.getPricePerGallon(),
+                domain.getKmAtFill(),
+                domain.getFilledAt(),
+                domain.getGasStation()
+        );
+    }
+}

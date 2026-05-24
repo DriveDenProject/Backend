@@ -1,10 +1,14 @@
 package com.driveden.app.infrastructure.controllers.in.web;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.CarService;
+import com.driveden.app.application.services.FuelService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
@@ -12,20 +16,18 @@ import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
 import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -37,6 +39,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CarsController {
 
     private final CarService carService;
+    private final FuelService fuelService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -104,6 +107,34 @@ public class CarsController {
             carService.registerVehicle(carRegisterRequestDTO, authenticatedUser.id()),
             HttpStatus.CREATED,
             "Vehicle registered successfully"
+        );
+    }
+
+    @PostMapping("/fuel-logs")
+    public CustomResponse<FuelLogResponseDTO> registerFuelLog(
+            @Valid @RequestBody RegisterFuelLogDTO registerFuelLogDTO,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.registerFuelLog(registerFuelLogDTO, authenticatedUser.id()),
+                HttpStatus.CREATED,
+                "Fuel log registered successfully"
+        );
+    }
+
+    @GetMapping("/fuel-logs")
+    public CustomResponse<List<FuelLogResponseDTO>> getFuelLogs(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.getFuelLogs(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Fuel logs retrieved successfully"
         );
     }
 
