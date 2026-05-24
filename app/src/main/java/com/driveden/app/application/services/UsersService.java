@@ -8,10 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.driveden.app.domain.users.dto.UserDTO;
+import com.driveden.app.domain.users.dto.UserDetailsDTO;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.users.dto.RegisterUserDTO;
 import com.driveden.app.domain.users.model.Users;
 import com.driveden.app.infrastructure.out.persistence.mappers.UsersMapper;
+import com.driveden.app.infrastructure.out.persistence.repositories.implement.UserVehicleRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.UsersRepository;
 
 import jakarta.transaction.Transactional;
@@ -22,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class UsersService {
 
     private final UsersRepository UsersRepository;
+    private final UserVehicleRepository userVehicleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
@@ -66,5 +69,21 @@ public class UsersService {
             throw new CustomException("User not found", HttpStatus.NOT_FOUND);
         }
         return foundUser.get();
+    }
+
+    public UserDetailsDTO getPrimaryVehicleDetailsByUserId(Long userId) {
+        var detailsProjection = userVehicleRepository.findPrimaryVehicleByUserId(userId);
+
+        if (detailsProjection == null) {
+            throw new CustomException("Primary vehicle not found for user", HttpStatus.NOT_FOUND);
+        }
+        
+        return new UserDetailsDTO(
+            detailsProjection.getUsername(),
+            detailsProjection.getNickname(),
+            detailsProjection.getBrand(),
+            detailsProjection.getModel(),
+            detailsProjection.getYear()
+        );
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.driveden.app.infrastructure.out.persistence.entity.UserVehicleEntity;
 import com.driveden.app.infrastructure.out.persistence.entity.ids.UserVehicleId;
+import com.driveden.app.infrastructure.out.persistence.projection.UserDetailsProjection;
 
 public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntity, UserVehicleId> {
 
@@ -24,5 +25,24 @@ public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntit
     @Modifying
     @Query("UPDATE UserVehicleEntity uv SET uv.isPrimary = false WHERE uv.id.userId = :userId")
     void clearPrimaryVehicle(@Param("userId") Long userId);
+
+    @Query("""
+        SELECT
+            U.username AS username,
+            V.nickName AS nickname,
+            V.brand AS brand,
+            V.model AS model,
+            V.year AS year
+        FROM UserVehicleEntity UV
+        JOIN VehicleEntity V
+            ON UV.id.vehicleId = V.id
+        JOIN UsersEntity U
+            ON UV.id.userId = U.id
+        WHERE UV.isPrimary = TRUE
+        AND U.id = :userId
+    """)
+    UserDetailsProjection findPrimaryVehicleByUserId(
+        @Param("userId") Long userId
+    );
 
 }
