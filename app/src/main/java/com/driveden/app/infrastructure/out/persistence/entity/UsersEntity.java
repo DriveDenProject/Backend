@@ -1,4 +1,6 @@
 package com.driveden.app.infrastructure.out.persistence.entity;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,6 @@ public class UsersEntity {
     private String phoneNumber;
 
     @Column(name = "created_at", nullable = false)
-    private java.time.LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
 }
