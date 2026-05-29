@@ -16,6 +16,7 @@ import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
 import com.driveden.app.domain.auth.dto.ChangePasswordDTO;
+import com.driveden.app.domain.auth.dto.GoogleLoginDTO;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.utils.CustomResponse;
 
@@ -37,6 +38,14 @@ public class AuthController {
     public CustomResponse<AuthResponseDTO> login(@Valid @RequestBody LoginDTO loginDTO) throws CustomException {
 
         AuthResponseDTO authResponse = authService.login(loginDTO);
+
+        return new CustomResponse<AuthResponseDTO>(authResponse, HttpStatus.OK, "Login successful");
+    }
+
+    @PostMapping("/google")
+    public CustomResponse<AuthResponseDTO> googleLogin(@Valid @RequestBody GoogleLoginDTO googleLoginDTO) {
+
+        AuthResponseDTO authResponse = authService.googleLogin(googleLoginDTO);
 
         return new CustomResponse<AuthResponseDTO>(authResponse, HttpStatus.OK, "Login successful");
     }

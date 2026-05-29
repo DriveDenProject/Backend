@@ -23,10 +23,20 @@ public class UsersRepository {
             .map(UsersMapper::entitytoDomain);
     }
 
+    public Optional<Users> findByEmailIgnoreCase(String email) {
+        return usersJpa.findByEmailIgnoreCase(email)
+            .map(UsersMapper::entitytoDomain);
+    }
+
     public Optional<Users> findById(Long id) {
         //Retornar el user encontrado convertido a un objeto de dominio
         return usersJpa.findById(id)
             //Si no se encuentra un usuario con ese id, retornar null
+            .map(UsersMapper::entitytoDomain);
+    }
+
+    public Optional<Users> findByGoogleId(String googleId) {
+        return usersJpa.findByGoogleId(googleId)
             .map(UsersMapper::entitytoDomain);
     }
 

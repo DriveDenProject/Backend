@@ -1,6 +1,10 @@
 package com.driveden.app.domain.users.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.driveden.app.domain.auth.model.AuthProvider;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +23,11 @@ public class Users {
     private String password;
     private String phoneNumber;
     private LocalDateTime createdAt;
+    @Builder.Default
+    private Set<AuthProvider> authProviders = new HashSet<>();
+    private String googleId;
+    private String profilePicture;
+    private Boolean emailVerified;
     
 }
 

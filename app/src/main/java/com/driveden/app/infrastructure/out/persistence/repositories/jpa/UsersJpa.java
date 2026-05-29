@@ -9,4 +9,8 @@ public interface UsersJpa extends JpaRepository<UsersEntity, Long> {
 
     Optional<UsersEntity> findByEmail(String email);
 
+    Optional<UsersEntity> findByEmailIgnoreCase(String email);
+
+    Optional<UsersEntity> findByGoogleId(String googleId);
+
 }

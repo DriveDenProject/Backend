@@ -2,23 +2,29 @@ package com.driveden.app.application.services;
 
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.driveden.app.application.ports.out.GoogleAuthPort;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.auth.dto.AuthRefreshRequestDTO;
 import com.driveden.app.domain.auth.dto.AuthResponseDTO;
 import com.driveden.app.domain.auth.dto.ChangePasswordDTO;
+import com.driveden.app.domain.auth.dto.GoogleLoginDTO;
+import com.driveden.app.domain.auth.model.AuthProvider;
 import com.driveden.app.domain.auth.model.EmailVerification;
+import com.driveden.app.domain.auth.model.GoogleUserInfo;
 import com.driveden.app.domain.users.dto.LoginDTO;
 import com.driveden.app.domain.users.model.Users;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.EmailVerificationCodeReporsitory;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.UsersRepository;
 import com.driveden.app.utils.TokenService;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -30,20 +36,84 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
     private final EmailService emailService;
+    private final GoogleAuthPort googleAuthPort;
 
     public AuthResponseDTO login(LoginDTO loginDTO) throws CustomException {
 
         Users user = usersRepository.findByEmail(loginDTO.getEmail())
                 .orElseThrow(() -> new CustomException("Invalid credentials", HttpStatus.UNAUTHORIZED));
 
-        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+        if (user.getPassword() == null || !passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             throw new CustomException("Invalid credentials", HttpStatus.UNAUTHORIZED);
         }
 
+        return buildAuthResponse(user, "Login successful");
+    }
+
+    @Transactional
+    public AuthResponseDTO googleLogin(GoogleLoginDTO googleLoginDTO) {
+        GoogleUserInfo googleUserInfo = googleAuthPort.validateIdToken(googleLoginDTO.getIdToken());
+
+        if (googleUserInfo.getEmail() == null || !Boolean.TRUE.equals(googleUserInfo.getEmailVerified())) {
+            throw new CustomException("Google email is not verified", HttpStatus.UNAUTHORIZED);
+        }
+
+        Users user = usersRepository.findByGoogleId(googleUserInfo.getGoogleId())
+                .or(() -> usersRepository.findByEmailIgnoreCase(googleUserInfo.getEmail()))
+                .map(existingUser -> linkGoogleAccount(existingUser, googleUserInfo))
+                .orElseGet(() -> createGoogleUser(googleUserInfo));
+
+        Users savedUser = usersRepository.save(user);
+        return buildAuthResponse(savedUser, "Login successful");
+    }
+
+    private AuthResponseDTO buildAuthResponse(Users user, String message) {
         String accessToken = tokenService.generateToken(user);
         String refreshToken = tokenService.generateRefreshToken(user);
 
-        return new AuthResponseDTO(user.getEmail(), accessToken, refreshToken, "Login successful");
+        return new AuthResponseDTO(user.getEmail(), accessToken, refreshToken, message);
+    }
+
+    private Users linkGoogleAccount(Users user, GoogleUserInfo googleUserInfo) {
+        if (user.getAuthProviders() == null) {
+            user.setAuthProviders(new HashSet<>());
+        }
+
+        user.getAuthProviders().add(AuthProvider.GOOGLE);
+        user.setGoogleId(googleUserInfo.getGoogleId());
+        user.setEmailVerified(Boolean.TRUE.equals(googleUserInfo.getEmailVerified()));
+
+        if (googleUserInfo.getPicture() != null && !googleUserInfo.getPicture().isBlank()) {
+            user.setProfilePicture(googleUserInfo.getPicture());
+        }
+
+        return user;
+    }
+
+    private Users createGoogleUser(GoogleUserInfo googleUserInfo) {
+        return Users.builder()
+                .username(resolveGoogleUsername(googleUserInfo))
+                .email(googleUserInfo.getEmail())
+                .password(null)
+                .phoneNumber(null)
+                .createdAt(LocalDateTime.now())
+                .authProviders(new HashSet<>(java.util.Set.of(AuthProvider.GOOGLE)))
+                .googleId(googleUserInfo.getGoogleId())
+                .profilePicture(googleUserInfo.getPicture())
+                .emailVerified(Boolean.TRUE.equals(googleUserInfo.getEmailVerified()))
+                .build();
+    }
+
+    private String resolveGoogleUsername(GoogleUserInfo googleUserInfo) {
+        String username = googleUserInfo.getName();
+        if (username == null || username.isBlank()) {
+            username = googleUserInfo.getGivenName();
+        }
+        if (username == null || username.isBlank()) {
+            username = googleUserInfo.getEmail().split("@")[0];
+        }
+
+        return username.length() > 50 ? username.substring(0, 50) : username;
     }
     
     public AuthResponseDTO refresh(AuthRefreshRequestDTO request){
