@@ -1,5 +1,6 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.implement;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -28,5 +29,9 @@ public class FuelLogsRepository {
         return fuelLogsJpa.findByVehicleIdOrderByFilledAtDesc(vehicleId).stream()
                 .map(FuelLogsMapper::toDomain)
                 .toList();
+    }
+
+    public boolean existsMoreRecentFuelLog(Long vehicleId, LocalDateTime filledAt) {
+        return fuelLogsJpa.existsByVehicleIdAndFilledAtAfter(vehicleId, filledAt);
     }
 }

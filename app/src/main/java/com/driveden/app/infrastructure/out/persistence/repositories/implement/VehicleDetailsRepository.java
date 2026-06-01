@@ -1,5 +1,7 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.implement;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.domain.cars.model.vehicleDetailsDomain;
@@ -19,5 +21,14 @@ public class VehicleDetailsRepository {
                         VehicleDetailsMapper.toEntity(vehicleDetailsDomain)
                 )
         );
+    }
+
+    public Optional<vehicleDetailsDomain> findByVehicleId(Long vehicleId) {
+        return vehicleDetailsJpa.findByVehicleId(vehicleId)
+                .map(VehicleDetailsMapper::toDomain);
+    }
+
+    public void updateCurrentKm(Long vehicleId, Integer currentKm) {
+        vehicleDetailsJpa.updateCurrentKmByVehicleId(vehicleId, currentKm);
     }
 }
