@@ -2,6 +2,7 @@ package com.driveden.app.infrastructure.out.persistence.repositories.jpa;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,4 +13,6 @@ public interface FuelLogsJpa extends JpaRepository<FuelLogsEntity, Long> {
     List<FuelLogsEntity> findByVehicleIdOrderByFilledAtDesc(Long vehicleId);
 
     boolean existsByVehicleIdAndFilledAtAfter(Long vehicleId, LocalDateTime filledAt);
+
+    Optional<FuelLogsEntity> findFirstByVehicleIdOrderByFilledAtDescIdDesc(Long vehicleId);
 }

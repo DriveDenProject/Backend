@@ -18,15 +18,19 @@ import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
+import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -135,6 +139,35 @@ public class CarsController {
                 fuelService.getFuelLogs(vehicleId, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Fuel logs retrieved successfully"
+        );
+    }
+
+    @PutMapping("/fuel-logs/{fuelLogId}")
+    public CustomResponse<FuelLogResponseDTO> updateFuelLog(
+            @PathVariable Long fuelLogId,
+            @Valid @RequestBody UpdateFuelLogDTO updateFuelLogDTO,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.updateFuelLog(fuelLogId, updateFuelLogDTO, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Fuel log updated successfully"
+        );
+    }
+
+    @DeleteMapping("/fuel-logs/{fuelLogId}")
+    public CustomResponse<String> deleteFuelLog(
+            @PathVariable Long fuelLogId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.deleteFuelLog(fuelLogId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Fuel log deleted successfully"
         );
     }
 

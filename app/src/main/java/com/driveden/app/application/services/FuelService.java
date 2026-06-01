@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
+import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
 import com.driveden.app.infrastructure.out.persistence.mappers.FuelLogsMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.FuelLogsRepository;
@@ -35,9 +36,50 @@ public class FuelService {
 
         FuelLogsDomain fuelLogsDomain = FuelLogsMapper.fromDTOtoDomain(registerFuelLogDTO);
         FuelLogsDomain savedFuelLog = fuelLogsRepository.save(fuelLogsDomain);
-        updateVehicleOdometerIfLatestFuelLog(savedFuelLog);
+        vehicleOdometerService.updateCurrentKmIfLatestFuelLog(savedFuelLog);
 
         return FuelLogsMapper.toResponseDTO(savedFuelLog);
+    }
+
+    @Transactional
+    public FuelLogResponseDTO updateFuelLog(Long fuelLogId, UpdateFuelLogDTO updateFuelLogDTO, Long userId) {
+        FuelLogsDomain currentFuelLog = findFuelLogById(fuelLogId);
+        validateVehicleOwnership(userId, currentFuelLog.getVehicleId());
+        validatePaymentMethod(updateFuelLogDTO.getPaymentMethodId());
+        vehicleOdometerService.validateOdometerForUpdate(
+                currentFuelLog.getVehicleId(),
+                updateFuelLogDTO.getKmAtFill(),
+                currentFuelLog
+        );
+
+        FuelLogsDomain updatedFuelLog = new FuelLogsDomain(
+                currentFuelLog.getId(),
+                updateFuelLogDTO.getPriceTotal(),
+                updateFuelLogDTO.getPricePerGallon(),
+                updateFuelLogDTO.getGallons(),
+                updateFuelLogDTO.getKmAtFill(),
+                updateFuelLogDTO.getFilledAt(),
+                updateFuelLogDTO.getGasStation(),
+                currentFuelLog.getVehicleId(),
+                updateFuelLogDTO.getPaymentMethodId(),
+                updateFuelLogDTO.getNotes()
+        );
+
+        FuelLogsDomain savedFuelLog = fuelLogsRepository.save(updatedFuelLog);
+        vehicleOdometerService.recalculateCurrentKm(savedFuelLog.getVehicleId());
+
+        return FuelLogsMapper.toResponseDTO(savedFuelLog);
+    }
+
+    @Transactional
+    public String deleteFuelLog(Long fuelLogId, Long userId) {
+        FuelLogsDomain fuelLog = findFuelLogById(fuelLogId);
+        validateVehicleOwnership(userId, fuelLog.getVehicleId());
+
+        fuelLogsRepository.deleteById(fuelLog.getId());
+        vehicleOdometerService.recalculateCurrentKm(fuelLog.getVehicleId());
+
+        return "Fuel log deleted successfully";
     }
 
     public List<FuelLogResponseDTO> getFuelLogs(Long vehicleId, Long userId) {
@@ -66,14 +108,8 @@ public class FuelService {
         }
     }
 
-    private void updateVehicleOdometerIfLatestFuelLog(FuelLogsDomain savedFuelLog) {
-        boolean hasMoreRecentFuelLog = fuelLogsRepository.existsMoreRecentFuelLog(
-                savedFuelLog.getVehicleId(),
-                savedFuelLog.getFilledAt()
-        );
-
-        if (!hasMoreRecentFuelLog) {
-            vehicleOdometerService.updateCurrentKm(savedFuelLog.getVehicleId(), savedFuelLog.getKmAtFill());
-        }
+    private FuelLogsDomain findFuelLogById(Long fuelLogId) {
+        return fuelLogsRepository.findById(fuelLogId)
+                .orElseThrow(() -> new CustomException("Fuel log not found", HttpStatus.NOT_FOUND));
     }
 }
