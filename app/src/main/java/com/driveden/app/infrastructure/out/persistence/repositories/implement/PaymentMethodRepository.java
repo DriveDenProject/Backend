@@ -22,4 +22,8 @@ public class PaymentMethodRepository {
                 .toList();
     }
 
+    public boolean existsAvailableById(Long id) {
+        return paymentMethodJpa.existsByIdAndIsActiveTrue(id);
+    }
+
 }

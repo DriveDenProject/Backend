@@ -3,6 +3,8 @@ package com.driveden.app.domain.fuelLogs.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -44,4 +46,10 @@ public class RegisterFuelLogDTO {
     @NotBlank(message = "gasStation is required")
     @Size(max = 100, message = "gasStation must be at most 100 characters")
     private String gasStation;
+
+    @JsonProperty("payment_method_id")
+    @Positive(message = "payment_method_id must be positive")
+    private Long paymentMethodId;
+
+    private String notes;
 }

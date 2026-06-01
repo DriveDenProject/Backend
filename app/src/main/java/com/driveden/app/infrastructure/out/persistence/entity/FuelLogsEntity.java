@@ -45,4 +45,10 @@ public class FuelLogsEntity {
 
     @Column(name = "vehicle_id", nullable = false)
     private Long vehicleId;
+
+    @Column(name = "payment_method_id")
+    private Long paymentMethodId;
+
+    @Column(name = "notes")
+    private String notes;
 }

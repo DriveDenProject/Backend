@@ -3,6 +3,8 @@ package com.driveden.app.domain.fuelLogs.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public record FuelLogResponseDTO(
         Long id,
         Long vehicleId,
@@ -11,6 +13,9 @@ public record FuelLogResponseDTO(
         BigDecimal pricePerGallon,
         Integer kmAtFill,
         LocalDateTime filledAt,
-        String gasStation
+        String gasStation,
+        @JsonProperty("payment_method_id")
+        Long paymentMethodId,
+        String notes
 ) {
 }

@@ -20,6 +20,8 @@ public class FuelLogsDomain {
     private LocalDateTime filledAt;
     private String gasStation;
     private Long vehicleId;
+    private Long paymentMethodId;
+    private String notes;
 
 
 }

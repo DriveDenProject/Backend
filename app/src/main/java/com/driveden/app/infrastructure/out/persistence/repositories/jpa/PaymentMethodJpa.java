@@ -10,4 +10,6 @@ public interface PaymentMethodJpa extends JpaRepository<PaymentMethodsEntity, Lo
 
     List<PaymentMethodsEntity> findByIsActiveTrue();
 
+    boolean existsByIdAndIsActiveTrue(Long id);
+
 }

@@ -20,7 +20,9 @@ public class FuelLogsMapper {
                 entity.getKmAtFill(),
                 entity.getFilledAt(),
                 entity.getGasStation(),
-                entity.getVehicleId()
+                entity.getVehicleId(),
+                entity.getPaymentMethodId(),
+                entity.getNotes()
         );
     }
 
@@ -38,6 +40,8 @@ public class FuelLogsMapper {
         entity.setFilledAt(domain.getFilledAt());
         entity.setGasStation(domain.getGasStation());
         entity.setVehicleId(domain.getVehicleId());
+        entity.setPaymentMethodId(domain.getPaymentMethodId());
+        entity.setNotes(domain.getNotes());
         return entity;
     }
 
@@ -54,7 +58,9 @@ public class FuelLogsMapper {
                 dto.getKmAtFill(),
                 dto.getFilledAt(),
                 dto.getGasStation(),
-                dto.getVehicleId()
+                dto.getVehicleId(),
+                dto.getPaymentMethodId(),
+                dto.getNotes()
         );
     }
 
@@ -71,7 +77,9 @@ public class FuelLogsMapper {
                 domain.getPricePerGallon(),
                 domain.getKmAtFill(),
                 domain.getFilledAt(),
-                domain.getGasStation()
+                domain.getGasStation(),
+                domain.getPaymentMethodId(),
+                domain.getNotes()
         );
     }
 }
