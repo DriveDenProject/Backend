@@ -39,11 +39,11 @@ public interface VehicleNotificationJpa extends JpaRepository<VehicleNotificatio
         SELECT *
         FROM vehicle_notifications
         WHERE status = 'PENDING'
-        AND :today >= (due_date - (notify_before_days * INTERVAL '1 day'))
-        AND :today <= due_date
+        AND CAST(:today AS date) >= (due_date - notify_before_days)
+        AND CAST(:today AS date) <= due_date
         AND (
             last_notification_sent IS NULL
-            OR last_notification_sent <= (:now - (reminder_frequency_days * INTERVAL '1 day'))
+            OR last_notification_sent <= (CAST(:now AS timestamp) - make_interval(days => reminder_frequency_days))
         )
     """, nativeQuery = true)
     List<VehicleNotificationEntity> findPendingReadyToDispatch(
