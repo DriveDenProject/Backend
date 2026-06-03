@@ -10,6 +10,7 @@ import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
+import com.driveden.app.domain.odometerLogs.model.OdometerLogSource;
 import com.driveden.app.infrastructure.out.persistence.mappers.FuelLogsMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.FuelLogsRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.PaymentMethodRepository;
@@ -26,6 +27,7 @@ public class FuelService {
     private final UserVehicleRepository userVehicleRepository;
     private final PaymentMethodRepository paymentMethodRepository;
     private final VehicleOdometerService vehicleOdometerService;
+    private final OdometerLogService odometerLogService;
     private final UsersService usersService;
 
     @Transactional
@@ -37,6 +39,7 @@ public class FuelService {
         FuelLogsDomain fuelLogsDomain = FuelLogsMapper.fromDTOtoDomain(registerFuelLogDTO);
         FuelLogsDomain savedFuelLog = fuelLogsRepository.save(fuelLogsDomain);
         vehicleOdometerService.updateCurrentKmIfLatestFuelLog(savedFuelLog);
+        registerOdometerLog(savedFuelLog);
 
         return FuelLogsMapper.toResponseDTO(savedFuelLog);
     }
@@ -111,5 +114,24 @@ public class FuelService {
     private FuelLogsDomain findFuelLogById(Long fuelLogId) {
         return fuelLogsRepository.findById(fuelLogId)
                 .orElseThrow(() -> new CustomException("Fuel log not found", HttpStatus.NOT_FOUND));
+    }
+
+    private void registerOdometerLog(FuelLogsDomain fuelLog) {
+        odometerLogService.registerOdometerLog(
+                fuelLog.getVehicleId(),
+                fuelLog.getKmAtFill(),
+                fuelLog.getFilledAt(),
+                OdometerLogSource.FUEL,
+                fuelLog.getId(),
+                getFuelLogOdometerNote(fuelLog)
+        );
+    }
+
+    private String getFuelLogOdometerNote(FuelLogsDomain fuelLog) {
+        if (fuelLog.getNotes() == null || fuelLog.getNotes().isBlank()) {
+            return "Fuel log registration";
+        }
+
+        return fuelLog.getNotes();
     }
 }
