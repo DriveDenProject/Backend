@@ -16,6 +16,8 @@ public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntit
 
     List<UserVehicleEntity> findByIdUserId(Long userId);
 
+    List<UserVehicleEntity> findByIdVehicleId(Long vehicleId);
+
     Optional<UserVehicleEntity> findByIdUserIdAndIsPrimaryTrue(Long userId);
 
     boolean existsByIdUserIdAndIdVehicleId(Long userId, Long vehicleId);

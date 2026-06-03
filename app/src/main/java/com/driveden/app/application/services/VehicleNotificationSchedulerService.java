@@ -37,8 +37,9 @@ public class VehicleNotificationSchedulerService {
     }
 
     private void dispatchNotification(VehicleNotificationDomain vehicleNotificationDomain, LocalDateTime now) {
-        notificationDispatchService.dispatch(vehicleNotificationDomain);
-        vehicleNotificationDomain.setLastNotificationSent(now);
-        vehicleNotificationRepository.save(vehicleNotificationDomain);
+        if (notificationDispatchService.dispatch(vehicleNotificationDomain)) {
+            vehicleNotificationDomain.setLastNotificationSent(now);
+            vehicleNotificationRepository.save(vehicleNotificationDomain);
+        }
     }
 }

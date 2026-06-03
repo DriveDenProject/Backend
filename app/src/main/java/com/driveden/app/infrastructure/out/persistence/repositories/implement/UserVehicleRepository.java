@@ -42,6 +42,12 @@ public class UserVehicleRepository {
         return userVehicleRepositoryJpa.findPrimaryVehicleDetailsByUserId(userId);
     }
 
+    public java.util.List<Long> findUserIdsByVehicleId(Long vehicleId) {
+        return userVehicleRepositoryJpa.findByIdVehicleId(vehicleId).stream()
+                .map(userVehicleEntity -> userVehicleEntity.getId().getUserId())
+                .toList();
+    }
+
     public boolean existsByUserIdAndVehicleId(Long userId, Long vehicleId) {
         return userVehicleRepositoryJpa.existsByIdUserIdAndIdVehicleId(userId, vehicleId);
     }
