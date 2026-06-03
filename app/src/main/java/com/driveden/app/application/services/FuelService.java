@@ -69,6 +69,7 @@ public class FuelService {
         );
 
         FuelLogsDomain savedFuelLog = fuelLogsRepository.save(updatedFuelLog);
+        updateOdometerLog(savedFuelLog);
         vehicleOdometerService.recalculateCurrentKm(savedFuelLog.getVehicleId());
 
         return FuelLogsMapper.toResponseDTO(savedFuelLog);
@@ -80,6 +81,7 @@ public class FuelService {
         validateVehicleOwnership(userId, fuelLog.getVehicleId());
 
         fuelLogsRepository.deleteById(fuelLog.getId());
+        odometerLogService.deleteOdometerLogFromSource(OdometerLogSource.FUEL, fuelLog.getId());
         vehicleOdometerService.recalculateCurrentKm(fuelLog.getVehicleId());
 
         return "Fuel log deleted successfully";
@@ -123,6 +125,17 @@ public class FuelService {
                 fuelLog.getFilledAt(),
                 OdometerLogSource.FUEL,
                 fuelLog.getId(),
+                getFuelLogOdometerNote(fuelLog)
+        );
+    }
+
+    private void updateOdometerLog(FuelLogsDomain fuelLog) {
+        odometerLogService.updateOdometerLogFromSource(
+                OdometerLogSource.FUEL,
+                fuelLog.getId(),
+                fuelLog.getVehicleId(),
+                fuelLog.getKmAtFill(),
+                fuelLog.getFilledAt(),
                 getFuelLogOdometerNote(fuelLog)
         );
     }

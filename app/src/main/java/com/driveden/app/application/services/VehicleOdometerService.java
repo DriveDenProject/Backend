@@ -17,6 +17,7 @@ public class VehicleOdometerService {
 
     private final VehicleDetailsRepository vehicleDetailsRepository;
     private final FuelLogsRepository fuelLogsRepository;
+    private final OdometerLogService odometerLogService;
 
     public void validateOdometer(Long vehicleId, Integer kmAtFill) {
         vehicleDetailsDomain vehicleDetails = findVehicleDetails(vehicleId);
@@ -57,8 +58,8 @@ public class VehicleOdometerService {
     }
 
     public void recalculateCurrentKm(Long vehicleId) {
-        fuelLogsRepository.findLatestByVehicleId(vehicleId)
-                .ifPresent(fuelLog -> updateCurrentKm(vehicleId, fuelLog.getKmAtFill()));
+        odometerLogService.findLatestKmByVehicleId(vehicleId)
+                .ifPresent(currentKm -> updateCurrentKm(vehicleId, currentKm));
     }
 
     private vehicleDetailsDomain findVehicleDetails(Long vehicleId) {

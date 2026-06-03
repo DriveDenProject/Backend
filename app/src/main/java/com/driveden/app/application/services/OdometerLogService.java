@@ -1,6 +1,7 @@
 package com.driveden.app.application.services;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,47 @@ public class OdometerLogService {
         return odometerLogRepositoryPort.save(odometerLogDomain);
     }
 
+    public OdometerLogDomain updateOdometerLogFromSource(
+            OdometerLogSource source,
+            Long sourceId,
+            Long vehicleId,
+            Integer km,
+            LocalDateTime recordedAt,
+            String note
+    ) {
+        validateSourceReference(source, sourceId);
+        validateOdometerLog(vehicleId, km, source);
+        validateRecordedAt(recordedAt);
+
+        OdometerLogDomain currentOdometerLog = findBySourceAndSourceId(source, sourceId);
+        validateOdometerTimeline(currentOdometerLog.getId(), vehicleId, recordedAt, km);
+
+        OdometerLogDomain updatedOdometerLog = new OdometerLogDomain(
+                currentOdometerLog.getId(),
+                vehicleId,
+                km,
+                recordedAt,
+                normalizeNote(note),
+                source,
+                sourceId,
+                currentOdometerLog.getCreatedAt()
+        );
+
+        return odometerLogRepositoryPort.save(updatedOdometerLog);
+    }
+
+    public void deleteOdometerLogFromSource(OdometerLogSource source, Long sourceId) {
+        validateSourceReference(source, sourceId);
+
+        OdometerLogDomain odometerLogDomain = findBySourceAndSourceId(source, sourceId);
+        odometerLogRepositoryPort.deleteById(odometerLogDomain.getId());
+    }
+
+    public Optional<Integer> findLatestKmByVehicleId(Long vehicleId) {
+        return odometerLogRepositoryPort.findLatestByVehicleId(vehicleId)
+                .map(OdometerLogDomain::getKm);
+    }
+
     private void validateOdometerLog(Long vehicleId, Integer km, OdometerLogSource source) {
         if (vehicleId == null) {
             throw new CustomException("vehicleId is required", HttpStatus.BAD_REQUEST);
@@ -55,6 +97,55 @@ public class OdometerLogService {
 
         if (source == null) {
             throw new CustomException("source is required", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    private void validateSourceReference(OdometerLogSource source, Long sourceId) {
+        if (source == null) {
+            throw new CustomException("source is required", HttpStatus.BAD_REQUEST);
+        }
+
+        if (sourceId == null) {
+            throw new CustomException("sourceId is required", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    private void validateRecordedAt(LocalDateTime recordedAt) {
+        if (recordedAt == null) {
+            throw new CustomException("recordedAt is required", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    private OdometerLogDomain findBySourceAndSourceId(OdometerLogSource source, Long sourceId) {
+        return odometerLogRepositoryPort.findBySourceAndSourceId(source, sourceId)
+                .orElseThrow(() -> new CustomException("Odometer log not found", HttpStatus.NOT_FOUND));
+    }
+
+    private void validateOdometerTimeline(
+            Long currentLogId,
+            Long vehicleId,
+            LocalDateTime recordedAt,
+            Integer km
+    ) {
+        OdometerLogDomain previousLog = odometerLogRepositoryPort
+                .findPreviousLog(vehicleId, recordedAt, currentLogId)
+                .orElse(null);
+        OdometerLogDomain nextLog = odometerLogRepositoryPort
+                .findNextLog(vehicleId, recordedAt, currentLogId)
+                .orElse(null);
+
+        if (previousLog != null && km < previousLog.getKm()) {
+            throw new CustomException(
+                    "The odometer must be consistent with previous records",
+                    HttpStatus.BAD_REQUEST
+            );
+        }
+
+        if (nextLog != null && km > nextLog.getKm()) {
+            throw new CustomException(
+                    "The odometer must be consistent with next records",
+                    HttpStatus.BAD_REQUEST
+            );
         }
     }
 
