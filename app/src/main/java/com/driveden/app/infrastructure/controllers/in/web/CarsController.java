@@ -1,8 +1,10 @@
 package com.driveden.app.infrastructure.controllers.in.web;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +18,10 @@ import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
 import com.driveden.app.domain.cars.model.vehicleDomain;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogHistoryResponseDTO;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.LastFuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.odometerLogs.dto.CurrentMonthMileageStatsResponseDTO;
@@ -143,6 +147,36 @@ public class CarsController {
                 fuelService.getFuelLogs(vehicleId, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Fuel logs retrieved successfully"
+        );
+    }
+
+    @GetMapping("/fuel-logs/history")
+    public CustomResponse<List<FuelLogHistoryResponseDTO>> getFuelLogsHistory(
+            @RequestParam Long vehicleId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.getFuelLogsHistory(vehicleId, startDate, endDate, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Fuel logs history retrieved successfully"
+        );
+    }
+
+    @GetMapping("/fuel-logs/latest")
+    public CustomResponse<List<LastFuelLogResponseDTO>> getLastFourFuelLogs(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.getLastFourFuelLogs(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Latest fuel logs retrieved successfully"
         );
     }
 

@@ -32,6 +32,28 @@ public class FuelLogsRepository {
                 .toList();
     }
 
+    public List<FuelLogsDomain> findByVehicleIdAndFilledAtBetween(
+            Long vehicleId,
+            LocalDateTime startDate,
+            LocalDateTime endDate
+    ) {
+        return fuelLogsJpa
+                .findByVehicleIdAndFilledAtGreaterThanEqualAndFilledAtLessThanEqualOrderByFilledAtAsc(
+                        vehicleId,
+                        startDate,
+                        endDate
+                )
+                .stream()
+                .map(FuelLogsMapper::toDomain)
+                .toList();
+    }
+
+    public List<FuelLogsDomain> findLastFourByVehicleId(Long vehicleId) {
+        return fuelLogsJpa.findTop4ByVehicleIdOrderByFilledAtDescIdDesc(vehicleId).stream()
+                .map(FuelLogsMapper::toDomain)
+                .toList();
+    }
+
     public Optional<FuelLogsDomain> findById(Long id) {
         return fuelLogsJpa.findById(id)
                 .map(FuelLogsMapper::toDomain);

@@ -1,6 +1,8 @@
 package com.driveden.app.infrastructure.out.persistence.mappers;
 
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogHistoryResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.LastFuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.FuelLogsEntity;
@@ -80,6 +82,31 @@ public class FuelLogsMapper {
                 domain.getGasStation(),
                 domain.getPaymentMethodId(),
                 domain.getNotes()
+        );
+    }
+
+    public static FuelLogHistoryResponseDTO toHistoryResponseDTO(FuelLogsDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new FuelLogHistoryResponseDTO(
+                domain.getFilledAt().toLocalDate(),
+                domain.getPriceTotal(),
+                domain.getGallons()
+        );
+    }
+
+    public static LastFuelLogResponseDTO toLastFuelLogResponseDTO(FuelLogsDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new LastFuelLogResponseDTO(
+                domain.getFilledAt().toLocalDate(),
+                domain.getPriceTotal(),
+                domain.getGallons(),
+                domain.getKmAtFill()
         );
     }
 }

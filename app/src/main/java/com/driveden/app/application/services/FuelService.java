@@ -1,12 +1,16 @@
 package com.driveden.app.application.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogHistoryResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.LastFuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
@@ -95,6 +99,34 @@ public class FuelService {
                 .toList();
     }
 
+    public List<FuelLogHistoryResponseDTO> getFuelLogsHistory(
+            Long vehicleId,
+            LocalDate startDate,
+            LocalDate endDate,
+            Long userId
+    ) {
+        validateVehicleOwnership(userId, vehicleId);
+        validateDateRange(startDate, endDate);
+
+        return fuelLogsRepository
+                .findByVehicleIdAndFilledAtBetween(
+                        vehicleId,
+                        startDate.atStartOfDay(),
+                        endDate.atTime(LocalTime.MAX)
+                )
+                .stream()
+                .map(FuelLogsMapper::toHistoryResponseDTO)
+                .toList();
+    }
+
+    public List<LastFuelLogResponseDTO> getLastFourFuelLogs(Long vehicleId, Long userId) {
+        validateVehicleOwnership(userId, vehicleId);
+
+        return fuelLogsRepository.findLastFourByVehicleId(vehicleId).stream()
+                .map(FuelLogsMapper::toLastFuelLogResponseDTO)
+                .toList();
+    }
+
     private void validateVehicleOwnership(Long userId, Long vehicleId) {
         usersService.findUserById(userId);
 
@@ -110,6 +142,12 @@ public class FuelService {
 
         if (!paymentMethodRepository.existsAvailableById(paymentMethodId)) {
             throw new CustomException("Payment method not found or inactive", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private void validateDateRange(LocalDate startDate, LocalDate endDate) {
+        if (startDate.isAfter(endDate)) {
+            throw new CustomException("startDate must be before or equal to endDate", HttpStatus.BAD_REQUEST);
         }
     }
 
