@@ -2,10 +2,13 @@ package com.driveden.app.infrastructure.out.persistence.mappers;
 
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogHistoryResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogTankHistoryResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.LastFuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
+import com.driveden.app.domain.fuelLogs.model.FuelLogTankHistoryDomain;
 import com.driveden.app.domain.fuelLogs.model.FuelLogsDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.FuelLogsEntity;
+import com.driveden.app.infrastructure.out.persistence.projection.FuelLogTankHistoryProjection;
 
 public class FuelLogsMapper {
 
@@ -107,6 +110,38 @@ public class FuelLogsMapper {
                 domain.getPriceTotal(),
                 domain.getGallons(),
                 domain.getKmAtFill()
+        );
+    }
+
+    public static FuelLogTankHistoryResponseDTO toTankHistoryResponseDTO(FuelLogTankHistoryProjection projection) {
+        if (projection == null) {
+            return null;
+        }
+
+        return toTankHistoryResponseDTO(toTankHistoryDomain(projection));
+    }
+
+    public static FuelLogTankHistoryDomain toTankHistoryDomain(FuelLogTankHistoryProjection projection) {
+        if (projection == null) {
+            return null;
+        }
+
+        return new FuelLogTankHistoryDomain(
+                projection.getNotes(),
+                projection.getGasStation(),
+                projection.getPriceTotal()
+        );
+    }
+
+    public static FuelLogTankHistoryResponseDTO toTankHistoryResponseDTO(FuelLogTankHistoryDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new FuelLogTankHistoryResponseDTO(
+                domain.notes(),
+                domain.gasStation(),
+                domain.priceTotal()
         );
     }
 }

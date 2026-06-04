@@ -3,6 +3,9 @@ package com.driveden.app.infrastructure.controllers.in.web;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
@@ -18,9 +21,12 @@ import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
 import com.driveden.app.domain.cars.dto.modelsDTO;
 import com.driveden.app.domain.cars.model.vehicleDomain;
+import com.driveden.app.domain.common.dto.PageResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.CurrentMonthFuelStatsResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogHistoryResponseDTO;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
+import com.driveden.app.domain.fuelLogs.dto.FuelLogTankHistoryResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.LastFuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
@@ -150,7 +156,22 @@ public class CarsController {
         );
     }
 
-    @GetMapping("/fuel-logs/history")
+    @GetMapping(value = "/fuel-logs/history", params = {"vehicleId", "!startDate", "!endDate"})
+    public CustomResponse<PageResponseDTO<FuelLogTankHistoryResponseDTO>> getFuelLogsTankHistory(
+            @RequestParam Long vehicleId,
+            @PageableDefault(size = 10, sort = "filledAt", direction = Sort.Direction.DESC) Pageable pageable,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.getFuelLogsTankHistory(vehicleId, pageable, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Fuel logs history retrieved successfully"
+        );
+    }
+
+    @GetMapping(value = "/fuel-logs/history", params = {"vehicleId", "startDate", "endDate"})
     public CustomResponse<List<FuelLogHistoryResponseDTO>> getFuelLogsHistory(
             @RequestParam Long vehicleId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
@@ -163,6 +184,20 @@ public class CarsController {
                 fuelService.getFuelLogsHistory(vehicleId, startDate, endDate, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Fuel logs history retrieved successfully"
+        );
+    }
+
+    @GetMapping("/fuel-logs/stats/current-month")
+    public CustomResponse<CurrentMonthFuelStatsResponseDTO> getCurrentMonthFuelStats(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                fuelService.getCurrentMonthFuelStats(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Current month fuel stats retrieved successfully"
         );
     }
 
