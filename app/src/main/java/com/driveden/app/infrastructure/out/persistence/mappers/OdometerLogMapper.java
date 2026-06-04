@@ -1,6 +1,11 @@
 package com.driveden.app.infrastructure.out.persistence.mappers;
 
+import java.math.BigDecimal;
+
+import com.driveden.app.domain.odometerLogs.dto.CurrentMonthMileageStatsResponseDTO;
+import com.driveden.app.domain.odometerLogs.dto.MonthlyMileageStatsResponseDTO;
 import com.driveden.app.domain.odometerLogs.model.OdometerLogDomain;
+import com.driveden.app.domain.odometerLogs.model.MonthlyMileageStatsDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.OdometerLogEntity;
 
 public class OdometerLogMapper {
@@ -37,5 +42,28 @@ public class OdometerLogMapper {
         entity.setSourceId(domain.getSourceId());
         entity.setCreatedAt(domain.getCreatedAt());
         return entity;
+    }
+
+    public static MonthlyMileageStatsResponseDTO toMonthlyMileageStatsResponseDTO(
+            MonthlyMileageStatsDomain domain
+    ) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new MonthlyMileageStatsResponseDTO(
+                domain.getMonth(),
+                domain.getKmTraveled()
+        );
+    }
+
+    public static CurrentMonthMileageStatsResponseDTO toCurrentMonthMileageStatsResponseDTO(
+            Integer currentMonthKm,
+            BigDecimal dailyAverageKm
+    ) {
+        return new CurrentMonthMileageStatsResponseDTO(
+                currentMonthKm,
+                dailyAverageKm
+        );
     }
 }

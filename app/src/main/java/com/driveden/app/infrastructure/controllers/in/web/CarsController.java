@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.CarService;
 import com.driveden.app.application.services.FuelService;
+import com.driveden.app.application.services.OdometerMileageStatsService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
@@ -19,6 +20,8 @@ import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.fuelLogs.dto.FuelLogResponseDTO;
 import com.driveden.app.domain.fuelLogs.dto.RegisterFuelLogDTO;
 import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
+import com.driveden.app.domain.odometerLogs.dto.CurrentMonthMileageStatsResponseDTO;
+import com.driveden.app.domain.odometerLogs.dto.MonthlyMileageStatsResponseDTO;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.utils.CustomResponse;
 
@@ -44,6 +47,7 @@ public class CarsController {
 
     private final CarService carService;
     private final FuelService fuelService;
+    private final OdometerMileageStatsService odometerMileageStatsService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -168,6 +172,34 @@ public class CarsController {
                 fuelService.deleteFuelLog(fuelLogId, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Fuel log deleted successfully"
+        );
+    }
+
+    @GetMapping("/mileage-stats/monthly")
+    public CustomResponse<List<MonthlyMileageStatsResponseDTO>> getMonthlyMileageStats(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                odometerMileageStatsService.getMonthlyMileageStats(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Monthly mileage stats retrieved successfully"
+        );
+    }
+
+    @GetMapping("/mileage-stats/current-month")
+    public CustomResponse<CurrentMonthMileageStatsResponseDTO> getCurrentMonthMileageStats(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                odometerMileageStatsService.getCurrentMonthMileageStats(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Current month mileage stats retrieved successfully"
         );
     }
 
