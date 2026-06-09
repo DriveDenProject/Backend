@@ -1,0 +1,60 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: driveden-backend
+    restart: unless-stopped
+    environment:
+      SERVER_PORT: ${SERVER_PORT:-8080}
+      DB_URL: ${DB_URL:-jdbc:postgresql://postgres:5432/driveden}
+      DB_USER: ${DB_USER:-driveden}
+      DB_PASSWORD: ${DB_PASSWORD:-driveden}
+      SECRET_TOKEN: ${SECRET_TOKEN:-change-me-in-env-file}
+      BREVO_KEY: ${BREVO_KEY:-}
+      BREVO_HOST: ${BREVO_HOST:-smtp-relay.brevo.com}
+      BREVO_PORT: ${BREVO_PORT:-587}
+      BREVO_USER: ${BREVO_USER:-}
+      BREVO_PASSWORD: ${BREVO_PASSWORD:-}
+      EMAIL_SENDER: ${EMAIL_SENDER:-}
+      RAPIDAPI_KEY: ${RAPIDAPI_KEY:-}
+      RAPIDAPI_HOST: ${RAPIDAPI_HOST:-}
+      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
+      FIREBASE_CONFIG_PATH: ${FIREBASE_CONFIG_PATH:-}
+      FIREBASE_SERVICE_ACCOUNT_JSON: ${FIREBASE_SERVICE_ACCOUNT_JSON:-}
+      FIREBASE_ENABLED: ${FIREBASE_ENABLED:-false}
+      JAVA_OPTS: ${JAVA_OPTS:--XX:MaxRAMPercentage=75.0 -XX:+ExitOnOutOfMemoryError}
+    ports:
+      - "${BACKEND_PORT:-8080}:${SERVER_PORT:-8080}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - driveden-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: driveden-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-driveden}
+      POSTGRES_USER: ${POSTGRES_USER:-driveden}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-driveden}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - driveden-network
+
+volumes:
+  postgres-data:
+
+networks:
+  driveden-network:
+    driver: bridge
