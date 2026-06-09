@@ -1,0 +1,5 @@
+ALTER TABLE repairs
+ADD COLUMN workshop VARCHAR(150);
+
+ALTER TABLE repairs
+ADD COLUMN labor_cost DECIMAL(10,2);
