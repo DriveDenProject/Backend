@@ -1,9 +1,13 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.implement;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.application.ports.out.RepairRepositoryPort;
 import com.driveden.app.domain.repairs.model.RepairDomain;
+import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
+import com.driveden.app.domain.repairs.model.RepairStatsDomain;
 import com.driveden.app.infrastructure.out.persistence.mappers.RepairMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.jpa.RepairJpa;
 
@@ -21,6 +25,20 @@ public class RepairRepository implements RepairRepositoryPort {
                 repairJpa.save(
                         RepairMapper.toEntity(repair)
                 )
+        );
+    }
+
+    @Override
+    public List<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId) {
+        return repairJpa.findHistoryByVehicleId(vehicleId).stream()
+                .map(RepairMapper::toHistoryDomain)
+                .toList();
+    }
+
+    @Override
+    public RepairStatsDomain findStatsByVehicleId(Long vehicleId) {
+        return RepairMapper.toStatsDomain(
+                repairJpa.findStatsByVehicleId(vehicleId)
         );
     }
 }

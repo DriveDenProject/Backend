@@ -1,8 +1,14 @@
 package com.driveden.app.infrastructure.out.persistence.mappers;
 
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
+import com.driveden.app.domain.repairs.dto.RepairHistoryResponseDTO;
+import com.driveden.app.domain.repairs.dto.RepairStatsResponseDTO;
 import com.driveden.app.domain.repairs.model.RepairDomain;
+import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
+import com.driveden.app.domain.repairs.model.RepairStatsDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.RepairEntity;
+import com.driveden.app.infrastructure.out.persistence.projection.RepairHistoryProjection;
+import com.driveden.app.infrastructure.out.persistence.projection.RepairStatsProjection;
 
 public class RepairMapper {
 
@@ -51,6 +57,56 @@ public class RepairMapper {
                 dto.getWorkshop(),
                 dto.getLaborCost(),
                 dto.getTotalCost()
+        );
+    }
+
+    public static RepairHistoryDomain toHistoryDomain(RepairHistoryProjection projection) {
+        if (projection == null) {
+            return null;
+        }
+
+        return new RepairHistoryDomain(
+                projection.getRepairId(),
+                projection.getName(),
+                projection.getCost(),
+                projection.getRepairDate().toLocalDate()
+        );
+    }
+
+    public static RepairStatsDomain toStatsDomain(RepairStatsProjection projection) {
+        if (projection == null) {
+            return new RepairStatsDomain(null, java.math.BigDecimal.ZERO, 0L);
+        }
+
+        return new RepairStatsDomain(
+                projection.getLastRepair() == null ? null : projection.getLastRepair().toLocalDate(),
+                projection.getTotalSpent(),
+                projection.getTotalRepairs()
+        );
+    }
+
+    public static RepairHistoryResponseDTO toHistoryResponseDTO(RepairHistoryDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new RepairHistoryResponseDTO(
+                domain.repairId(),
+                domain.name(),
+                domain.cost(),
+                domain.repairDate()
+        );
+    }
+
+    public static RepairStatsResponseDTO toStatsResponseDTO(RepairStatsDomain domain) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new RepairStatsResponseDTO(
+                domain.lastRepair(),
+                domain.totalSpent(),
+                domain.totalRepairs()
         );
     }
 }

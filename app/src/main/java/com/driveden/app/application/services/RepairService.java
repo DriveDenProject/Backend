@@ -18,8 +18,10 @@ import com.driveden.app.application.ports.out.RepairRepositoryPort;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairPartDTO;
+import com.driveden.app.domain.repairs.dto.RepairHistoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RepairPartResponseDTO;
 import com.driveden.app.domain.repairs.dto.RepairResponseDTO;
+import com.driveden.app.domain.repairs.dto.RepairStatsResponseDTO;
 import com.driveden.app.domain.repairs.model.PartDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
 import com.driveden.app.domain.repairs.model.RepairPartDomain;
@@ -51,6 +53,22 @@ public class RepairService {
         List<RepairPartDomain> savedRepairParts = saveRepairParts(savedRepair.getId(), registerRepairDTO.getParts(), resolvedParts);
 
         return buildResponse(savedRepair, registerRepairDTO.getParts(), resolvedParts, savedRepairParts);
+    }
+
+    public List<RepairHistoryResponseDTO> getRepairHistory(Long vehicleId, Long userId) {
+        validateVehicleOwnership(userId, vehicleId);
+
+        return repairRepository.findHistoryByVehicleId(vehicleId).stream()
+                .map(RepairMapper::toHistoryResponseDTO)
+                .toList();
+    }
+
+    public RepairStatsResponseDTO getRepairStats(Long vehicleId, Long userId) {
+        validateVehicleOwnership(userId, vehicleId);
+
+        return RepairMapper.toStatsResponseDTO(
+                repairRepository.findStatsByVehicleId(vehicleId)
+        );
     }
 
     private void validateVehicleOwnership(Long userId, Long vehicleId) {
