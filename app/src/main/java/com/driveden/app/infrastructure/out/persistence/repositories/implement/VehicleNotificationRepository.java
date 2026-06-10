@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.domain.vehicleNotifications.model.VehicleNotificationDomain;
@@ -38,6 +39,14 @@ public class VehicleNotificationRepository {
         return vehicleNotificationJpa.findByVehicleIdOrderByDueDateAsc(vehicleId).stream()
                 .map(VehicleNotificationMapper::toDomain)
                 .toList();
+    }
+
+    public Optional<VehicleNotificationDomain> findNextPendingByVehicleId(Long vehicleId) {
+        return vehicleNotificationJpa
+                .findNextByVehicleIdAndStatus(vehicleId, VehicleNotificationStatus.PENDING, PageRequest.of(0, 1))
+                .stream()
+                .findFirst()
+                .map(VehicleNotificationMapper::toDomain);
     }
 
     public Optional<VehicleNotificationDomain> findById(Long id) {

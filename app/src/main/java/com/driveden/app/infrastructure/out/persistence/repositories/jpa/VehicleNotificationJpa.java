@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +15,26 @@ import com.driveden.app.infrastructure.out.persistence.entity.VehicleNotificatio
 public interface VehicleNotificationJpa extends JpaRepository<VehicleNotificationEntity, Long> {
 
     List<VehicleNotificationEntity> findByVehicleIdOrderByDueDateAsc(Long vehicleId);
+
+    @Query("""
+        SELECT VN
+        FROM VehicleNotificationEntity VN
+        WHERE VN.vehicleId = :vehicleId
+        AND VN.status = :status
+        ORDER BY VN.dueDate ASC,
+            CASE VN.priority
+                WHEN com.driveden.app.domain.vehicleNotifications.model.VehicleNotificationPriority.URGENT THEN 0
+                WHEN com.driveden.app.domain.vehicleNotifications.model.VehicleNotificationPriority.HIGH THEN 1
+                WHEN com.driveden.app.domain.vehicleNotifications.model.VehicleNotificationPriority.MEDIUM THEN 2
+                ELSE 3
+            END ASC,
+            VN.id ASC
+    """)
+    List<VehicleNotificationEntity> findNextByVehicleIdAndStatus(
+            @Param("vehicleId") Long vehicleId,
+            @Param("status") VehicleNotificationStatus status,
+            Pageable pageable
+    );
 
     @Query("""
         SELECT VN

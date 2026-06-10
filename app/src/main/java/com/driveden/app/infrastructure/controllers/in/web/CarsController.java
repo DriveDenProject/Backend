@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.driveden.app.application.services.CarService;
 import com.driveden.app.application.services.FuelService;
 import com.driveden.app.application.services.OdometerMileageStatsService;
+import com.driveden.app.application.services.VehicleDashboardService;
 import com.driveden.app.application.services.VehicleHistoryService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
+import com.driveden.app.domain.cars.dto.VehicleDashboardResponseDTO;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
 import com.driveden.app.domain.cars.dto.modelByGenerationDTO;
@@ -61,6 +63,7 @@ public class CarsController {
     private final FuelService fuelService;
     private final OdometerMileageStatsService odometerMileageStatsService;
     private final VehicleHistoryService vehicleHistoryService;
+    private final VehicleDashboardService vehicleDashboardService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -230,6 +233,20 @@ public class CarsController {
                 vehicleHistoryService.getVehicleHistory(vehicleId, pageable, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Vehicle history retrieved successfully"
+        );
+    }
+
+    @GetMapping("/dashboard")
+    public CustomResponse<VehicleDashboardResponseDTO> getVehicleDashboard(
+            @RequestParam Long vehicleId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                vehicleDashboardService.getVehicleDashboard(vehicleId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Vehicle dashboard retrieved successfully"
         );
     }
 

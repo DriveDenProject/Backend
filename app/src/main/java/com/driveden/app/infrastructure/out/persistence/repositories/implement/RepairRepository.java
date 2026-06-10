@@ -1,5 +1,7 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.implement;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -40,5 +42,14 @@ public class RepairRepository implements RepairRepositoryPort {
         return RepairMapper.toStatsDomain(
                 repairJpa.findStatsByVehicleId(vehicleId)
         );
+    }
+
+    @Override
+    public BigDecimal sumTotalCostByVehicleIdAndRepairDateBetween(
+            Long vehicleId,
+            LocalDateTime startDate,
+            LocalDateTime endDate
+    ) {
+        return repairJpa.sumTotalCostByVehicleIdAndRepairDateBetween(vehicleId, startDate, endDate);
     }
 }

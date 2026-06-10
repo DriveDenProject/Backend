@@ -1,5 +1,7 @@
 package com.driveden.app.infrastructure.out.persistence.repositories.jpa;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -36,4 +38,17 @@ public interface RepairJpa extends JpaRepository<RepairEntity, Long> {
         WHERE r.vehicle_id = :vehicleId
     """, nativeQuery = true)
     RepairStatsProjection findStatsByVehicleId(@Param("vehicleId") Long vehicleId);
+
+    @Query("""
+        SELECT COALESCE(SUM(R.totalCost), 0)
+        FROM RepairEntity R
+        WHERE R.vehicleId = :vehicleId
+        AND R.repairDate >= :startDate
+        AND R.repairDate < :endDate
+    """)
+    BigDecimal sumTotalCostByVehicleIdAndRepairDateBetween(
+            @Param("vehicleId") Long vehicleId,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate
+    );
 }
