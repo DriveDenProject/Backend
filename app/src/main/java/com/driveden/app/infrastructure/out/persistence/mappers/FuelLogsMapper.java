@@ -127,6 +127,7 @@ public class FuelLogsMapper {
         }
 
         return new FuelLogTankHistoryDomain(
+                projection.getId(),
                 projection.getNotes(),
                 projection.getGasStation(),
                 projection.getPriceTotal()
@@ -139,6 +140,7 @@ public class FuelLogsMapper {
         }
 
         return new FuelLogTankHistoryResponseDTO(
+                domain.id(),
                 domain.notes(),
                 domain.gasStation(),
                 domain.priceTotal()

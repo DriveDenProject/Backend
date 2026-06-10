@@ -32,7 +32,8 @@ public interface FuelLogsJpa extends JpaRepository<FuelLogsEntity, Long> {
     Optional<FuelLogsEntity> findFirstByVehicleIdOrderByFilledAtDescIdDesc(Long vehicleId);
 
     @Query("""
-        SELECT FL.notes AS notes,
+        SELECT FL.id AS id,
+               FL.notes AS notes,
                FL.gasStation AS gasStation,
                FL.priceTotal AS priceTotal
         FROM FuelLogsEntity FL

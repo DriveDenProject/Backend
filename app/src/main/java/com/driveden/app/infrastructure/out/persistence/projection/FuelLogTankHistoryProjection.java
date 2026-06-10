@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public interface FuelLogTankHistoryProjection {
 
+    Long getId();
+
     String getNotes();
 
     String getGasStation();
