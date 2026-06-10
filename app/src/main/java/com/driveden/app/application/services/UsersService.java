@@ -74,6 +74,7 @@ public class UsersService {
     public UserDetailsDTO getPrimaryVehicleDetailsByUserId(Long userId) {
         return userVehicleRepository.findPrimaryVehicleDetailsByUserId(userId)
             .map(projection -> new UserDetailsDTO(
+                projection.getVehicleId(),
                 projection.getUsername(),
                 projection.getNickname(),
                 projection.getBrand(),

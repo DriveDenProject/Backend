@@ -30,6 +30,7 @@ public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntit
 
     @Query("""
         SELECT
+            V.id AS vehicleId,
             U.username AS username,
             V.nickName AS nickname,
             V.brand AS brand,
