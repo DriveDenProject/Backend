@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.driveden.app.application.services.CarService;
 import com.driveden.app.application.services.FuelService;
 import com.driveden.app.application.services.OdometerMileageStatsService;
+import com.driveden.app.application.services.VehicleHistoryService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
 import com.driveden.app.domain.cars.dto.carRegisterRequestDTO;
 import com.driveden.app.domain.cars.dto.makesDTO;
@@ -33,6 +34,7 @@ import com.driveden.app.domain.fuelLogs.dto.UpdateFuelLogDTO;
 import com.driveden.app.domain.odometerLogs.dto.CurrentMonthMileageStatsResponseDTO;
 import com.driveden.app.domain.odometerLogs.dto.MonthlyMileageStatsResponseDTO;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
+import com.driveden.app.domain.vehicleHistory.dto.VehicleHistoryItemResponseDTO;
 import com.driveden.app.utils.CustomResponse;
 
 import jakarta.validation.Valid;
@@ -58,6 +60,7 @@ public class CarsController {
     private final CarService carService;
     private final FuelService fuelService;
     private final OdometerMileageStatsService odometerMileageStatsService;
+    private final VehicleHistoryService vehicleHistoryService;
 
     @GetMapping("/all-makes")
     public CustomResponse<List<makesDTO>> getAllMakes() {
@@ -212,6 +215,21 @@ public class CarsController {
                 fuelService.getLastFourFuelLogs(vehicleId, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Latest fuel logs retrieved successfully"
+        );
+    }
+
+    @GetMapping("/history")
+    public CustomResponse<PageResponseDTO<VehicleHistoryItemResponseDTO>> getVehicleHistory(
+            @RequestParam Long vehicleId,
+            @PageableDefault(size = 10) Pageable pageable,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                vehicleHistoryService.getVehicleHistory(vehicleId, pageable, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Vehicle history retrieved successfully"
         );
     }
 
