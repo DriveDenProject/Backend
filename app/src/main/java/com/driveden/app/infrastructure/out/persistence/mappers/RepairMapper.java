@@ -1,12 +1,15 @@
 package com.driveden.app.infrastructure.out.persistence.mappers;
 
+import com.driveden.app.domain.repairs.dto.LatestRepairByCategoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
 import com.driveden.app.domain.repairs.dto.RepairHistoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RepairStatsResponseDTO;
+import com.driveden.app.domain.repairs.model.LatestRepairByCategoryDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
 import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
 import com.driveden.app.domain.repairs.model.RepairStatsDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.RepairEntity;
+import com.driveden.app.infrastructure.out.persistence.projection.LatestRepairByCategoryProjection;
 import com.driveden.app.infrastructure.out.persistence.projection.RepairHistoryProjection;
 import com.driveden.app.infrastructure.out.persistence.projection.RepairStatsProjection;
 
@@ -85,6 +88,19 @@ public class RepairMapper {
         );
     }
 
+    public static LatestRepairByCategoryDomain toLatestRepairByCategoryDomain(
+            LatestRepairByCategoryProjection projection
+    ) {
+        if (projection == null) {
+            return null;
+        }
+
+        return new LatestRepairByCategoryDomain(
+                projection.getDescription(),
+                projection.getRepairDate().toLocalDate()
+        );
+    }
+
     public static RepairHistoryResponseDTO toHistoryResponseDTO(RepairHistoryDomain domain) {
         if (domain == null) {
             return null;
@@ -94,6 +110,19 @@ public class RepairMapper {
                 domain.repairId(),
                 domain.name(),
                 domain.cost(),
+                domain.repairDate()
+        );
+    }
+
+    public static LatestRepairByCategoryResponseDTO toLatestRepairByCategoryResponseDTO(
+            LatestRepairByCategoryDomain domain
+    ) {
+        if (domain == null) {
+            return null;
+        }
+
+        return new LatestRepairByCategoryResponseDTO(
+                domain.description(),
                 domain.repairDate()
         );
     }

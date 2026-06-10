@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.driveden.app.domain.repairs.model.LatestRepairByCategoryDomain;
 import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
 import com.driveden.app.domain.repairs.model.RepairStatsDomain;
@@ -15,6 +16,8 @@ public interface RepairRepositoryPort {
     List<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId);
 
     RepairStatsDomain findStatsByVehicleId(Long vehicleId);
+
+    List<LatestRepairByCategoryDomain> findLatestByVehicleIdAndCategoryId(Long vehicleId, Long categoryId);
 
     BigDecimal sumTotalCostByVehicleIdAndRepairDateBetween(
             Long vehicleId,

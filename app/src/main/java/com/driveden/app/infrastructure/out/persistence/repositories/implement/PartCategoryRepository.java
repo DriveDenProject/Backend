@@ -21,4 +21,9 @@ public class PartCategoryRepository implements PartCategoryRepositoryPort {
         return partCategoryJpa.findExistingIds(categoryIds).stream()
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public boolean existsById(Long categoryId) {
+        return partCategoryJpa.existsById(categoryId);
+    }
 }

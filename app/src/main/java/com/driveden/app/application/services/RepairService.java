@@ -16,6 +16,7 @@ import com.driveden.app.application.ports.out.PartRepositoryPort;
 import com.driveden.app.application.ports.out.RepairPartRepositoryPort;
 import com.driveden.app.application.ports.out.RepairRepositoryPort;
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.repairs.dto.LatestRepairByCategoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairPartDTO;
 import com.driveden.app.domain.repairs.dto.RepairHistoryResponseDTO;
@@ -71,6 +72,19 @@ public class RepairService {
         );
     }
 
+    public List<LatestRepairByCategoryResponseDTO> getLatestRepairsByCategory(
+            Long vehicleId,
+            Long categoryId,
+            Long userId
+    ) {
+        validateVehicleOwnership(userId, vehicleId);
+        validateCategoryExists(categoryId);
+
+        return repairRepository.findLatestByVehicleIdAndCategoryId(vehicleId, categoryId).stream()
+                .map(RepairMapper::toLatestRepairByCategoryResponseDTO)
+                .toList();
+    }
+
     private void validateVehicleOwnership(Long userId, Long vehicleId) {
         usersService.findUserById(userId);
 
@@ -103,6 +117,12 @@ public class RepairService {
         if (existingCategoryIds.size() != requestedCategoryIds.size()) {
             requestedCategoryIds.removeAll(existingCategoryIds);
             throw new CustomException("Part categories not found: " + requestedCategoryIds, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private void validateCategoryExists(Long categoryId) {
+        if (!partCategoryRepository.existsById(categoryId)) {
+            throw new CustomException("Part category not found", HttpStatus.NOT_FOUND);
         }
     }
 

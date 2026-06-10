@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.application.ports.out.RepairRepositoryPort;
+import com.driveden.app.domain.repairs.model.LatestRepairByCategoryDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
 import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
 import com.driveden.app.domain.repairs.model.RepairStatsDomain;
@@ -42,6 +43,13 @@ public class RepairRepository implements RepairRepositoryPort {
         return RepairMapper.toStatsDomain(
                 repairJpa.findStatsByVehicleId(vehicleId)
         );
+    }
+
+    @Override
+    public List<LatestRepairByCategoryDomain> findLatestByVehicleIdAndCategoryId(Long vehicleId, Long categoryId) {
+        return repairJpa.findLatestByVehicleIdAndCategoryId(vehicleId, categoryId).stream()
+                .map(RepairMapper::toLatestRepairByCategoryDomain)
+                .toList();
     }
 
     @Override

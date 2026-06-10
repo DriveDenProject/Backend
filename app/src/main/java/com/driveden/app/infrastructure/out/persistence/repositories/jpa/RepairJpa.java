@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.driveden.app.infrastructure.out.persistence.entity.RepairEntity;
+import com.driveden.app.infrastructure.out.persistence.projection.LatestRepairByCategoryProjection;
 import com.driveden.app.infrastructure.out.persistence.projection.RepairHistoryProjection;
 import com.driveden.app.infrastructure.out.persistence.projection.RepairStatsProjection;
 
@@ -38,6 +39,29 @@ public interface RepairJpa extends JpaRepository<RepairEntity, Long> {
         WHERE r.vehicle_id = :vehicleId
     """, nativeQuery = true)
     RepairStatsProjection findStatsByVehicleId(@Param("vehicleId") Long vehicleId);
+
+    @Query(value = """
+        SELECT
+            latest.description AS description,
+            latest.repair_date AS "repairDate"
+        FROM (
+            SELECT DISTINCT
+                r.id,
+                r.description,
+                r.repair_date
+            FROM repairs r
+            INNER JOIN repair_parts rp ON rp.repair_id = r.id
+            INNER JOIN parts p ON p.id = rp.part_id
+            WHERE r.vehicle_id = :vehicleId
+            AND p.category_id = :categoryId
+        ) latest
+        ORDER BY latest.repair_date DESC, latest.id DESC
+        LIMIT 3
+    """, nativeQuery = true)
+    List<LatestRepairByCategoryProjection> findLatestByVehicleIdAndCategoryId(
+            @Param("vehicleId") Long vehicleId,
+            @Param("categoryId") Long categoryId
+    );
 
     @Query("""
         SELECT COALESCE(SUM(R.totalCost), 0)

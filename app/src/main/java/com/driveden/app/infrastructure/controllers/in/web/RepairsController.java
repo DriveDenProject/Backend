@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.RepairService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
+import com.driveden.app.domain.repairs.dto.LatestRepairByCategoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
 import com.driveden.app.domain.repairs.dto.RepairHistoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RepairResponseDTO;
@@ -70,6 +71,21 @@ public class RepairsController {
                 repairService.getRepairStats(vehicleId, authenticatedUser.id()),
                 HttpStatus.OK,
                 "Repair stats retrieved successfully"
+        );
+    }
+
+    @GetMapping("/latest-by-category")
+    public CustomResponse<List<LatestRepairByCategoryResponseDTO>> getLatestRepairsByCategory(
+            @RequestParam Long vehicleId,
+            @RequestParam Long categoryId,
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                repairService.getLatestRepairsByCategory(vehicleId, categoryId, authenticatedUser.id()),
+                HttpStatus.OK,
+                "Latest repairs by category retrieved successfully"
         );
     }
 }
