@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,8 +29,15 @@ public interface RepairJpa extends JpaRepository<RepairEntity, Long> {
         WHERE r.vehicle_id = :vehicleId
         GROUP BY r.id, r.description, r.total_cost, r.repair_date
         ORDER BY r.repair_date DESC, r.id DESC
+    """, countQuery = """
+        SELECT COUNT(*)
+        FROM repairs r
+        WHERE r.vehicle_id = :vehicleId
     """, nativeQuery = true)
-    List<RepairHistoryProjection> findHistoryByVehicleId(@Param("vehicleId") Long vehicleId);
+    Page<RepairHistoryProjection> findHistoryByVehicleId(
+            @Param("vehicleId") Long vehicleId,
+            Pageable pageable
+    );
 
     @Query(value = """
         SELECT

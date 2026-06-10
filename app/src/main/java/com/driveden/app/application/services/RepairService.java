@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import com.driveden.app.application.ports.out.PartRepositoryPort;
 import com.driveden.app.application.ports.out.RepairPartRepositoryPort;
 import com.driveden.app.application.ports.out.RepairRepositoryPort;
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.common.dto.PageResponseDTO;
 import com.driveden.app.domain.repairs.dto.LatestRepairByCategoryResponseDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairDTO;
 import com.driveden.app.domain.repairs.dto.RegisterRepairPartDTO;
@@ -25,6 +28,7 @@ import com.driveden.app.domain.repairs.dto.RepairResponseDTO;
 import com.driveden.app.domain.repairs.dto.RepairStatsResponseDTO;
 import com.driveden.app.domain.repairs.model.PartDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
+import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
 import com.driveden.app.domain.repairs.model.RepairPartDomain;
 import com.driveden.app.infrastructure.out.persistence.mappers.RepairMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.UserVehicleRepository;
@@ -35,6 +39,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class RepairService {
+
+    private static final int MAX_PAGE_SIZE = 50;
 
     private final RepairRepositoryPort repairRepository;
     private final PartRepositoryPort partRepository;
@@ -56,12 +62,15 @@ public class RepairService {
         return buildResponse(savedRepair, registerRepairDTO.getParts(), resolvedParts, savedRepairParts);
     }
 
-    public List<RepairHistoryResponseDTO> getRepairHistory(Long vehicleId, Long userId) {
+    public PageResponseDTO<RepairHistoryResponseDTO> getRepairHistory(Long vehicleId, Pageable pageable, Long userId) {
         validateVehicleOwnership(userId, vehicleId);
+        validatePagination(pageable);
 
-        return repairRepository.findHistoryByVehicleId(vehicleId).stream()
-                .map(RepairMapper::toHistoryResponseDTO)
-                .toList();
+        Page<RepairHistoryDomain> history = repairRepository.findHistoryByVehicleId(vehicleId, pageable);
+
+        return PageResponseDTO.from(
+                history.map(RepairMapper::toHistoryResponseDTO)
+        );
     }
 
     public RepairStatsResponseDTO getRepairStats(Long vehicleId, Long userId) {
@@ -123,6 +132,20 @@ public class RepairService {
     private void validateCategoryExists(Long categoryId) {
         if (!partCategoryRepository.existsById(categoryId)) {
             throw new CustomException("Part category not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private void validatePagination(Pageable pageable) {
+        if (pageable.getPageNumber() < 0) {
+            throw new CustomException("page must be greater than or equal to 0", HttpStatus.BAD_REQUEST);
+        }
+
+        if (pageable.getPageSize() <= 0) {
+            throw new CustomException("size must be greater than 0", HttpStatus.BAD_REQUEST);
+        }
+
+        if (pageable.getPageSize() > MAX_PAGE_SIZE) {
+            throw new CustomException("size must be less than or equal to " + MAX_PAGE_SIZE, HttpStatus.BAD_REQUEST);
         }
     }
 

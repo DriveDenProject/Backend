@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.driveden.app.domain.repairs.model.LatestRepairByCategoryDomain;
 import com.driveden.app.domain.repairs.model.RepairHistoryDomain;
 import com.driveden.app.domain.repairs.model.RepairDomain;
@@ -13,7 +16,7 @@ public interface RepairRepositoryPort {
 
     RepairDomain save(RepairDomain repair);
 
-    List<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId);
+    Page<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId, Pageable pageable);
 
     RepairStatsDomain findStatsByVehicleId(Long vehicleId);
 

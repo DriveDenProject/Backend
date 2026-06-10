@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import com.driveden.app.application.ports.out.RepairRepositoryPort;
@@ -32,10 +34,9 @@ public class RepairRepository implements RepairRepositoryPort {
     }
 
     @Override
-    public List<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId) {
-        return repairJpa.findHistoryByVehicleId(vehicleId).stream()
-                .map(RepairMapper::toHistoryDomain)
-                .toList();
+    public Page<RepairHistoryDomain> findHistoryByVehicleId(Long vehicleId, Pageable pageable) {
+        return repairJpa.findHistoryByVehicleId(vehicleId, pageable)
+                .map(RepairMapper::toHistoryDomain);
     }
 
     @Override
