@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.PaymentMethodService;
-import com.driveden.app.domain.paymentMethods.model.PaymentMethodDomain;
+import com.driveden.app.domain.paymentMethods.dto.PaymentMethodResponseDTO;
 import com.driveden.app.utils.CustomResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -23,8 +23,8 @@ public class PaymentMethodsController {
     private final PaymentMethodService paymentMethodService;
 
     @GetMapping("/available")
-    public CustomResponse<List<PaymentMethodDomain>> getAvailablePaymentMethods() {
-        return new CustomResponse<List<PaymentMethodDomain>>(
+    public CustomResponse<List<PaymentMethodResponseDTO>> getAvailablePaymentMethods() {
+        return new CustomResponse<>(
                 paymentMethodService.getAvailablePaymentMethods(),
                 HttpStatus.OK,
                 "Payment methods retrieved successfully"

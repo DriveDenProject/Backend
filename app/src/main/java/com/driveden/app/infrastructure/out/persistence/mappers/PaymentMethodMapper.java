@@ -2,6 +2,7 @@ package com.driveden.app.infrastructure.out.persistence.mappers;
 
 import com.driveden.app.domain.paymentMethods.model.PaymentMethodDomain;
 import com.driveden.app.infrastructure.out.persistence.entity.PaymentMethodsEntity;
+import com.driveden.app.infrastructure.out.persistence.projection.PaymentMethodProjection;
 
 public class PaymentMethodMapper {
 
@@ -16,6 +17,20 @@ public class PaymentMethodMapper {
                 entity.getDescription(),
                 entity.getIsActive(),
                 entity.getProvider()
+        );
+    }
+
+    public static PaymentMethodDomain toDomain(PaymentMethodProjection projection) {
+        if (projection == null) {
+            return null;
+        }
+        return new PaymentMethodDomain(
+                projection.getId(),
+                projection.getName(),
+                null,
+                null,
+                true,
+                null
         );
     }
 

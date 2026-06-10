@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.driveden.app.domain.paymentMethods.model.PaymentMethodDomain;
-import com.driveden.app.infrastructure.out.persistence.repositories.implement.PaymentMethodRepository;
+import com.driveden.app.application.ports.out.PaymentMethodRepositoryPort;
+import com.driveden.app.domain.paymentMethods.dto.PaymentMethodResponseDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,10 +13,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentMethodService {
 
-    private final PaymentMethodRepository paymentMethodRepository;
+    private final PaymentMethodRepositoryPort paymentMethodRepository;
 
-    public List<PaymentMethodDomain> getAvailablePaymentMethods() {
-        return paymentMethodRepository.findAvailablePaymentMethods();
+    public List<PaymentMethodResponseDTO> getAvailablePaymentMethods() {
+        return paymentMethodRepository.findAvailablePaymentMethods().stream()
+                .map(paymentMethod -> new PaymentMethodResponseDTO(
+                        paymentMethod.getId(),
+                        paymentMethod.getName()
+                ))
+                .toList();
     }
 
 }
