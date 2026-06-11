@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.driveden.app.application.services.VehicleNotificationService;
 import com.driveden.app.domain.auth.dto.AuthenticatedUser;
+import com.driveden.app.domain.vehicleNotifications.dto.NotificationDispatchResponseDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.RegisterVehicleNotificationDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.UpdateVehicleNotificationDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.UpdateVehicleNotificationStatusDTO;
@@ -153,6 +154,19 @@ public class VehicleNotificationsController {
                 ),
                 HttpStatus.OK,
                 "Vehicle notification status updated successfully"
+        );
+    }
+
+    @PostMapping("/latest/dispatch")
+    public CustomResponse<NotificationDispatchResponseDTO> dispatchLatestVehicleNotification(
+            Authentication authentication
+    ) {
+        AuthenticatedUser authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+
+        return new CustomResponse<>(
+                vehicleNotificationService.dispatchLatestVehicleNotification(authenticatedUser.id()),
+                HttpStatus.OK,
+                "Latest vehicle notification dispatch processed"
         );
     }
 }

@@ -48,6 +48,18 @@ public interface VehicleNotificationJpa extends JpaRepository<VehicleNotificatio
     @Query("""
         SELECT VN
         FROM VehicleNotificationEntity VN
+        JOIN UserVehicleEntity UV ON UV.id.vehicleId = VN.vehicleId
+        WHERE UV.id.userId = :userId
+        ORDER BY VN.createdAt DESC, VN.id DESC
+    """)
+    List<VehicleNotificationEntity> findLatestByUserId(
+            @Param("userId") Long userId,
+            Pageable pageable
+    );
+
+    @Query("""
+        SELECT VN
+        FROM VehicleNotificationEntity VN
         WHERE VN.status = :status
         AND VN.dueDate < :today
     """)

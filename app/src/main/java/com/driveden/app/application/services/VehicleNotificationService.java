@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.driveden.app.common.exception.CustomException;
+import com.driveden.app.domain.vehicleNotifications.dto.NotificationDispatchResponseDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.RegisterVehicleNotificationDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.UpdateVehicleNotificationDTO;
 import com.driveden.app.domain.vehicleNotifications.dto.VehicleNotificationResponseDTO;
@@ -27,6 +28,7 @@ public class VehicleNotificationService {
     private final MaintenanceCategoryRepository maintenanceCategoryRepository;
     private final UserVehicleRepository userVehicleRepository;
     private final UsersService usersService;
+    private final NotificationDispatchService notificationDispatchService;
 
     @Transactional
     public VehicleNotificationResponseDTO registerVehicleNotification(
@@ -160,6 +162,25 @@ public class VehicleNotificationService {
 
         return VehicleNotificationMapper.toResponseDTO(
                 vehicleNotificationRepository.save(vehicleNotificationDomain)
+        );
+    }
+
+    @Transactional
+    public NotificationDispatchResponseDTO dispatchLatestVehicleNotification(Long userId) {
+        usersService.findUserById(userId);
+
+        VehicleNotificationDomain vehicleNotificationDomain = vehicleNotificationRepository.findLatestByUserId(userId)
+                .orElseThrow(() -> new CustomException("Vehicle notification not found", HttpStatus.NOT_FOUND));
+
+        boolean sent = notificationDispatchService.dispatch(vehicleNotificationDomain);
+        if (sent) {
+            vehicleNotificationDomain.setLastNotificationSent(java.time.LocalDateTime.now());
+            vehicleNotificationDomain = vehicleNotificationRepository.save(vehicleNotificationDomain);
+        }
+
+        return new NotificationDispatchResponseDTO(
+                sent,
+                VehicleNotificationMapper.toResponseDTO(vehicleNotificationDomain)
         );
     }
 

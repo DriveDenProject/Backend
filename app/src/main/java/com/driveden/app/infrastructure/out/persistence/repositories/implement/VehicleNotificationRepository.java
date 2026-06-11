@@ -35,6 +35,12 @@ public class VehicleNotificationRepository {
                 .toList();
     }
 
+    public Optional<VehicleNotificationDomain> findLatestByUserId(Long userId) {
+        return vehicleNotificationJpa.findLatestByUserId(userId, PageRequest.of(0, 1)).stream()
+                .findFirst()
+                .map(VehicleNotificationMapper::toDomain);
+    }
+
     public List<VehicleNotificationDomain> findByVehicleId(Long vehicleId) {
         return vehicleNotificationJpa.findByVehicleIdOrderByDueDateAsc(vehicleId).stream()
                 .map(VehicleNotificationMapper::toDomain)
