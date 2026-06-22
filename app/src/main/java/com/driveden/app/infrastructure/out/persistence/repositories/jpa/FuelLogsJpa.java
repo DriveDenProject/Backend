@@ -33,6 +33,7 @@ public interface FuelLogsJpa extends JpaRepository<FuelLogsEntity, Long> {
 
     @Query("""
         SELECT FL.id AS id,
+               FL.filledAt AS filledAt,
                FL.notes AS notes,
                FL.gasStation AS gasStation,
                FL.priceTotal AS priceTotal
