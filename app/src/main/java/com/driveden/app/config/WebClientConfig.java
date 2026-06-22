@@ -14,10 +14,13 @@ public class WebClientConfig {
     @Value("${rapidapi.host}")
     private String host;
 
+    @Value("${carspecs.base-url}")
+    private String baseUrl;
+
     @Bean
     public WebClient webClient(WebClient.Builder builder) {
         return builder
-                .baseUrl("https://car-specs.p.rapidapi.com/v2")
+                .baseUrl(baseUrl)
                 .defaultHeader("X-RapidAPI-Key", apiKey)
                 .defaultHeader("X-RapidAPI-Host", host)
                 .build();
