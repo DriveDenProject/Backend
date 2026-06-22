@@ -2,6 +2,7 @@ package com.driveden.app.client;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,7 +16,7 @@ public class CarSpecsClient {
 
     private final WebClient webClient;
 
-    public CarSpecsClient(WebClient webClient) {
+    public CarSpecsClient(@Qualifier("carSpecsWebClient") WebClient webClient) {
         this.webClient = webClient;
     }
 

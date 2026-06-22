@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class WebClientConfig {
+public class CarSpecsClientConfig {
+
+    @Value("${carspecs.base-url}")
+    private String baseUrl;
 
     @Value("${rapidapi.key}")
     private String apiKey;
@@ -14,11 +17,8 @@ public class WebClientConfig {
     @Value("${rapidapi.host}")
     private String host;
 
-    @Value("${carspecs.base-url}")
-    private String baseUrl;
-
-    @Bean
-    public WebClient webClient(WebClient.Builder builder) {
+    @Bean("carSpecsWebClient")
+    public WebClient carSpecsWebClient(WebClient.Builder builder) {
         return builder
                 .baseUrl(baseUrl)
                 .defaultHeader("X-RapidAPI-Key", apiKey)
