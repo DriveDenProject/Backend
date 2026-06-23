@@ -13,4 +13,5 @@ public class vehicleDomain {
     private String model;
     private Integer year;
     private String nickName;
+    private VehicleType vehicleType;
 }

@@ -15,7 +15,8 @@ public class VehicleMapper {
                 entity.getBrand(),
                 entity.getModel(),
                 entity.getYear(),
-                entity.getNickName()
+                entity.getNickName(),
+                entity.getVehicleType()
         );
     }
 
@@ -29,6 +30,7 @@ public class VehicleMapper {
         entity.setModel(domain.getModel());
         entity.setYear(domain.getYear());
         entity.setNickName(domain.getNickName());
+        entity.setVehicleType(domain.getVehicleType());
         return entity;
     }
 
@@ -41,7 +43,8 @@ public class VehicleMapper {
                 dto.getCarBrand(),
                 dto.getCarModel(),
                 dto.getCarYear(),
-                dto.getNickName()
+                dto.getNickName(),
+                dto.getVehicleType()
         );
     }
 }

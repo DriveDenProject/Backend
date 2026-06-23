@@ -1,7 +1,14 @@
 package com.driveden.app.infrastructure.out.persistence.entity;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import com.driveden.app.domain.cars.model.VehicleType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,4 +40,9 @@ public class VehicleEntity {
 
     @Column(name = "nick_name")
     private String nickName;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "vehicle_type", nullable = false, columnDefinition = "vehicle_type_enum")
+    private VehicleType vehicleType;
 }

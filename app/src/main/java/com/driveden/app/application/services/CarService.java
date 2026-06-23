@@ -14,6 +14,7 @@ import com.driveden.app.domain.cars.model.vehicleDomain;
 import com.driveden.app.domain.fuelType.model.FuelTypeDomain;
 import com.driveden.app.domain.transmissionType.model.transmissionTypeDomain;
 import com.driveden.app.domain.users.model.UserVehicleDomain;
+import com.driveden.app.infrastructure.out.persistence.mappers.VehicleMapper;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.FuelTypeRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.TransmissionTypeRepository;
 import com.driveden.app.infrastructure.out.persistence.repositories.implement.UserVehicleRepository;
@@ -67,13 +68,7 @@ public class CarService {
 
         usersService.findUserById(userId);
 
-        vehicleDomain vehicleDomain = new vehicleDomain(
-                null,
-                carRegisterRequestDTO.getCarBrand(),
-                carRegisterRequestDTO.getCarModel(),
-                carRegisterRequestDTO.getCarYear(),
-                carRegisterRequestDTO.getNickName()
-        );
+        vehicleDomain vehicleDomain = VehicleMapper.fromDTOtoDomain(carRegisterRequestDTO);
         vehicleDomain savedVehicle = vehicleRepository.save(vehicleDomain);
 
         vehicleDetailsDomain vehicleDetails = new vehicleDetailsDomain(

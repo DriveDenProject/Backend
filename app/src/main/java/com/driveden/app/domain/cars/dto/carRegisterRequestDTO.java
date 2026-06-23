@@ -2,6 +2,8 @@ package com.driveden.app.domain.cars.dto;
 
 import java.time.LocalDate;
 
+import com.driveden.app.domain.cars.model.VehicleType;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,6 +25,8 @@ public class carRegisterRequestDTO {
     @NotNull(message = "carYear is required")
     @Positive(message = "carYear must be positive")
     private Integer carYear;
+    @NotNull(message = "vehicleType is required")
+    private VehicleType vehicleType;
 
     @NotNull(message = "fuelId is required")
     @Positive(message = "fuelId must be positive")
