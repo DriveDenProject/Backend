@@ -110,7 +110,8 @@ class ProcessVoiceInputUseCaseTest {
                 new VoiceInputPrefilter(),
                 classifier,
                 new OpenAIRateLimiter(clock),
-                new VoiceInputDuplicateCache(clock)
+                new VoiceInputDuplicateCache(clock),
+                new VoiceRepairPostProcessor(new RepairCostExtractor())
         );
     }
 

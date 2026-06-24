@@ -24,6 +24,7 @@ public class OpenAIPromptBuilder {
                 {"type":"FUEL_LOG","data":{"gallons":number|null,"priceTotal":number|null,"pricePerGallon":number|null,"kmAtFill":number|null,"filledAt":"ISO_LOCAL_DATE_TIME"|null,"gasStation":string|null}}
                 {"type":"REMINDER","data":{"categoryId":number|null,"serviceName":string|null,"description":string|null,"startDate":"ISO_LOCAL_DATE"|null,"dueDate":"ISO_LOCAL_DATE"|null,"reminderFrequencyDays":number|null,"notifyBeforeDays":number|null,"priority":"LOW|MEDIUM|HIGH"|null,"isRecurring":boolean|null,"recurrenceIntervalDays":number|null}}
                 {"type":"REPAIR","data":{"repairDate":"ISO_LOCAL_DATE"|null,"description":string|null,"workshop":string|null,"laborCost":number|null,"totalCost":number|null,"parts":[{"name":string|null,"categoryId":number|null,"brand":string|null,"quantity":number|null,"unitPrice":number|null}]}}
+                REPAIR rules: each repair/service with its own price is one separate part item. In "X por Y", assign Y to X. Do not merge unrelated items. Do not invent brand, workshop, categoryId, quantity, or prices; unknown=null. totalCost=null unless user states one total. Do not do arithmetic.
                 If fuel pricePerGallon missing and gallons+priceTotal exist, compute it. Text: %s
                 """.formatted(today, now, text);
     }

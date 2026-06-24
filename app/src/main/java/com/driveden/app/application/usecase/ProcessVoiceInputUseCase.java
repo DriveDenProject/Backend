@@ -20,6 +20,7 @@ public class ProcessVoiceInputUseCase {
     private final VoiceInputClassifier classifier;
     private final OpenAIRateLimiter rateLimiter;
     private final VoiceInputDuplicateCache duplicateCache;
+    private final VoiceRepairPostProcessor repairPostProcessor;
 
     public VoiceClassificationResponseDTO process(String text, Long userId, String ipAddress) {
         String normalizedText = text == null ? "" : text.trim();
@@ -44,7 +45,7 @@ public class ProcessVoiceInputUseCase {
         rateLimiter.check(userId, ipAddress);
 
         try {
-            VoiceClassificationResult result = classifier.classify(text);
+            VoiceClassificationResult result = repairPostProcessor.process(text, classifier.classify(text));
             duplicateCache.put(userId, text, result);
             rateLimiter.recordSuccess(userId);
             return toResponse(result);
