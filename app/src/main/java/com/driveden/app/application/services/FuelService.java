@@ -48,6 +48,7 @@ public class FuelService {
     public FuelLogResponseDTO registerFuelLog(RegisterFuelLogDTO registerFuelLogDTO, Long userId) {
         validateVehicleOwnership(userId, registerFuelLogDTO.getVehicleId());
         validatePaymentMethod(registerFuelLogDTO.getPaymentMethodId());
+        vehicleOdometerService.lockVehicleOdometer(registerFuelLogDTO.getVehicleId());
         vehicleOdometerService.validateOdometer(registerFuelLogDTO.getVehicleId(), registerFuelLogDTO.getKmAtFill());
 
         FuelLogsDomain fuelLogsDomain = FuelLogsMapper.fromDTOtoDomain(registerFuelLogDTO);
@@ -63,6 +64,7 @@ public class FuelService {
         FuelLogsDomain currentFuelLog = findFuelLogById(fuelLogId);
         validateVehicleOwnership(userId, currentFuelLog.getVehicleId());
         validatePaymentMethod(updateFuelLogDTO.getPaymentMethodId());
+        vehicleOdometerService.lockVehicleOdometer(currentFuelLog.getVehicleId());
         vehicleOdometerService.validateOdometerForUpdate(
                 currentFuelLog.getVehicleId(),
                 updateFuelLogDTO.getKmAtFill(),
@@ -93,6 +95,7 @@ public class FuelService {
     public String deleteFuelLog(Long fuelLogId, Long userId) {
         FuelLogsDomain fuelLog = findFuelLogById(fuelLogId);
         validateVehicleOwnership(userId, fuelLog.getVehicleId());
+        vehicleOdometerService.lockVehicleOdometer(fuelLog.getVehicleId());
 
         fuelLogsRepository.deleteById(fuelLog.getId());
         odometerLogService.deleteOdometerLogFromSource(OdometerLogSource.FUEL, fuelLog.getId());

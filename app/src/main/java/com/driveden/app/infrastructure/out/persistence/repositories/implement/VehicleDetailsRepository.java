@@ -28,6 +28,11 @@ public class VehicleDetailsRepository {
                 .map(VehicleDetailsMapper::toDomain);
     }
 
+    public Optional<vehicleDetailsDomain> findByVehicleIdForUpdate(Long vehicleId) {
+        return vehicleDetailsJpa.findByVehicleIdForUpdate(vehicleId)
+                .map(VehicleDetailsMapper::toDomain);
+    }
+
     public void updateCurrentKm(Long vehicleId, Integer currentKm) {
         vehicleDetailsJpa.updateCurrentKmByVehicleId(vehicleId, currentKm);
     }

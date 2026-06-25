@@ -19,6 +19,11 @@ public class VehicleOdometerService {
     private final FuelLogsRepository fuelLogsRepository;
     private final OdometerLogService odometerLogService;
 
+    public void lockVehicleOdometer(Long vehicleId) {
+        vehicleDetailsRepository.findByVehicleIdForUpdate(vehicleId)
+                .orElseThrow(() -> new CustomException("Vehicle details not found", HttpStatus.NOT_FOUND));
+    }
+
     public void validateOdometer(Long vehicleId, Integer kmAtFill) {
         vehicleDetailsDomain vehicleDetails = findVehicleDetails(vehicleId);
 

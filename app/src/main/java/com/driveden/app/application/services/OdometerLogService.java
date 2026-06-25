@@ -30,6 +30,7 @@ public class OdometerLogService {
             String note
     ) {
         validateOdometerLog(vehicleId, km, source);
+        validateRecordedAt(recordedAt);
 
         OdometerLogDomain odometerLogDomain = new OdometerLogDomain(
                 null,
@@ -42,7 +43,10 @@ public class OdometerLogService {
                 null
         );
 
-        return odometerLogRepositoryPort.save(odometerLogDomain);
+        OdometerLogDomain savedOdometerLog = odometerLogRepositoryPort.save(odometerLogDomain);
+        validateOdometerTimeline(savedOdometerLog.getId(), vehicleId, recordedAt, km);
+
+        return savedOdometerLog;
     }
 
     public OdometerLogDomain updateOdometerLogFromSource(
