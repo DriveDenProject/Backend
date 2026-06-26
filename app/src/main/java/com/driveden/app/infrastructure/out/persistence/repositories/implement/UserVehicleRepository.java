@@ -52,4 +52,8 @@ public class UserVehicleRepository {
         return userVehicleRepositoryJpa.existsByIdUserIdAndIdVehicleId(userId, vehicleId);
     }
 
+    public long countByUserId(Long userId) {
+        return userVehicleRepositoryJpa.countByIdUserId(userId);
+    }
+
 }

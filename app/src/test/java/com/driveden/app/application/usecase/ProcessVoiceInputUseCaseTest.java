@@ -2,6 +2,8 @@ package com.driveden.app.application.usecase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -11,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
 
+import com.driveden.app.application.services.SubscriptionService;
 import com.driveden.app.common.exception.CustomException;
 import com.driveden.app.domain.voice.dto.VoiceClassificationResponseDTO;
 import com.driveden.app.domain.voice.exception.VoiceClassificationException;
@@ -105,13 +108,32 @@ class ProcessVoiceInputUseCaseTest {
         assertThat(response.message()).isEqualTo("Audio not related to vehicle records");
     }
 
+    @Test
+    void consumesAudioUsageAfterSuccessfulClassification() {
+        SubscriptionService subscriptionService = mock(SubscriptionService.class);
+        ProcessVoiceInputUseCase useCase = useCase(text -> fuelResult(), subscriptionService);
+
+        useCase.process("I filled gas 10 gallons today", 1L, "127.0.0.1");
+
+        verify(subscriptionService).enforceCanUseAudio(1L);
+        verify(subscriptionService).consumeAudioUsage(1L);
+    }
+
     private ProcessVoiceInputUseCase useCase(VoiceInputClassifier classifier) {
+        return useCase(classifier, null);
+    }
+
+    private ProcessVoiceInputUseCase useCase(
+            VoiceInputClassifier classifier,
+            SubscriptionService subscriptionService
+    ) {
         return new ProcessVoiceInputUseCase(
                 new VoiceInputPrefilter(),
                 classifier,
                 new OpenAIRateLimiter(clock),
                 new VoiceInputDuplicateCache(clock),
-                new VoiceRepairPostProcessor(new RepairCostExtractor())
+                new VoiceRepairPostProcessor(new RepairCostExtractor()),
+                subscriptionService
         );
     }
 

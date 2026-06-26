@@ -35,6 +35,7 @@ public class CarService {
     private final VehicleRepository vehicleRepository;
     private final UserVehicleRepository userVehicleRepository;
     private final UsersService usersService;
+    private final SubscriptionService subscriptionService;
 
     public String getCarSpecs(String model) {
         return carSpecsClient.getCarSpecs(model);
@@ -67,6 +68,7 @@ public class CarService {
     ) {
 
         usersService.findUserById(userId);
+        subscriptionService.enforceCanCreateVehicle(userId);
 
         vehicleDomain vehicleDomain = VehicleMapper.fromDTOtoDomain(carRegisterRequestDTO);
         vehicleDomain savedVehicle = vehicleRepository.save(vehicleDomain);

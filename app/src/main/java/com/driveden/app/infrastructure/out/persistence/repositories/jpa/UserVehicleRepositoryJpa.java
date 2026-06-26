@@ -22,6 +22,8 @@ public interface UserVehicleRepositoryJpa extends JpaRepository<UserVehicleEntit
 
     boolean existsByIdUserIdAndIdVehicleId(Long userId, Long vehicleId);
 
+    long countByIdUserId(Long userId);
+
     void deleteByIdUserIdAndIdVehicleId(Long userId, Long vehicleId);
 
     @Modifying
