@@ -1,0 +1,1916 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1789568319.611324,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "semantic_hash": "5ebef3dd159986e465ab65e4014107ec"
+  },
+  ".vscode/settings.json": {
+    "mtime": 1772757193.196366,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2d06b60b7caf61c40b4ebbd7f8a1afa2",
+    "semantic_hash": "2d06b60b7caf61c40b4ebbd7f8a1afa2"
+  },
+  "app/mvnw": {
+    "mtime": 1775962944.0869505,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ab50dd89da7da2346b28003352eeeeeb",
+    "semantic_hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "app/pom.xml": {
+    "mtime": 1787448590.9378371,
+    "seen": 1789569739.2553258,
+    "ast_hash": "17be1ccda025cb7dc34a817037800572",
+    "semantic_hash": "17be1ccda025cb7dc34a817037800572"
+  },
+  "app/src/main/java/com/driveden/app/AppApplication.java": {
+    "mtime": 1780416563.8316996,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7c556d1d4f017d816091239e0c24d2c1",
+    "semantic_hash": "7c556d1d4f017d816091239e0c24d2c1"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/FuelLogRepositoryPort.java": {
+    "mtime": 1780615482.5557523,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b2a7017223d426935cc96d7028e80b91",
+    "semantic_hash": "b2a7017223d426935cc96d7028e80b91"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/GoogleAuthPort.java": {
+    "mtime": 1780069719.2984126,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2cc24f52c02dff5ac5a32f73aff04eed",
+    "semantic_hash": "2cc24f52c02dff5ac5a32f73aff04eed"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/OdometerLogRepositoryPort.java": {
+    "mtime": 1780532829.6413212,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ccf702d7d13589bc664bcf0e1695340c",
+    "semantic_hash": "ccf702d7d13589bc664bcf0e1695340c"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/PartCategoryRepositoryPort.java": {
+    "mtime": 1781119772.698245,
+    "seen": 1789569739.2553258,
+    "ast_hash": "98857ae096a6761e330cd17c56778f94",
+    "semantic_hash": "98857ae096a6761e330cd17c56778f94"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/PartRepositoryPort.java": {
+    "mtime": 1781040562.1296084,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8004da7b0101b01691280377a4054be5",
+    "semantic_hash": "8004da7b0101b01691280377a4054be5"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/PaymentMethodRepositoryPort.java": {
+    "mtime": 1781120270.5480058,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ed723f9e75a66015f603853bfadab36d",
+    "semantic_hash": "ed723f9e75a66015f603853bfadab36d"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/PushNotificationPort.java": {
+    "mtime": 1780436273.0103354,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ab30b6eb0abbf73d6f6fadb652ff2c9f",
+    "semantic_hash": "ab30b6eb0abbf73d6f6fadb652ff2c9f"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/RepairPartRepositoryPort.java": {
+    "mtime": 1781040562.3648539,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7d8226db8069c3fa3bd485fc701f285e",
+    "semantic_hash": "7d8226db8069c3fa3bd485fc701f285e"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/RepairRepositoryPort.java": {
+    "mtime": 1781128236.5344317,
+    "seen": 1789569739.2553258,
+    "ast_hash": "da05a3967ab3999ec56da5f0f65128dc",
+    "semantic_hash": "da05a3967ab3999ec56da5f0f65128dc"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/SubscriptionPlanRepositoryPort.java": {
+    "mtime": 1782432103.511433,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5131069e716740756a8e0aeb3112f0e7",
+    "semantic_hash": "5131069e716740756a8e0aeb3112f0e7"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/SubscriptionUsageRepositoryPort.java": {
+    "mtime": 1782432105.3859036,
+    "seen": 1789569739.2553258,
+    "ast_hash": "71760fa9c54752e8e4d8788e450ccfc4",
+    "semantic_hash": "71760fa9c54752e8e4d8788e450ccfc4"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/UserSubscriptionRepositoryPort.java": {
+    "mtime": 1782432104.453185,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3fa3d85c0102525549fb896989f3204c",
+    "semantic_hash": "3fa3d85c0102525549fb896989f3204c"
+  },
+  "app/src/main/java/com/driveden/app/application/ports/out/VehicleHistoryRepositoryPort.java": {
+    "mtime": 1781106219.41223,
+    "seen": 1789569739.2553258,
+    "ast_hash": "54be9dea58e98a58c8fa4b5cb223dcec",
+    "semantic_hash": "54be9dea58e98a58c8fa4b5cb223dcec"
+  },
+  "app/src/main/java/com/driveden/app/application/services/AiService.java": {
+    "mtime": 1787576341.8488264,
+    "seen": 1789569739.2553258,
+    "ast_hash": "88786ac388f68ac07accc79d5d3f840f",
+    "semantic_hash": "88786ac388f68ac07accc79d5d3f840f"
+  },
+  "app/src/main/java/com/driveden/app/application/services/AuthService.java": {
+    "mtime": 1780069926.5606303,
+    "seen": 1789569739.2553258,
+    "ast_hash": "df5add281a5d4ad826a85efcac551f4e",
+    "semantic_hash": "df5add281a5d4ad826a85efcac551f4e"
+  },
+  "app/src/main/java/com/driveden/app/application/services/CarService.java": {
+    "mtime": 1782432469.0694902,
+    "seen": 1789569739.2553258,
+    "ast_hash": "fa423afaa9faac45ad50c22e9671610c",
+    "semantic_hash": "fa423afaa9faac45ad50c22e9671610c"
+  },
+  "app/src/main/java/com/driveden/app/application/services/DeviceTokenService.java": {
+    "mtime": 1780436315.8379433,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ebfaf083329ea82c1567da07dc808d94",
+    "semantic_hash": "ebfaf083329ea82c1567da07dc808d94"
+  },
+  "app/src/main/java/com/driveden/app/application/services/EmailService.java": {
+    "mtime": 1778534586.2372038,
+    "seen": 1789569739.2553258,
+    "ast_hash": "fcca9601dd6c578cb3477e2ee12f10a5",
+    "semantic_hash": "fcca9601dd6c578cb3477e2ee12f10a5"
+  },
+  "app/src/main/java/com/driveden/app/application/services/FuelService.java": {
+    "mtime": 1782348130.0605776,
+    "seen": 1789569739.2553258,
+    "ast_hash": "281231f71b3e71ce421134ef46dfc2f5",
+    "semantic_hash": "281231f71b3e71ce421134ef46dfc2f5"
+  },
+  "app/src/main/java/com/driveden/app/application/services/MotorcycleService.java": {
+    "mtime": 1782156106.0975337,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0939130548979ddece2d58a936d5be17",
+    "semantic_hash": "0939130548979ddece2d58a936d5be17"
+  },
+  "app/src/main/java/com/driveden/app/application/services/NotificationDispatchService.java": {
+    "mtime": 1780436354.1232133,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d5e7beb6ac39559565a9f67e42907a39",
+    "semantic_hash": "d5e7beb6ac39559565a9f67e42907a39"
+  },
+  "app/src/main/java/com/driveden/app/application/services/OdometerLogService.java": {
+    "mtime": 1782348140.03017,
+    "seen": 1789569739.2553258,
+    "ast_hash": "12ffd911df21a8b56f7bcb61fc45366d",
+    "semantic_hash": "12ffd911df21a8b56f7bcb61fc45366d"
+  },
+  "app/src/main/java/com/driveden/app/application/services/OdometerMileageStatsService.java": {
+    "mtime": 1780532829.8614836,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9ea9e26a51cdcaf83b88c987c5ade901",
+    "semantic_hash": "9ea9e26a51cdcaf83b88c987c5ade901"
+  },
+  "app/src/main/java/com/driveden/app/application/services/PartCategoryService.java": {
+    "mtime": 1781119773.194553,
+    "seen": 1789569739.2553258,
+    "ast_hash": "52fb44345a5a0fbe2b17b338de40dbf3",
+    "semantic_hash": "52fb44345a5a0fbe2b17b338de40dbf3"
+  },
+  "app/src/main/java/com/driveden/app/application/services/PaymentMethodService.java": {
+    "mtime": 1781120271.0120094,
+    "seen": 1789569739.2553258,
+    "ast_hash": "78d4605b4e2d350eda5bdc154662ca87",
+    "semantic_hash": "78d4605b4e2d350eda5bdc154662ca87"
+  },
+  "app/src/main/java/com/driveden/app/application/services/RepairService.java": {
+    "mtime": 1781128340.1074111,
+    "seen": 1789569739.2553258,
+    "ast_hash": "10bf2891d73c48b0f5d5ddfaf1e89e98",
+    "semantic_hash": "10bf2891d73c48b0f5d5ddfaf1e89e98"
+  },
+  "app/src/main/java/com/driveden/app/application/services/SecurityContextService.java": {
+    "mtime": 1787576205.773767,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f580a54c31d984bab833c68a33bdee85",
+    "semantic_hash": "f580a54c31d984bab833c68a33bdee85"
+  },
+  "app/src/main/java/com/driveden/app/application/services/SubscriptionService.java": {
+    "mtime": 1782432424.814453,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f61dc220e8905cd7340fefd17fb4327f",
+    "semantic_hash": "f61dc220e8905cd7340fefd17fb4327f"
+  },
+  "app/src/main/java/com/driveden/app/application/services/UsersService.java": {
+    "mtime": 1781104864.6520565,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9e77f44067d083cdcf16f5b187c85aec",
+    "semantic_hash": "9e77f44067d083cdcf16f5b187c85aec"
+  },
+  "app/src/main/java/com/driveden/app/application/services/VehicleDashboardService.java": {
+    "mtime": 1781117451.1000147,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9f9d8288f9b0aa9029f256aed17242b6",
+    "semantic_hash": "9f9d8288f9b0aa9029f256aed17242b6"
+  },
+  "app/src/main/java/com/driveden/app/application/services/VehicleHistoryService.java": {
+    "mtime": 1781106219.7709079,
+    "seen": 1789569739.2553258,
+    "ast_hash": "bb81a72b75155ed9275beca1a54e602d",
+    "semantic_hash": "bb81a72b75155ed9275beca1a54e602d"
+  },
+  "app/src/main/java/com/driveden/app/application/services/VehicleNotificationSchedulerService.java": {
+    "mtime": 1780436354.1842132,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3e2d4c87ef6c7ddf7a19fe7441708579",
+    "semantic_hash": "3e2d4c87ef6c7ddf7a19fe7441708579"
+  },
+  "app/src/main/java/com/driveden/app/application/services/VehicleNotificationService.java": {
+    "mtime": 1781214620.7231104,
+    "seen": 1789569739.2553258,
+    "ast_hash": "caedd5931491f16a863486b421bbc5d9",
+    "semantic_hash": "caedd5931491f16a863486b421bbc5d9"
+  },
+  "app/src/main/java/com/driveden/app/application/services/VehicleOdometerService.java": {
+    "mtime": 1782348028.4356792,
+    "seen": 1789569739.2553258,
+    "ast_hash": "18f48c94c34b2c08b3831ccb2af555eb",
+    "semantic_hash": "18f48c94c34b2c08b3831ccb2af555eb"
+  },
+  "app/src/main/java/com/driveden/app/application/tools/vehicleTools.java": {
+    "mtime": 1787450464.6656742,
+    "seen": 1789569739.2553258,
+    "ast_hash": "230e6b084c547a356175560942f42323",
+    "semantic_hash": "230e6b084c547a356175560942f42323"
+  },
+  "app/src/main/java/com/driveden/app/application/usecase/ProcessVoiceInputUseCase.java": {
+    "mtime": 1782432495.9324164,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f974e8da092ad8630a58c3a522e346a8",
+    "semantic_hash": "f974e8da092ad8630a58c3a522e346a8"
+  },
+  "app/src/main/java/com/driveden/app/application/usecase/RepairCostExtractor.java": {
+    "mtime": 1782342715.2889125,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d29c6c48ec64399e0bead1b754a5ea81",
+    "semantic_hash": "d29c6c48ec64399e0bead1b754a5ea81"
+  },
+  "app/src/main/java/com/driveden/app/application/usecase/VoiceInputDuplicateCache.java": {
+    "mtime": 1782324477.1897898,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f36dd63e86dbfc3d70ed580b5b1d3d1a",
+    "semantic_hash": "f36dd63e86dbfc3d70ed580b5b1d3d1a"
+  },
+  "app/src/main/java/com/driveden/app/application/usecase/VoiceRepairPostProcessor.java": {
+    "mtime": 1782342575.2271636,
+    "seen": 1789569739.2553258,
+    "ast_hash": "383cf4ac968e014f5a3bb0d90897243b",
+    "semantic_hash": "383cf4ac968e014f5a3bb0d90897243b"
+  },
+  "app/src/main/java/com/driveden/app/client/CarSpecsClient.java": {
+    "mtime": 1782154590.0294502,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f7c1337a46f314f42cdf88917c22cda5",
+    "semantic_hash": "f7c1337a46f314f42cdf88917c22cda5"
+  },
+  "app/src/main/java/com/driveden/app/client/MotorcycleClient.java": {
+    "mtime": 1782156185.899927,
+    "seen": 1789569739.2553258,
+    "ast_hash": "df967f09aee6b972fe0d94f127a064e0",
+    "semantic_hash": "df967f09aee6b972fe0d94f127a064e0"
+  },
+  "app/src/main/java/com/driveden/app/common/exception/CustomException.java": {
+    "mtime": 1775962944.0919487,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d381bb8f39cc45718f7761bb3689cf1b",
+    "semantic_hash": "d381bb8f39cc45718f7761bb3689cf1b"
+  },
+  "app/src/main/java/com/driveden/app/common/exception/ErrorResponse.java": {
+    "mtime": 1775962944.0919487,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8c602247d0c35dd7d3fb9e095a8c3e83",
+    "semantic_hash": "8c602247d0c35dd7d3fb9e095a8c3e83"
+  },
+  "app/src/main/java/com/driveden/app/common/exception/GlobalExceptionHandler.java": {
+    "mtime": 1775962944.09295,
+    "seen": 1789569739.2553258,
+    "ast_hash": "512f2623a4c9bd53957887ba399d9566",
+    "semantic_hash": "512f2623a4c9bd53957887ba399d9566"
+  },
+  "app/src/main/java/com/driveden/app/config/AiConfig.java": {
+    "mtime": 1787438815.7531407,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e2e6a51a8540195c09b48eb1cac10d91",
+    "semantic_hash": "e2e6a51a8540195c09b48eb1cac10d91"
+  },
+  "app/src/main/java/com/driveden/app/config/CarSpecsClientConfig.java": {
+    "mtime": 1782154423.7240667,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0270e09f1f40ad2c186d5b77ece4261e",
+    "semantic_hash": "0270e09f1f40ad2c186d5b77ece4261e"
+  },
+  "app/src/main/java/com/driveden/app/config/FirebaseConfig.java": {
+    "mtime": 1780445913.570266,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b4bd5cfc2ccc1ec881c0fac358a52fe4",
+    "semantic_hash": "b4bd5cfc2ccc1ec881c0fac358a52fe4"
+  },
+  "app/src/main/java/com/driveden/app/config/MotorcycleClientConfig.java": {
+    "mtime": 1782156101.447335,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2ffc42caa56f6955b8dc5a9fdecdec32",
+    "semantic_hash": "2ffc42caa56f6955b8dc5a9fdecdec32"
+  },
+  "app/src/main/java/com/driveden/app/config/OpenAIClientConfig.java": {
+    "mtime": 1782324467.022892,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a8a1f5bf40a384c9f373140ce7c77479",
+    "semantic_hash": "a8a1f5bf40a384c9f373140ce7c77479"
+  },
+  "app/src/main/java/com/driveden/app/config/Security/SecurityConfig.java": {
+    "mtime": 1787438973.8637643,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f0fb3638c1c197367d1ceb7ebe95465c",
+    "semantic_hash": "f0fb3638c1c197367d1ceb7ebe95465c"
+  },
+  "app/src/main/java/com/driveden/app/config/Security/SecurityFilter.java": {
+    "mtime": 1775962944.0939481,
+    "seen": 1789569739.2553258,
+    "ast_hash": "843be65544ef4a315b44691a3e203bbd",
+    "semantic_hash": "843be65544ef4a315b44691a3e203bbd"
+  },
+  "app/src/main/java/com/driveden/app/domain/AiTesting/DTO/maintenanceAi.java": {
+    "mtime": 1787441031.5820923,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0072d3cc3a0d35c1cfa571d173b0606c",
+    "semantic_hash": "0072d3cc3a0d35c1cfa571d173b0606c"
+  },
+  "app/src/main/java/com/driveden/app/domain/AiTesting/ENUM/Intent.java": {
+    "mtime": 1787441014.2494562,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5ec3868b8a2a1d1f4b262340f2b5ca80",
+    "semantic_hash": "5ec3868b8a2a1d1f4b262340f2b5ca80"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/dto/AuthRefreshRequestDTO.java": {
+    "mtime": 1778959208.9637108,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d13926f7bca72113770190f6c366f5b2",
+    "semantic_hash": "d13926f7bca72113770190f6c366f5b2"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/dto/AuthResponseDTO.java": {
+    "mtime": 1775962944.0959485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "167d3a279490b88152fcadac35b1fda0",
+    "semantic_hash": "167d3a279490b88152fcadac35b1fda0"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/dto/AuthenticatedUser.java": {
+    "mtime": 1775962944.0959485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8f870b81d0b822119c8476b292f03a03",
+    "semantic_hash": "8f870b81d0b822119c8476b292f03a03"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/dto/ChangePasswordDTO.java": {
+    "mtime": 1778959208.9647074,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7cfb249e8adbe72abfde3543159beab9",
+    "semantic_hash": "7cfb249e8adbe72abfde3543159beab9"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/dto/GoogleLoginDTO.java": {
+    "mtime": 1780069719.1844134,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0c25158e7f129ce80560d8e8efa0186d",
+    "semantic_hash": "0c25158e7f129ce80560d8e8efa0186d"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/model/AuthProvider.java": {
+    "mtime": 1780069719.0474136,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ad6d3380dd02baed85f4f9f9657b59b8",
+    "semantic_hash": "ad6d3380dd02baed85f4f9f9657b59b8"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/model/EmailVerification.java": {
+    "mtime": 1775962944.0969486,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7eacdc54b34b49b215dea600fc2319fd",
+    "semantic_hash": "7eacdc54b34b49b215dea600fc2319fd"
+  },
+  "app/src/main/java/com/driveden/app/domain/auth/model/GoogleUserInfo.java": {
+    "mtime": 1780069719.1144133,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e5c9bd845222128f8aed1cbe93bf6670",
+    "semantic_hash": "e5c9bd845222128f8aed1cbe93bf6670"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/dto/VehicleDashboardResponseDTO.java": {
+    "mtime": 1781117450.6777067,
+    "seen": 1789569739.2553258,
+    "ast_hash": "af3b739222e9900ac7eb53a405581b6a",
+    "semantic_hash": "af3b739222e9900ac7eb53a405581b6a"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/dto/carRegisterRequestDTO.java": {
+    "mtime": 1782217987.3049426,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3dcba2f629d8d5cd554629c579696a3c",
+    "semantic_hash": "3dcba2f629d8d5cd554629c579696a3c"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/dto/makesDTO.java": {
+    "mtime": 1775962944.0979486,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2cf0ba5bdbe29cda1672bfecce5a2952",
+    "semantic_hash": "2cf0ba5bdbe29cda1672bfecce5a2952"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/dto/modelByGenerationDTO.java": {
+    "mtime": 1775962944.0989485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "af252b244dfcaeead5ce3f3d8891c005",
+    "semantic_hash": "af252b244dfcaeead5ce3f3d8891c005"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/dto/modelsDTO.java": {
+    "mtime": 1775962944.0989485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "68732c7b917d015d73efd07d7bedc333",
+    "semantic_hash": "68732c7b917d015d73efd07d7bedc333"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/model/VehicleType.java": {
+    "mtime": 1782217986.4410393,
+    "seen": 1789569739.2553258,
+    "ast_hash": "98380447deae5a1413d3d40dd3456656",
+    "semantic_hash": "98380447deae5a1413d3d40dd3456656"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/model/vehicleDetailsDomain.java": {
+    "mtime": 1775962944.0999484,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d0b22dc37c6fc316d72d48eac686034a",
+    "semantic_hash": "d0b22dc37c6fc316d72d48eac686034a"
+  },
+  "app/src/main/java/com/driveden/app/domain/cars/model/vehicleDomain.java": {
+    "mtime": 1782217988.1076646,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a597359c1bfcfd329a6ce58f9de425e2",
+    "semantic_hash": "a597359c1bfcfd329a6ce58f9de425e2"
+  },
+  "app/src/main/java/com/driveden/app/domain/common/dto/PageResponseDTO.java": {
+    "mtime": 1780615282.7829015,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5929b0c1b466e40b028109157c027d5b",
+    "semantic_hash": "5929b0c1b466e40b028109157c027d5b"
+  },
+  "app/src/main/java/com/driveden/app/domain/deviceTokens/dto/DeviceTokenResponseDTO.java": {
+    "mtime": 1780436273.2183328,
+    "seen": 1789569739.2553258,
+    "ast_hash": "05d71971633516f9725d0c9cd2501a75",
+    "semantic_hash": "05d71971633516f9725d0c9cd2501a75"
+  },
+  "app/src/main/java/com/driveden/app/domain/deviceTokens/dto/RegisterDeviceTokenDTO.java": {
+    "mtime": 1780436273.1383321,
+    "seen": 1789569739.2553258,
+    "ast_hash": "37933a60f5e7f010f3203cbec82de845",
+    "semantic_hash": "37933a60f5e7f010f3203cbec82de845"
+  },
+  "app/src/main/java/com/driveden/app/domain/deviceTokens/model/DevicePlatform.java": {
+    "mtime": 1780436273.3523328,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7f77f98fd735a00c65efb49e422dfebc",
+    "semantic_hash": "7f77f98fd735a00c65efb49e422dfebc"
+  },
+  "app/src/main/java/com/driveden/app/domain/deviceTokens/model/PushNotificationResult.java": {
+    "mtime": 1780436273.5080845,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1fef984fff1d104cb01e0f01fe278c1f",
+    "semantic_hash": "1fef984fff1d104cb01e0f01fe278c1f"
+  },
+  "app/src/main/java/com/driveden/app/domain/deviceTokens/model/UserDeviceTokenDomain.java": {
+    "mtime": 1780436273.4263346,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3e3648868aed3fd3ea377f77b56739df",
+    "semantic_hash": "3e3648868aed3fd3ea377f77b56739df"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/CurrentMonthFuelStatsResponseDTO.java": {
+    "mtime": 1780615282.9479005,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9b36227130f0a1b0d5bb58415e3df27c",
+    "semantic_hash": "9b36227130f0a1b0d5bb58415e3df27c"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/FuelLogHistoryResponseDTO.java": {
+    "mtime": 1780533431.2047334,
+    "seen": 1789569739.2553258,
+    "ast_hash": "320df6d0afc48da7ec46c46b5326d62a",
+    "semantic_hash": "320df6d0afc48da7ec46c46b5326d62a"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/FuelLogResponseDTO.java": {
+    "mtime": 1780327304.810503,
+    "seen": 1789569739.2553258,
+    "ast_hash": "23c4cdfc9c23d8607465ae89b6e3bb46",
+    "semantic_hash": "23c4cdfc9c23d8607465ae89b6e3bb46"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/FuelLogTankHistoryResponseDTO.java": {
+    "mtime": 1782141263.913417,
+    "seen": 1789569739.2553258,
+    "ast_hash": "206149dbba9f1159ca97182a003480e5",
+    "semantic_hash": "206149dbba9f1159ca97182a003480e5"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/LastFuelLogResponseDTO.java": {
+    "mtime": 1780533431.2827349,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4c62b04c8af062b7951ee437495e9bf4",
+    "semantic_hash": "4c62b04c8af062b7951ee437495e9bf4"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/RegisterFuelLogDTO.java": {
+    "mtime": 1780327304.7445276,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1031cce569658197e84c363fe8f4bd90",
+    "semantic_hash": "1031cce569658197e84c363fe8f4bd90"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/dto/UpdateFuelLogDTO.java": {
+    "mtime": 1780332530.9250555,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c25eb317c43e4f408a1da68eddb4839d",
+    "semantic_hash": "c25eb317c43e4f408a1da68eddb4839d"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/model/FuelLogEfficiencyDomain.java": {
+    "mtime": 1780615482.4837513,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f758c38ae4c60d93831930046cbb270c",
+    "semantic_hash": "f758c38ae4c60d93831930046cbb270c"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/model/FuelLogTankHistoryDomain.java": {
+    "mtime": 1782141265.269418,
+    "seen": 1789569739.2553258,
+    "ast_hash": "672b4329ad087f7ccd220b78344f913c",
+    "semantic_hash": "672b4329ad087f7ccd220b78344f913c"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelLogs/model/FuelLogsDomain.java": {
+    "mtime": 1780327304.881503,
+    "seen": 1789569739.2553258,
+    "ast_hash": "306eb8ef1897b7b7a16e4dba4aa38abe",
+    "semantic_hash": "306eb8ef1897b7b7a16e4dba4aa38abe"
+  },
+  "app/src/main/java/com/driveden/app/domain/fuelType/model/FuelTypeDomain.java": {
+    "mtime": 1775962944.1019492,
+    "seen": 1789569739.2553258,
+    "ast_hash": "993ef4ee79848eaa4d7b3e82153c0b52",
+    "semantic_hash": "993ef4ee79848eaa4d7b3e82153c0b52"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/ArticleIdResponseDTO.java": {
+    "mtime": 1782156104.1729577,
+    "seen": 1789569739.2553258,
+    "ast_hash": "dfb0162f0746409b5785c20cde1f2840",
+    "semantic_hash": "dfb0162f0746409b5785c20cde1f2840"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/MotorcycleImageDTO.java": {
+    "mtime": 1782156105.158532,
+    "seen": 1789569739.2553258,
+    "ast_hash": "fa532e8b34220a4bda1bed103694c28e",
+    "semantic_hash": "fa532e8b34220a4bda1bed103694c28e"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/MotorcycleMakeDTO.java": {
+    "mtime": 1782155307.5280902,
+    "seen": 1789569739.2553258,
+    "ast_hash": "79647199cf328da537b576d9440d5ed3",
+    "semantic_hash": "79647199cf328da537b576d9440d5ed3"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/MotorcycleModelDTO.java": {
+    "mtime": 1782155310.3518546,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9f4ec6f4dab705ae93f2be6431038930",
+    "semantic_hash": "9f4ec6f4dab705ae93f2be6431038930"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/MotorcycleModelDetailsDTO.java": {
+    "mtime": 1782155313.0664601,
+    "seen": 1789569739.2553258,
+    "ast_hash": "285e5f427169df8a32a404118e68b30d",
+    "semantic_hash": "285e5f427169df8a32a404118e68b30d"
+  },
+  "app/src/main/java/com/driveden/app/domain/motorcycles/dto/MotorcycleProductionYearDTO.java": {
+    "mtime": 1782156103.2104256,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7e39694c7368bbf6baaf4245e8fbf6cc",
+    "semantic_hash": "7e39694c7368bbf6baaf4245e8fbf6cc"
+  },
+  "app/src/main/java/com/driveden/app/domain/odometerLogs/dto/CurrentMonthMileageStatsResponseDTO.java": {
+    "mtime": 1780532600.963404,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b1f5fa20fe0003d7e0547c5ef840891d",
+    "semantic_hash": "b1f5fa20fe0003d7e0547c5ef840891d"
+  },
+  "app/src/main/java/com/driveden/app/domain/odometerLogs/dto/MonthlyMileageStatsResponseDTO.java": {
+    "mtime": 1780530554.8352845,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1260002a0d10e408368b863f5b76d2d5",
+    "semantic_hash": "1260002a0d10e408368b863f5b76d2d5"
+  },
+  "app/src/main/java/com/driveden/app/domain/odometerLogs/model/MonthlyMileageStatsDomain.java": {
+    "mtime": 1780530555.2166853,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d40b9da10f992a9677b695aa81b33f22",
+    "semantic_hash": "d40b9da10f992a9677b695aa81b33f22"
+  },
+  "app/src/main/java/com/driveden/app/domain/odometerLogs/model/OdometerLogDomain.java": {
+    "mtime": 1780525744.8244908,
+    "seen": 1789569739.2553258,
+    "ast_hash": "db528f931a8b899e973c17f3fcadd654",
+    "semantic_hash": "db528f931a8b899e973c17f3fcadd654"
+  },
+  "app/src/main/java/com/driveden/app/domain/odometerLogs/model/OdometerLogSource.java": {
+    "mtime": 1780525744.7614558,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f17172360113253c87258b04f2cce5d7",
+    "semantic_hash": "f17172360113253c87258b04f2cce5d7"
+  },
+  "app/src/main/java/com/driveden/app/domain/paymentMethods/dto/PaymentMethodResponseDTO.java": {
+    "mtime": 1781120270.753012,
+    "seen": 1789569739.2553258,
+    "ast_hash": "091828436b23eeb54ebcfe8c076aeb2c",
+    "semantic_hash": "091828436b23eeb54ebcfe8c076aeb2c"
+  },
+  "app/src/main/java/com/driveden/app/domain/paymentMethods/model/PaymentMethodDomain.java": {
+    "mtime": 1780326611.33305,
+    "seen": 1789569739.2553258,
+    "ast_hash": "86a957d8fb5550a818f3cb05265dbf30",
+    "semantic_hash": "86a957d8fb5550a818f3cb05265dbf30"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/LatestRepairByCategoryResponseDTO.java": {
+    "mtime": 1781119032.8479612,
+    "seen": 1789569739.2553258,
+    "ast_hash": "269d17a729b8f381154d23b23ec92ff9",
+    "semantic_hash": "269d17a729b8f381154d23b23ec92ff9"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/PartCategoryResponseDTO.java": {
+    "mtime": 1781119772.7760994,
+    "seen": 1789569739.2553258,
+    "ast_hash": "400bef25a74765903e7e8dca3c72e6a9",
+    "semantic_hash": "400bef25a74765903e7e8dca3c72e6a9"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RegisterRepairDTO.java": {
+    "mtime": 1781040789.369914,
+    "seen": 1789569739.2553258,
+    "ast_hash": "804276b1f420cffdd2ed93d75839261e",
+    "semantic_hash": "804276b1f420cffdd2ed93d75839261e"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RegisterRepairPartDTO.java": {
+    "mtime": 1781040561.864759,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5c64e9eda9b4874ca644a8760454dc0e",
+    "semantic_hash": "5c64e9eda9b4874ca644a8760454dc0e"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RepairHistoryResponseDTO.java": {
+    "mtime": 1781053444.3533335,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a61124d2dfb1979c2a8ae7efde1a7673",
+    "semantic_hash": "a61124d2dfb1979c2a8ae7efde1a7673"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RepairPartResponseDTO.java": {
+    "mtime": 1781040561.9938762,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2f38c7920fce376e94dc8a9361149a73",
+    "semantic_hash": "2f38c7920fce376e94dc8a9361149a73"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RepairResponseDTO.java": {
+    "mtime": 1781040789.4297297,
+    "seen": 1789569739.2553258,
+    "ast_hash": "34fae77a94e10c29fd837da0233e340b",
+    "semantic_hash": "34fae77a94e10c29fd837da0233e340b"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/dto/RepairStatsResponseDTO.java": {
+    "mtime": 1781053444.4262567,
+    "seen": 1789569739.2553258,
+    "ast_hash": "325d9c06833c13c14f984122fae2310a",
+    "semantic_hash": "325d9c06833c13c14f984122fae2310a"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/LatestRepairByCategoryDomain.java": {
+    "mtime": 1781119032.9416325,
+    "seen": 1789569739.2553258,
+    "ast_hash": "95b65751e078bdbc4c3b356e5ef382fb",
+    "semantic_hash": "95b65751e078bdbc4c3b356e5ef382fb"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/PartCategoryDomain.java": {
+    "mtime": 1781040561.6750782,
+    "seen": 1789569739.2553258,
+    "ast_hash": "32f03358b08f9189fe644f9c3df9f7be",
+    "semantic_hash": "32f03358b08f9189fe644f9c3df9f7be"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/PartDomain.java": {
+    "mtime": 1781040561.6085386,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2da84bdefd5ceacc4ad8ccd4c74b9425",
+    "semantic_hash": "2da84bdefd5ceacc4ad8ccd4c74b9425"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/RepairDomain.java": {
+    "mtime": 1781040789.3110492,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d032b93343a9567752df79a2a92ad9e3",
+    "semantic_hash": "d032b93343a9567752df79a2a92ad9e3"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/RepairHistoryDomain.java": {
+    "mtime": 1781053444.2062345,
+    "seen": 1789569739.2553258,
+    "ast_hash": "68cdaca9475b909fa663d0e88cba5106",
+    "semantic_hash": "68cdaca9475b909fa663d0e88cba5106"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/RepairPartDomain.java": {
+    "mtime": 1781040561.741508,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5ba1f5bd41ce97d5808158547271e92b",
+    "semantic_hash": "5ba1f5bd41ce97d5808158547271e92b"
+  },
+  "app/src/main/java/com/driveden/app/domain/repairs/model/RepairStatsDomain.java": {
+    "mtime": 1781053444.2798066,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7c4c7dffd18bf9a74e5db6db16fca2f6",
+    "semantic_hash": "7c4c7dffd18bf9a74e5db6db16fca2f6"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/dto/ActivateSubscriptionRequestDTO.java": {
+    "mtime": 1782432080.0950108,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a43056b56707021deb623ebdf9c4e38f",
+    "semantic_hash": "a43056b56707021deb623ebdf9c4e38f"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/dto/ActivateSubscriptionResponseDTO.java": {
+    "mtime": 1782432081.37275,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1a1c2bae72e3e842539d4516f6cd75ec",
+    "semantic_hash": "1a1c2bae72e3e842539d4516f6cd75ec"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/dto/AdminGrantSubscriptionRequestDTO.java": {
+    "mtime": 1782432082.450173,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5cfe5dcf9db382be3a98fb87ff890dcf",
+    "semantic_hash": "5cfe5dcf9db382be3a98fb87ff890dcf"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/dto/CurrentSubscriptionResponseDTO.java": {
+    "mtime": 1782432077.6491685,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2da42f74250d5f7415550819845ea212",
+    "semantic_hash": "2da42f74250d5f7415550819845ea212"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/dto/SubscriptionPlanResponseDTO.java": {
+    "mtime": 1782432079.0279436,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1ad12dd017404826eef004cc46bd5f5d",
+    "semantic_hash": "1ad12dd017404826eef004cc46bd5f5d"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/exception/InvalidSubscriptionStateException.java": {
+    "mtime": 1782432086.0227778,
+    "seen": 1789569739.2553258,
+    "ast_hash": "452774c5b9430bd2a78c7c0de46307b8",
+    "semantic_hash": "452774c5b9430bd2a78c7c0de46307b8"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/exception/SubscriptionLimitExceededException.java": {
+    "mtime": 1782432085.121214,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2c62c171863d08cd439ba7dc9ee542e1",
+    "semantic_hash": "2c62c171863d08cd439ba7dc9ee542e1"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/exception/SubscriptionNotFoundException.java": {
+    "mtime": 1782432084.0848603,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1e6fd65969eaf819049468808188e929",
+    "semantic_hash": "1e6fd65969eaf819049468808188e929"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/model/Subscription.java": {
+    "mtime": 1782432070.8676705,
+    "seen": 1789569739.2553258,
+    "ast_hash": "435c6b112464fb7a6342311c08deb98d",
+    "semantic_hash": "435c6b112464fb7a6342311c08deb98d"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/model/SubscriptionPlan.java": {
+    "mtime": 1782432069.3751786,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6cc0dde31030f005ee25d751ead428b1",
+    "semantic_hash": "6cc0dde31030f005ee25d751ead428b1"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/model/SubscriptionProvider.java": {
+    "mtime": 1782432068.1421475,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f50843ee006ca29718ac5efa9475f356",
+    "semantic_hash": "f50843ee006ca29718ac5efa9475f356"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/model/SubscriptionStatus.java": {
+    "mtime": 1782432067.2003067,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d041c519b2ae7c19d794651c411d714a",
+    "semantic_hash": "d041c519b2ae7c19d794651c411d714a"
+  },
+  "app/src/main/java/com/driveden/app/domain/subscriptions/model/SubscriptionUsage.java": {
+    "mtime": 1782432073.613549,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c0bc4c1ab458c90b111419a10444e000",
+    "semantic_hash": "c0bc4c1ab458c90b111419a10444e000"
+  },
+  "app/src/main/java/com/driveden/app/domain/transmissionType/model/transmissionTypeDomain.java": {
+    "mtime": 1775962944.102949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "57340800277d284380f12ada99f41024",
+    "semantic_hash": "57340800277d284380f12ada99f41024"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/dto/LoginDTO.java": {
+    "mtime": 1778959208.9657083,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f3e039ae553188ef91e373ba06136d04",
+    "semantic_hash": "f3e039ae553188ef91e373ba06136d04"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/dto/RegisterUserDTO.java": {
+    "mtime": 1778959208.966708,
+    "seen": 1789569739.2553258,
+    "ast_hash": "78bfd9bda5458855727720264f326ceb",
+    "semantic_hash": "78bfd9bda5458855727720264f326ceb"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/dto/UserDTO.java": {
+    "mtime": 1775962944.103949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6701115fd4ff5aa25b054c98721ef411",
+    "semantic_hash": "6701115fd4ff5aa25b054c98721ef411"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/dto/UserDetailsDTO.java": {
+    "mtime": 1781104864.5743778,
+    "seen": 1789569739.2553258,
+    "ast_hash": "55309bfce4a2002884868d71af1b723f",
+    "semantic_hash": "55309bfce4a2002884868d71af1b723f"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/model/UserVehicleDomain.java": {
+    "mtime": 1775962944.1049483,
+    "seen": 1789569739.2553258,
+    "ast_hash": "92d870f0f6d372c351e88b1e6e886812",
+    "semantic_hash": "92d870f0f6d372c351e88b1e6e886812"
+  },
+  "app/src/main/java/com/driveden/app/domain/users/model/Users.java": {
+    "mtime": 1780069718.9804122,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7d70486900c0b51d29322fd1f856dc1d",
+    "semantic_hash": "7d70486900c0b51d29322fd1f856dc1d"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleHistory/dto/VehicleHistoryItemResponseDTO.java": {
+    "mtime": 1781106219.211835,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f49b2af310905e94a37294d1c22ef315",
+    "semantic_hash": "f49b2af310905e94a37294d1c22ef315"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleHistory/model/VehicleHistoryItemDomain.java": {
+    "mtime": 1781106219.326278,
+    "seen": 1789569739.2553258,
+    "ast_hash": "83dc47548782ee66fba49457cc067825",
+    "semantic_hash": "83dc47548782ee66fba49457cc067825"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/dto/NotificationDispatchResponseDTO.java": {
+    "mtime": 1781214620.4861095,
+    "seen": 1789569739.2553258,
+    "ast_hash": "91fdf98904a1f7af0cfb9836e9453427",
+    "semantic_hash": "91fdf98904a1f7af0cfb9836e9453427"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/dto/RegisterVehicleNotificationDTO.java": {
+    "mtime": 1780416564.4409802,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3264f61d8afd6abb815664246909e3b3",
+    "semantic_hash": "3264f61d8afd6abb815664246909e3b3"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/dto/UpdateVehicleNotificationDTO.java": {
+    "mtime": 1780416564.5119684,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e45bd5b7f10b6b83b3229d5431113830",
+    "semantic_hash": "e45bd5b7f10b6b83b3229d5431113830"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/dto/UpdateVehicleNotificationStatusDTO.java": {
+    "mtime": 1780416564.5826745,
+    "seen": 1789569739.2553258,
+    "ast_hash": "adea0f18229019109cdac103df21ad7e",
+    "semantic_hash": "adea0f18229019109cdac103df21ad7e"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/dto/VehicleNotificationResponseDTO.java": {
+    "mtime": 1780416564.649676,
+    "seen": 1789569739.2553258,
+    "ast_hash": "775af7e14d827c194ba634d6a50aaaf4",
+    "semantic_hash": "775af7e14d827c194ba634d6a50aaaf4"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/model/MaintenanceCategoryDomain.java": {
+    "mtime": 1780416564.2433197,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9343847ca1730867078ad1c8c3086415",
+    "semantic_hash": "9343847ca1730867078ad1c8c3086415"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/model/VehicleNotificationDomain.java": {
+    "mtime": 1780416564.3241088,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ae5f024df441c8d3ccc2cd392f8c6662",
+    "semantic_hash": "ae5f024df441c8d3ccc2cd392f8c6662"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/model/VehicleNotificationPriority.java": {
+    "mtime": 1780416564.020736,
+    "seen": 1789569739.2553258,
+    "ast_hash": "eea8cb2d8e957ab406743cd921d48b37",
+    "semantic_hash": "eea8cb2d8e957ab406743cd921d48b37"
+  },
+  "app/src/main/java/com/driveden/app/domain/vehicleNotifications/model/VehicleNotificationStatus.java": {
+    "mtime": 1780416564.1347191,
+    "seen": 1789569739.2553258,
+    "ast_hash": "af140f3745da472936742cf2052124c3",
+    "semantic_hash": "af140f3745da472936742cf2052124c3"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/dto/ProcessVoiceInputRequestDTO.java": {
+    "mtime": 1782324461.1717858,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2654f9f2aa60bfc96f515c93628e7447",
+    "semantic_hash": "2654f9f2aa60bfc96f515c93628e7447"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/dto/VoiceClassificationResponseDTO.java": {
+    "mtime": 1782324462.0358713,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3ec419c585f626b7fc6427bd9749a434",
+    "semantic_hash": "3ec419c585f626b7fc6427bd9749a434"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/exception/VoiceClassificationException.java": {
+    "mtime": 1782324463.800724,
+    "seen": 1789569739.2553258,
+    "ast_hash": "48f36b51433fac841630d456eb82fe5a",
+    "semantic_hash": "48f36b51433fac841630d456eb82fe5a"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/model/RepairCostCandidate.java": {
+    "mtime": 1782342487.6779418,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2fc2fdb3e01eb3030af45b0b84d9ff59",
+    "semantic_hash": "2fc2fdb3e01eb3030af45b0b84d9ff59"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/model/VoiceClassificationResult.java": {
+    "mtime": 1782324457.8335166,
+    "seen": 1789569739.2553258,
+    "ast_hash": "282a3636703d2baea8c43107cc9094e2",
+    "semantic_hash": "282a3636703d2baea8c43107cc9094e2"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/model/VoiceClassificationType.java": {
+    "mtime": 1782324455.6341348,
+    "seen": 1789569739.2553258,
+    "ast_hash": "76c4b328f7e9675e7d5f1f907bcbf71c",
+    "semantic_hash": "76c4b328f7e9675e7d5f1f907bcbf71c"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/model/VoiceLanguage.java": {
+    "mtime": 1782324456.720513,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ffb5f40a37a32091af7054fcea09eeba",
+    "semantic_hash": "ffb5f40a37a32091af7054fcea09eeba"
+  },
+  "app/src/main/java/com/driveden/app/domain/voice/service/VoiceInputClassifier.java": {
+    "mtime": 1782324459.626312,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b6be70683bd5bc68ad8387920cbf0760",
+    "semantic_hash": "b6be70683bd5bc68ad8387920cbf0760"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/OpenAIClient.java": {
+    "mtime": 1782324469.4137304,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6493c2b778c222f6c765f6a7af091880",
+    "semantic_hash": "6493c2b778c222f6c765f6a7af091880"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/OpenAIPromptBuilder.java": {
+    "mtime": 1782342440.0145962,
+    "seen": 1789569739.2553258,
+    "ast_hash": "dc84902467652c5b255e3258f965a396",
+    "semantic_hash": "dc84902467652c5b255e3258f965a396"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/OpenAIRateLimiter.java": {
+    "mtime": 1782324475.1510804,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d13266bea3fdf7a624c787aa9d8e678b",
+    "semantic_hash": "d13266bea3fdf7a624c787aa9d8e678b"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/OpenAIResponseParser.java": {
+    "mtime": 1782324538.5886643,
+    "seen": 1789569739.2553258,
+    "ast_hash": "23b385332a15fa30b2fda27f2268c227",
+    "semantic_hash": "23b385332a15fa30b2fda27f2268c227"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/OpenAIVoiceInputClassifier.java": {
+    "mtime": 1782324471.9715714,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ae24221e066a0b722c20d041f0869088",
+    "semantic_hash": "ae24221e066a0b722c20d041f0869088"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/ai/VoiceInputPrefilter.java": {
+    "mtime": 1782324689.2616253,
+    "seen": 1789569739.2553258,
+    "ast_hash": "39c70e6093a80a5a559be1104673c057",
+    "semantic_hash": "39c70e6093a80a5a559be1104673c057"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/AdminSubscriptionsController.java": {
+    "mtime": 1782432460.4852455,
+    "seen": 1789569739.2553258,
+    "ast_hash": "229404cf6a3ad6942e405166e6969ce1",
+    "semantic_hash": "229404cf6a3ad6942e405166e6969ce1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/AiController.java": {
+    "mtime": 1787443675.162776,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b4c6672128c3164a1b32a4501b2b80a6",
+    "semantic_hash": "b4c6672128c3164a1b32a4501b2b80a6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/AuthController.java": {
+    "mtime": 1780069759.6257772,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ac6955d29aa7e1baad7402d210dbe6a2",
+    "semantic_hash": "ac6955d29aa7e1baad7402d210dbe6a2"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/CarsController.java": {
+    "mtime": 1781117451.1703615,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b512c7f6d8d9e1a5280e7be3d0f2e67b",
+    "semantic_hash": "b512c7f6d8d9e1a5280e7be3d0f2e67b"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/DeviceTokensController.java": {
+    "mtime": 1780436363.8740084,
+    "seen": 1789569739.2553258,
+    "ast_hash": "bd28b229f7c629f9cbab9064c2679439",
+    "semantic_hash": "bd28b229f7c629f9cbab9064c2679439"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/MotorcyclesController.java": {
+    "mtime": 1782156107.026058,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e1785d466bd9962c5a543b9072ae00e1",
+    "semantic_hash": "e1785d466bd9962c5a543b9072ae00e1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/PartCategoriesController.java": {
+    "mtime": 1781119773.300555,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1ed6064ac9c005f01a29bc44e1c584f1",
+    "semantic_hash": "1ed6064ac9c005f01a29bc44e1c584f1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/PaymentMethodsController.java": {
+    "mtime": 1781120270.9280107,
+    "seen": 1789569739.2553258,
+    "ast_hash": "02c8e7b66c41c70b396813e2f09c929e",
+    "semantic_hash": "02c8e7b66c41c70b396813e2f09c929e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/RepairsController.java": {
+    "mtime": 1781128205.9464064,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4b272a7a8320b870539f5254ee57c000",
+    "semantic_hash": "4b272a7a8320b870539f5254ee57c000"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/SubscriptionsController.java": {
+    "mtime": 1782432459.6902761,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a6e690c4a683c0f3adca39aca92aacbf",
+    "semantic_hash": "a6e690c4a683c0f3adca39aca92aacbf"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/UsersController.java": {
+    "mtime": 1779647535.6874604,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3a27f57cdb09572e40451abbb7dfacae",
+    "semantic_hash": "3a27f57cdb09572e40451abbb7dfacae"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/VehicleNotificationsController.java": {
+    "mtime": 1781214620.7971084,
+    "seen": 1789569739.2553258,
+    "ast_hash": "861005faa793cd8ae53a216b7d3a3d83",
+    "semantic_hash": "861005faa793cd8ae53a216b7d3a3d83"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/controllers/in/web/VoiceInputController.java": {
+    "mtime": 1782324479.3282151,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1785c4896615b9b6bcbbc0e61a66ee20",
+    "semantic_hash": "1785c4896615b9b6bcbbc0e61a66ee20"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/notifications/FirebasePushNotificationAdapter.java": {
+    "mtime": 1780436434.9232545,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6d84be6f7f95db202492c3a11e395c03",
+    "semantic_hash": "6d84be6f7f95db202492c3a11e395c03"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/oauth/GoogleOAuthAdapter.java": {
+    "mtime": 1780069719.676415,
+    "seen": 1789569739.2553258,
+    "ast_hash": "16cae95d3cf525e1bae08a29a78edaef",
+    "semantic_hash": "16cae95d3cf525e1bae08a29a78edaef"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/EmailVerificationCodeEntity.java": {
+    "mtime": 1775962944.1089485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "927c52f2983f1cf378de2347be940da9",
+    "semantic_hash": "927c52f2983f1cf378de2347be940da9"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/FuelLogsEntity.java": {
+    "mtime": 1780327304.9475038,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4f637a200c0534a0d101481dc4750a36",
+    "semantic_hash": "4f637a200c0534a0d101481dc4750a36"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/FuelTypesEntity.java": {
+    "mtime": 1775962944.1089485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "73a4eb8e13f9781c2565129967f2c68d",
+    "semantic_hash": "73a4eb8e13f9781c2565129967f2c68d"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/MaintenanceCategoryEntity.java": {
+    "mtime": 1780416639.1638663,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5b52b2c55c131da9b41318b26264f29e",
+    "semantic_hash": "5b52b2c55c131da9b41318b26264f29e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/OdometerLogEntity.java": {
+    "mtime": 1780525744.9497235,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c357daebbd39348fe7db6ff7d4d0866d",
+    "semantic_hash": "c357daebbd39348fe7db6ff7d4d0866d"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/PartCategoryEntity.java": {
+    "mtime": 1781040608.634519,
+    "seen": 1789569739.2553258,
+    "ast_hash": "cbe94d27de11b9cc0862a44bb9753c3d",
+    "semantic_hash": "cbe94d27de11b9cc0862a44bb9753c3d"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/PartEntity.java": {
+    "mtime": 1781040608.712955,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2fd62cde302cbf09b1fa17fcea3c40f7",
+    "semantic_hash": "2fd62cde302cbf09b1fa17fcea3c40f7"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/PaymentMethodsEntity.java": {
+    "mtime": 1780326611.4070506,
+    "seen": 1789569739.2553258,
+    "ast_hash": "73d9618ecf05acb9662857b6c9bae587",
+    "semantic_hash": "73d9618ecf05acb9662857b6c9bae587"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/RepairEntity.java": {
+    "mtime": 1781040789.50157,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6d29655345cd5b2cfafc5410620c90d0",
+    "semantic_hash": "6d29655345cd5b2cfafc5410620c90d0"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/RepairPartEntity.java": {
+    "mtime": 1781040608.9400876,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7be0fbd6e235ac46afdbee972a123fa8",
+    "semantic_hash": "7be0fbd6e235ac46afdbee972a123fa8"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/SubscriptionFeatureEntity.java": {
+    "mtime": 1782432181.0321994,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9d3d55f0d38db6d5fbf4845181ad1d7e",
+    "semantic_hash": "9d3d55f0d38db6d5fbf4845181ad1d7e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/SubscriptionPlanEntity.java": {
+    "mtime": 1782432182.05765,
+    "seen": 1789569739.2553258,
+    "ast_hash": "97ad9adef20adbd2f55d68f6614a99ec",
+    "semantic_hash": "97ad9adef20adbd2f55d68f6614a99ec"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/SubscriptionUsageEntity.java": {
+    "mtime": 1782432183.9960616,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b6f056771ff512156106e66ec79dafc9",
+    "semantic_hash": "b6f056771ff512156106e66ec79dafc9"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/TransmissionTypesEntity.java": {
+    "mtime": 1775962944.1089485,
+    "seen": 1789569739.2553258,
+    "ast_hash": "afb8bfe658acbef94b819cf1706261f6",
+    "semantic_hash": "afb8bfe658acbef94b819cf1706261f6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/UserDeviceTokenEntity.java": {
+    "mtime": 1780436273.5692315,
+    "seen": 1789569739.2553258,
+    "ast_hash": "566c62813cb7f10e56f6d77b5c4f8745",
+    "semantic_hash": "566c62813cb7f10e56f6d77b5c4f8745"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/UserSubscriptionEntity.java": {
+    "mtime": 1782432183.017116,
+    "seen": 1789569739.2553258,
+    "ast_hash": "20cc74bcb7d1daa359d9a79f79f77176",
+    "semantic_hash": "20cc74bcb7d1daa359d9a79f79f77176"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/UserVehicleEntity.java": {
+    "mtime": 1775962944.109948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "109f2863bb2f201df03b33d4808f709b",
+    "semantic_hash": "109f2863bb2f201df03b33d4808f709b"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/UsersEntity.java": {
+    "mtime": 1780069759.5047586,
+    "seen": 1789569739.2553258,
+    "ast_hash": "422421c9f4d5d3f32dd508dbc008e6b2",
+    "semantic_hash": "422421c9f4d5d3f32dd508dbc008e6b2"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/VehicleDetailsEntity.java": {
+    "mtime": 1775962944.110948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e8c737835dcf97a944b0c6169d99f002",
+    "semantic_hash": "e8c737835dcf97a944b0c6169d99f002"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/VehicleEntity.java": {
+    "mtime": 1782217989.0495093,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8505e336962deb140e226c07204cd69a",
+    "semantic_hash": "8505e336962deb140e226c07204cd69a"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/VehicleNotificationEntity.java": {
+    "mtime": 1780416639.2312834,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8dad6d7d9706b6fdc9729fe5fa5d7205",
+    "semantic_hash": "8dad6d7d9706b6fdc9729fe5fa5d7205"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/ids/RepairPartId.java": {
+    "mtime": 1781040608.8739507,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9817a7a19863c9f63862a8bb648335e9",
+    "semantic_hash": "9817a7a19863c9f63862a8bb648335e9"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/entity/ids/UserVehicleId.java": {
+    "mtime": 1775962944.1119483,
+    "seen": 1789569739.2553258,
+    "ast_hash": "671a8968e8d775263745f3bbf2704c0c",
+    "semantic_hash": "671a8968e8d775263745f3bbf2704c0c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/EmailVerificationCodeMapper.java": {
+    "mtime": 1775962944.1119483,
+    "seen": 1789569739.2553258,
+    "ast_hash": "920f8b588fe645d709e7869b720485fa",
+    "semantic_hash": "920f8b588fe645d709e7869b720485fa"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/FuelLogsMapper.java": {
+    "mtime": 1782141267.2014894,
+    "seen": 1789569739.2553258,
+    "ast_hash": "95e6b2c4247b8d6460d9ec9adbeed2f8",
+    "semantic_hash": "95e6b2c4247b8d6460d9ec9adbeed2f8"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/FuelTypeMapper.java": {
+    "mtime": 1775962944.112948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b414d716e6f2a738b6b566018d98ee24",
+    "semantic_hash": "b414d716e6f2a738b6b566018d98ee24"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/MaintenanceCategoryMapper.java": {
+    "mtime": 1780416639.3030531,
+    "seen": 1789569739.2553258,
+    "ast_hash": "381c2fd367f1041e68bf42a6f962a173",
+    "semantic_hash": "381c2fd367f1041e68bf42a6f962a173"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/OdometerLogMapper.java": {
+    "mtime": 1780530617.5698364,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c556950fad19f64b224d39ab6a2e6a06",
+    "semantic_hash": "c556950fad19f64b224d39ab6a2e6a06"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/PartCategoryMapper.java": {
+    "mtime": 1781119773.0258336,
+    "seen": 1789569739.2553258,
+    "ast_hash": "68e0e45d8e4fd9d35c9b21eae8f9174c",
+    "semantic_hash": "68e0e45d8e4fd9d35c9b21eae8f9174c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/PartMapper.java": {
+    "mtime": 1781040609.0715466,
+    "seen": 1789569739.2553258,
+    "ast_hash": "56685cef590aa5d7ea1da12337b5f493",
+    "semantic_hash": "56685cef590aa5d7ea1da12337b5f493"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/PaymentMethodMapper.java": {
+    "mtime": 1781120271.2810235,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a4bffd49b8ff6d921e2ff9b6331639a4",
+    "semantic_hash": "a4bffd49b8ff6d921e2ff9b6331639a4"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/RepairMapper.java": {
+    "mtime": 1781119033.4447446,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f7cc198eec2aa1b10aa28dad11c67d0e",
+    "semantic_hash": "f7cc198eec2aa1b10aa28dad11c67d0e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/RepairPartMapper.java": {
+    "mtime": 1781040609.2151594,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b47d64a94cc1e58f021bbcf76d9f5a72",
+    "semantic_hash": "b47d64a94cc1e58f021bbcf76d9f5a72"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/SubscriptionPlanMapper.java": {
+    "mtime": 1782432244.279271,
+    "seen": 1789569739.2553258,
+    "ast_hash": "8fdabe8698da39d17070ad0c585728da",
+    "semantic_hash": "8fdabe8698da39d17070ad0c585728da"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/SubscriptionUsageMapper.java": {
+    "mtime": 1782432246.3831534,
+    "seen": 1789569739.2553258,
+    "ast_hash": "908a303e724d579eb49fe0a043782128",
+    "semantic_hash": "908a303e724d579eb49fe0a043782128"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/TransmissionTypeMapper.java": {
+    "mtime": 1775962944.112948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9af402f510c342cc6857822086432b96",
+    "semantic_hash": "9af402f510c342cc6857822086432b96"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/UserDeviceTokenMapper.java": {
+    "mtime": 1780436273.63222,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9500e520acbe2716c94cdbe27c0be59d",
+    "semantic_hash": "9500e520acbe2716c94cdbe27c0be59d"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/UserSubscriptionMapper.java": {
+    "mtime": 1782432245.2066438,
+    "seen": 1789569739.2553258,
+    "ast_hash": "eca7304d4462e14e7c20e0c9f0fd6613",
+    "semantic_hash": "eca7304d4462e14e7c20e0c9f0fd6613"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/UserVehicleMapper.java": {
+    "mtime": 1775962944.1139486,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2ab5ded2df395f6f7762942e315c9e67",
+    "semantic_hash": "2ab5ded2df395f6f7762942e315c9e67"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/UsersMapper.java": {
+    "mtime": 1780069719.4314127,
+    "seen": 1789569739.2553258,
+    "ast_hash": "cb0a5d3d8ca8a2db633dcb0668e51030",
+    "semantic_hash": "cb0a5d3d8ca8a2db633dcb0668e51030"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/VehicleDetailsMapper.java": {
+    "mtime": 1775962944.1149473,
+    "seen": 1789569739.2553258,
+    "ast_hash": "300f990dd1575b9c8cbb0b9cf812a8f4",
+    "semantic_hash": "300f990dd1575b9c8cbb0b9cf812a8f4"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/VehicleHistoryMapper.java": {
+    "mtime": 1781106219.5574594,
+    "seen": 1789569739.2553258,
+    "ast_hash": "bea0872429ad583f18692464a64187a6",
+    "semantic_hash": "bea0872429ad583f18692464a64187a6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/VehicleMapper.java": {
+    "mtime": 1782217990.0663097,
+    "seen": 1789569739.2553258,
+    "ast_hash": "930084d3cc9a54117355c598ee44dd24",
+    "semantic_hash": "930084d3cc9a54117355c598ee44dd24"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/mappers/VehicleNotificationMapper.java": {
+    "mtime": 1780416639.3670542,
+    "seen": 1789569739.2553258,
+    "ast_hash": "00a29df0ce863f9b54d4ae4a23e8d9c1",
+    "semantic_hash": "00a29df0ce863f9b54d4ae4a23e8d9c1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/FuelLogEfficiencyProjection.java": {
+    "mtime": 1780615283.1099007,
+    "seen": 1789569739.2553258,
+    "ast_hash": "12aff3ecfbd6652137a3c01cf565fb13",
+    "semantic_hash": "12aff3ecfbd6652137a3c01cf565fb13"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/FuelLogTankHistoryProjection.java": {
+    "mtime": 1782141266.2494185,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3a9c7ce8e34a82b413fe1fb0247bd292",
+    "semantic_hash": "3a9c7ce8e34a82b413fe1fb0247bd292"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/LatestRepairByCategoryProjection.java": {
+    "mtime": 1781119033.013957,
+    "seen": 1789569739.2553258,
+    "ast_hash": "68e703fa914f0fcee0595478c33226a9",
+    "semantic_hash": "68e703fa914f0fcee0595478c33226a9"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/MonthlyMileageStatsProjection.java": {
+    "mtime": 1780532981.924791,
+    "seen": 1789569739.2553258,
+    "ast_hash": "bd5ace18ed21af5802fd08d6ed93de92",
+    "semantic_hash": "bd5ace18ed21af5802fd08d6ed93de92"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/PartCategoryProjection.java": {
+    "mtime": 1781119772.8633397,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d50f18204396dd4908384b4dcbb359e6",
+    "semantic_hash": "d50f18204396dd4908384b4dcbb359e6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/PaymentMethodProjection.java": {
+    "mtime": 1781120270.844009,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5a0edf076ee44061a430f93b96601da7",
+    "semantic_hash": "5a0edf076ee44061a430f93b96601da7"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/RepairHistoryProjection.java": {
+    "mtime": 1781053444.4994347,
+    "seen": 1789569739.2553258,
+    "ast_hash": "368bda92d7b2ab510593a4eb1c4ef54c",
+    "semantic_hash": "368bda92d7b2ab510593a4eb1c4ef54c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/RepairStatsProjection.java": {
+    "mtime": 1781053444.5729513,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a6fb3bc4ed6b261498a1ac28d2676be7",
+    "semantic_hash": "a6fb3bc4ed6b261498a1ac28d2676be7"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/UserDetailsProjection.java": {
+    "mtime": 1781104864.4183004,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c8e662172e6aee3fd800a1d8e513d503",
+    "semantic_hash": "c8e662172e6aee3fd800a1d8e513d503"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/projection/VehicleHistoryProjection.java": {
+    "mtime": 1781106219.477706,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d12d6a31bbd7b557c170f6ea10e2db50",
+    "semantic_hash": "d12d6a31bbd7b557c170f6ea10e2db50"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/EmailVerificationCodeReporsitory.java": {
+    "mtime": 1775962944.115948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a37f3841c6a1270da82de56e68c402d0",
+    "semantic_hash": "a37f3841c6a1270da82de56e68c402d0"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/FuelLogsRepository.java": {
+    "mtime": 1780615495.451891,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ac7ce1bf17f2906176cc5e1c952343f3",
+    "semantic_hash": "ac7ce1bf17f2906176cc5e1c952343f3"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/FuelTypeRepository.java": {
+    "mtime": 1775962944.115948,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7128357b3fb34d42230daa37a5cc15f4",
+    "semantic_hash": "7128357b3fb34d42230daa37a5cc15f4"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/MaintenanceCategoryRepository.java": {
+    "mtime": 1780416639.558906,
+    "seen": 1789569739.2553258,
+    "ast_hash": "84a006b0b33106c116c47ffae06d453f",
+    "semantic_hash": "84a006b0b33106c116c47ffae06d453f"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/OdometerLogRepository.java": {
+    "mtime": 1780532982.07979,
+    "seen": 1789569739.2553258,
+    "ast_hash": "54756ca1a1089e11902cf61c98050d9f",
+    "semantic_hash": "54756ca1a1089e11902cf61c98050d9f"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/PartCategoryRepository.java": {
+    "mtime": 1781119773.1056535,
+    "seen": 1789569739.2553258,
+    "ast_hash": "47d569a90832d90a832ddb479a56ca15",
+    "semantic_hash": "47d569a90832d90a832ddb479a56ca15"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/PartRepository.java": {
+    "mtime": 1781040641.8216994,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1a922b552625bb96ef87b3146ae081d6",
+    "semantic_hash": "1a922b552625bb96ef87b3146ae081d6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/PaymentMethodRepository.java": {
+    "mtime": 1781120271.1020098,
+    "seen": 1789569739.2553258,
+    "ast_hash": "fc78fe068c6d829f7bc969f2d4ab509c",
+    "semantic_hash": "fc78fe068c6d829f7bc969f2d4ab509c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/RepairPartRepository.java": {
+    "mtime": 1781040641.9728308,
+    "seen": 1789569739.2553258,
+    "ast_hash": "681df1cf7d7b56c7a5d75f607d4ef703",
+    "semantic_hash": "681df1cf7d7b56c7a5d75f607d4ef703"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/RepairRepository.java": {
+    "mtime": 1781128246.5550077,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e682afacaf10bc674c8150b88403602f",
+    "semantic_hash": "e682afacaf10bc674c8150b88403602f"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/SubscriptionPlanRepository.java": {
+    "mtime": 1782432317.666002,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7d5c083613ed0b46849c0e71b3cb5399",
+    "semantic_hash": "7d5c083613ed0b46849c0e71b3cb5399"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/SubscriptionUsageRepository.java": {
+    "mtime": 1782432319.3798406,
+    "seen": 1789569739.2553258,
+    "ast_hash": "67a4f9ba1bb193774068d95612a30d66",
+    "semantic_hash": "67a4f9ba1bb193774068d95612a30d66"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/TransmissionTypeRepository.java": {
+    "mtime": 1775962944.116947,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1da6df12a2202344df0e1cedaf85b0e6",
+    "semantic_hash": "1da6df12a2202344df0e1cedaf85b0e6"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/UserDeviceTokenRepository.java": {
+    "mtime": 1780436273.7610016,
+    "seen": 1789569739.2553258,
+    "ast_hash": "42df9442216829ede0c04a19879bfd13",
+    "semantic_hash": "42df9442216829ede0c04a19879bfd13"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/UserSubscriptionRepository.java": {
+    "mtime": 1782432318.555006,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6ad76de6a39c40e852bdbdaa18cfb0ad",
+    "semantic_hash": "6ad76de6a39c40e852bdbdaa18cfb0ad"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/UserVehicleRepository.java": {
+    "mtime": 1782432346.5347445,
+    "seen": 1789569739.2553258,
+    "ast_hash": "746a94e0e4097f431c272ba8b63db578",
+    "semantic_hash": "746a94e0e4097f431c272ba8b63db578"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/UsersRepository.java": {
+    "mtime": 1780069926.4936292,
+    "seen": 1789569739.2553258,
+    "ast_hash": "e6d502573ca9b452022c432414ad9bb1",
+    "semantic_hash": "e6d502573ca9b452022c432414ad9bb1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/VehicleDetailsRepository.java": {
+    "mtime": 1782347984.475671,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a7f846a3fb3ba4f3811fb7cc4d5006f4",
+    "semantic_hash": "a7f846a3fb3ba4f3811fb7cc4d5006f4"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/VehicleHistoryRepository.java": {
+    "mtime": 1781106219.7056608,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a138ab27653de0803577d57f8915195e",
+    "semantic_hash": "a138ab27653de0803577d57f8915195e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/VehicleNotificationRepository.java": {
+    "mtime": 1781214620.6481104,
+    "seen": 1789569739.2553258,
+    "ast_hash": "eff22a84732094f1c8457cd51661b5f2",
+    "semantic_hash": "eff22a84732094f1c8457cd51661b5f2"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/implement/VehicleRepository.java": {
+    "mtime": 1780436354.0592148,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0f86fde86431e59e54551e858166091f",
+    "semantic_hash": "0f86fde86431e59e54551e858166091f"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/EmailVerificationCodeJpa.java": {
+    "mtime": 1775962944.1199486,
+    "seen": 1789569739.2553258,
+    "ast_hash": "76e05ef1421d58b67523f76f2c848b2d",
+    "semantic_hash": "76e05ef1421d58b67523f76f2c848b2d"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/FuelLogsJpa.java": {
+    "mtime": 1782141268.4334924,
+    "seen": 1789569739.2553258,
+    "ast_hash": "724f40c3a1479a6cdace59fbbcbde345",
+    "semantic_hash": "724f40c3a1479a6cdace59fbbcbde345"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/FuelTypeJpa.java": {
+    "mtime": 1775962944.120949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2c3e19cbd879c1cee279b9137e51957b",
+    "semantic_hash": "2c3e19cbd879c1cee279b9137e51957b"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/MaintenanceCategoryJpa.java": {
+    "mtime": 1780416639.432053,
+    "seen": 1789569739.2553258,
+    "ast_hash": "07e50a28722dca632fa301c9ae727ad9",
+    "semantic_hash": "07e50a28722dca632fa301c9ae727ad9"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/OdometerLogJpa.java": {
+    "mtime": 1780532982.0027907,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b7608cea9b3ef4d599ade40bba839520",
+    "semantic_hash": "b7608cea9b3ef4d599ade40bba839520"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/PartCategoryJpa.java": {
+    "mtime": 1781119772.9481764,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7395ca0fcfc78abda2a84308f97325c3",
+    "semantic_hash": "7395ca0fcfc78abda2a84308f97325c3"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/PartJpa.java": {
+    "mtime": 1781040641.5414107,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4df7959084d9075ae0f85ded15e284b7",
+    "semantic_hash": "4df7959084d9075ae0f85ded15e284b7"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/PaymentMethodJpa.java": {
+    "mtime": 1781120271.187008,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ac8d3e5a882102ec772283b5dd9d5512",
+    "semantic_hash": "ac8d3e5a882102ec772283b5dd9d5512"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/RepairJpa.java": {
+    "mtime": 1781128256.8765888,
+    "seen": 1789569739.2553258,
+    "ast_hash": "03d716954a40d61d102951a77b9e3c22",
+    "semantic_hash": "03d716954a40d61d102951a77b9e3c22"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/RepairPartJpa.java": {
+    "mtime": 1781040641.6806989,
+    "seen": 1789569739.2553258,
+    "ast_hash": "268326f2ef0a1fbe798a696364e3a373",
+    "semantic_hash": "268326f2ef0a1fbe798a696364e3a373"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/SubscriptionPlanJpa.java": {
+    "mtime": 1782432332.6386712,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a625e6e0003cfb2fd66806ae0114296e",
+    "semantic_hash": "a625e6e0003cfb2fd66806ae0114296e"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/SubscriptionUsageJpa.java": {
+    "mtime": 1782432316.7640038,
+    "seen": 1789569739.2553258,
+    "ast_hash": "ab83e79f0f777baa3f88e7de4bfe8b7c",
+    "semantic_hash": "ab83e79f0f777baa3f88e7de4bfe8b7c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/TransmissionTypeJpa.java": {
+    "mtime": 1775962944.120949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d68fb0c1be74f2cba1e7984902b36ac1",
+    "semantic_hash": "d68fb0c1be74f2cba1e7984902b36ac1"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/UserDeviceTokenJpa.java": {
+    "mtime": 1780436273.6960325,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4e124f78cbcb6ad053d8d819d594c44c",
+    "semantic_hash": "4e124f78cbcb6ad053d8d819d594c44c"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/UserSubscriptionJpa.java": {
+    "mtime": 1782432315.8960035,
+    "seen": 1789569739.2553258,
+    "ast_hash": "04143d7a7d405141f453ad6effd336d2",
+    "semantic_hash": "04143d7a7d405141f453ad6effd336d2"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/UserVehicleRepositoryJpa.java": {
+    "mtime": 1782432345.7150495,
+    "seen": 1789569739.2553258,
+    "ast_hash": "70babae4c8c15cf64e022e980755eb45",
+    "semantic_hash": "70babae4c8c15cf64e022e980755eb45"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/UsersJpa.java": {
+    "mtime": 1780069926.4366305,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5982195a744c0f277321eb663fa9f3fe",
+    "semantic_hash": "5982195a744c0f277321eb663fa9f3fe"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/VehicleDetailsJpa.java": {
+    "mtime": 1782347973.9485867,
+    "seen": 1789569739.2553258,
+    "ast_hash": "2e87021f33bbd7821bb3212f8894528b",
+    "semantic_hash": "2e87021f33bbd7821bb3212f8894528b"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/VehicleHistoryJpa.java": {
+    "mtime": 1781106219.6275363,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5db54faa48d14296428c8ce7246b57ba",
+    "semantic_hash": "5db54faa48d14296428c8ce7246b57ba"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/VehicleJpa.java": {
+    "mtime": 1775962944.122949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "425e91848580eda1525a38dc70de8127",
+    "semantic_hash": "425e91848580eda1525a38dc70de8127"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/out/persistence/repositories/jpa/VehicleNotificationJpa.java": {
+    "mtime": 1781214620.5601099,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6d0e009990985eb78b78a32e5bddd152",
+    "semantic_hash": "6d0e009990985eb78b78a32e5bddd152"
+  },
+  "app/src/main/java/com/driveden/app/infrastructure/scheduler/VehicleNotificationScheduler.java": {
+    "mtime": 1780416694.2946272,
+    "seen": 1789569739.2553258,
+    "ast_hash": "42411f701c72da465d5b928759510871",
+    "semantic_hash": "42411f701c72da465d5b928759510871"
+  },
+  "app/src/main/java/com/driveden/app/utils/CustomResponse.java": {
+    "mtime": 1775962944.1239474,
+    "seen": 1789569739.2553258,
+    "ast_hash": "490449f3aec8c965c64d9832cd802d71",
+    "semantic_hash": "490449f3aec8c965c64d9832cd802d71"
+  },
+  "app/src/main/java/com/driveden/app/utils/TokenService.java": {
+    "mtime": 1780444877.6204123,
+    "seen": 1789569739.2553258,
+    "ast_hash": "53f9b4e91052bc32fcd25acd7ca8c78e",
+    "semantic_hash": "53f9b4e91052bc32fcd25acd7ca8c78e"
+  },
+  "app/src/main/resources/db/migration/V10__add_google_authentication.sql": {
+    "mtime": 1780069759.683758,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5b1e0474e6dd48244a6ed053b7612e51",
+    "semantic_hash": "5b1e0474e6dd48244a6ed053b7612e51"
+  },
+  "app/src/main/resources/db/migration/V11__create_table_payment_methods.sql": {
+    "mtime": 1780325823.30294,
+    "seen": 1789569739.2553258,
+    "ast_hash": "d37a8b3e010b8945c957c7ae8055da4e",
+    "semantic_hash": "d37a8b3e010b8945c957c7ae8055da4e"
+  },
+  "app/src/main/resources/db/migration/V12__insert_payment_methods.sql": {
+    "mtime": 1780325546.4025817,
+    "seen": 1789569739.2553258,
+    "ast_hash": "cbc04d1d9217ba8e5247acdf04d81e8f",
+    "semantic_hash": "cbc04d1d9217ba8e5247acdf04d81e8f"
+  },
+  "app/src/main/resources/db/migration/V13__add_columns_fuel_logs.sql": {
+    "mtime": 1780325690.59357,
+    "seen": 1789569739.2553258,
+    "ast_hash": "31d29842274b5dbd062ce99130392e84",
+    "semantic_hash": "31d29842274b5dbd062ce99130392e84"
+  },
+  "app/src/main/resources/db/migration/V14__create_table_maintenance_notifications.sql": {
+    "mtime": 1780414223.5926094,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0eed115b3f6387c20e862710509fc43d",
+    "semantic_hash": "0eed115b3f6387c20e862710509fc43d"
+  },
+  "app/src/main/resources/db/migration/V15__insert_data_maintenance_notification.sql": {
+    "mtime": 1780414260.1879969,
+    "seen": 1789569739.2553258,
+    "ast_hash": "348697a979f39f206a3c1364a5f7144a",
+    "semantic_hash": "348697a979f39f206a3c1364a5f7144a"
+  },
+  "app/src/main/resources/db/migration/V16__drop_table_maintenance_schedules.sql": {
+    "mtime": 1780414310.6408992,
+    "seen": 1789569739.2553258,
+    "ast_hash": "98a00a2cb3b68eae120324851ea97074",
+    "semantic_hash": "98a00a2cb3b68eae120324851ea97074"
+  },
+  "app/src/main/resources/db/migration/V17__create_table_vehicle_notifications.sql": {
+    "mtime": 1780415050.573593,
+    "seen": 1789569739.2553258,
+    "ast_hash": "63b424744f86823cc04858e713ece53e",
+    "semantic_hash": "63b424744f86823cc04858e713ece53e"
+  },
+  "app/src/main/resources/db/migration/V18__create_table_user_devices.sql": {
+    "mtime": 1780434101.5140758,
+    "seen": 1789569739.2553258,
+    "ast_hash": "afcecacc378b5cb6bc96c71bc4711b36",
+    "semantic_hash": "afcecacc378b5cb6bc96c71bc4711b36"
+  },
+  "app/src/main/resources/db/migration/V19__alter_table_odometer_logs.sql": {
+    "mtime": 1780508190.1646438,
+    "seen": 1789569739.2553258,
+    "ast_hash": "421755bda54be495d2d0b4e7bb904a08",
+    "semantic_hash": "421755bda54be495d2d0b4e7bb904a08"
+  },
+  "app/src/main/resources/db/migration/V1__create_table_users.sql": {
+    "mtime": 1775962944.125949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "458a48120e62bca2518da511d0fe8d56",
+    "semantic_hash": "458a48120e62bca2518da511d0fe8d56"
+  },
+  "app/src/main/resources/db/migration/V20__insert_into_part_categories.sql": {
+    "mtime": 1781040076.447615,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9367e40fe63c756e839d50bbc38e0034",
+    "semantic_hash": "9367e40fe63c756e839d50bbc38e0034"
+  },
+  "app/src/main/resources/db/migration/V21__add_repair_workshop_and_labor_cost.sql": {
+    "mtime": 1781040789.251333,
+    "seen": 1789569739.2553258,
+    "ast_hash": "60d66b0e573c518dfcfc901dc0e0e6e5",
+    "semantic_hash": "60d66b0e573c518dfcfc901dc0e0e6e5"
+  },
+  "app/src/main/resources/db/migration/V22__add_vehicle_type.sql": {
+    "mtime": 1782217438.603702,
+    "seen": 1789569739.2553258,
+    "ast_hash": "c0e7685ea386882ef8696f2213fffbe4",
+    "semantic_hash": "c0e7685ea386882ef8696f2213fffbe4"
+  },
+  "app/src/main/resources/db/migration/V23__add_odometer_log_source_uniqueness.sql": {
+    "mtime": 1782348212.4854243,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a096006bb9b3cafcb4f4dc52802ea908",
+    "semantic_hash": "a096006bb9b3cafcb4f4dc52802ea908"
+  },
+  "app/src/main/resources/db/migration/V24__add_payment_schema.sql": {
+    "mtime": 1782427167.658815,
+    "seen": 1789569739.2553258,
+    "ast_hash": "062cd706cc5b3d73d9ae6cb7386f3d27",
+    "semantic_hash": "062cd706cc5b3d73d9ae6cb7386f3d27"
+  },
+  "app/src/main/resources/db/migration/V25__insert_subscription_plans.sql": {
+    "mtime": 1782430932.874771,
+    "seen": 1789569739.2553258,
+    "ast_hash": "f193ceb1bd62ca8e91fdf42237a84afc",
+    "semantic_hash": "f193ceb1bd62ca8e91fdf42237a84afc"
+  },
+  "app/src/main/resources/db/migration/V26__add_subscription_usage_table.sql": {
+    "mtime": 1782431295.273107,
+    "seen": 1789569739.2553258,
+    "ast_hash": "07ac47690a3ec4bc05118dad2886bf3c",
+    "semantic_hash": "07ac47690a3ec4bc05118dad2886bf3c"
+  },
+  "app/src/main/resources/db/migration/V2__create_first_schema.sql": {
+    "mtime": 1775962944.125949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "4708ddcbd31130e08a664283e1b1f726",
+    "semantic_hash": "4708ddcbd31130e08a664283e1b1f726"
+  },
+  "app/src/main/resources/db/migration/V3__create_email_auth.sql": {
+    "mtime": 1775962944.1269515,
+    "seen": 1789569739.2553258,
+    "ast_hash": "363de715e27c3530fb34faeea976917d",
+    "semantic_hash": "363de715e27c3530fb34faeea976917d"
+  },
+  "app/src/main/resources/db/migration/V4__add_column_nickname_table_vehicles.sql": {
+    "mtime": 1775962944.1269515,
+    "seen": 1789569739.2553258,
+    "ast_hash": "29560eca593bca7a4f9b85e4bd186559",
+    "semantic_hash": "29560eca593bca7a4f9b85e4bd186559"
+  },
+  "app/src/main/resources/db/migration/V5__create_table_transmission_type.sql": {
+    "mtime": 1775962944.1279483,
+    "seen": 1789569739.2553258,
+    "ast_hash": "5243ced83e5de981ceaad825093396de",
+    "semantic_hash": "5243ced83e5de981ceaad825093396de"
+  },
+  "app/src/main/resources/db/migration/V6__alter_column_nickname_to_nick_name.sql": {
+    "mtime": 1775962944.1289475,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0a1260eb3cfe11f755a64a9d0d9b8da8",
+    "semantic_hash": "0a1260eb3cfe11f755a64a9d0d9b8da8"
+  },
+  "app/src/main/resources/db/migration/V7__add_pk_vehicle_details.sql": {
+    "mtime": 1775962944.1289475,
+    "seen": 1789569739.2553258,
+    "ast_hash": "450a81f59cc7eb29ed6cde766259c204",
+    "semantic_hash": "450a81f59cc7eb29ed6cde766259c204"
+  },
+  "app/src/main/resources/db/migration/V8__alter_table_fuel_logs.sql": {
+    "mtime": 1779644988.68093,
+    "seen": 1789569739.2553258,
+    "ast_hash": "68af5dccae6de76dd1ab8120d5a300f3",
+    "semantic_hash": "68af5dccae6de76dd1ab8120d5a300f3"
+  },
+  "app/src/main/resources/db/migration/V9__alter_table_fuel_logs_rename_columns.sql": {
+    "mtime": 1779645350.6353707,
+    "seen": 1789569739.2553258,
+    "ast_hash": "1c8c4979edca98be55ede17d7d812b96",
+    "semantic_hash": "1c8c4979edca98be55ede17d7d812b96"
+  },
+  "app/src/test/java/com/driveden/app/AppApplicationTests.java": {
+    "mtime": 1775962944.129949,
+    "seen": 1789569739.2553258,
+    "ast_hash": "a4b46c0bf660e1c3e7b119b440212550",
+    "semantic_hash": "a4b46c0bf660e1c3e7b119b440212550"
+  },
+  "app/src/test/java/com/driveden/app/application/services/AuthServiceTest.java": {
+    "mtime": 1780170112.5007465,
+    "seen": 1789569739.2553258,
+    "ast_hash": "6e40a77cd64f9f94410a66c58beeea56",
+    "semantic_hash": "6e40a77cd64f9f94410a66c58beeea56"
+  },
+  "app/src/test/java/com/driveden/app/application/services/SubscriptionServiceTest.java": {
+    "mtime": 1782432604.4419272,
+    "seen": 1789569739.2553258,
+    "ast_hash": "36bf57342f1381ab17a8633e5c0a88af",
+    "semantic_hash": "36bf57342f1381ab17a8633e5c0a88af"
+  },
+  "app/src/test/java/com/driveden/app/application/usecase/ProcessVoiceInputUseCaseTest.java": {
+    "mtime": 1782432711.964937,
+    "seen": 1789569739.2553258,
+    "ast_hash": "0df7dc6d09c200a68287bc82384a2c79",
+    "semantic_hash": "0df7dc6d09c200a68287bc82384a2c79"
+  },
+  "app/src/test/java/com/driveden/app/application/usecase/RepairCostExtractorTest.java": {
+    "mtime": 1782342716.1479151,
+    "seen": 1789569739.2553258,
+    "ast_hash": "7fc3e1f3d34a2eb6d2807fa7ee0e430d",
+    "semantic_hash": "7fc3e1f3d34a2eb6d2807fa7ee0e430d"
+  },
+  "app/src/test/java/com/driveden/app/application/usecase/VoiceRepairPostProcessorTest.java": {
+    "mtime": 1782342717.0649116,
+    "seen": 1789569739.2553258,
+    "ast_hash": "25db0c910554bc2cad79a6b1921ab7a2",
+    "semantic_hash": "25db0c910554bc2cad79a6b1921ab7a2"
+  },
+  "app/src/test/java/com/driveden/app/infrastructure/ai/OpenAIResponseParserTest.java": {
+    "mtime": 1782324641.7966664,
+    "seen": 1789569739.2553258,
+    "ast_hash": "43e37b29f9b8de0f65f2a9bc9ff830a8",
+    "semantic_hash": "43e37b29f9b8de0f65f2a9bc9ff830a8"
+  },
+  ".codex/skills/graphify/SKILL.md": {
+    "mtime": 1789568319.606322,
+    "seen": 1789569739.2553258,
+    "ast_hash": "212b55d95333d84e14262f8ec83faa2b",
+    "semantic_hash": "212b55d95333d84e14262f8ec83faa2b"
+  },
+  ".codex/skills/graphify/references/exports.md": {
+    "mtime": 1789567800.5437484,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": "9da2a2152e60a22f07f05fed5158f287"
+  },
+  ".codex/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1789567800.544751,
+    "seen": 1789569739.2553258,
+    "ast_hash": "bf895ec4d4e40f5f66f7d31c2a9bd4a7",
+    "semantic_hash": "bf895ec4d4e40f5f66f7d31c2a9bd4a7"
+  },
+  ".codex/skills/graphify/references/query.md": {
+    "mtime": 1789567800.5477507,
+    "seen": 1789569739.2553258,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": "3c46f8ad006874260614ed8657d02307"
+  },
+  ".codex/skills/graphify/references/update.md": {
+    "mtime": 1789567800.5497544,
+    "seen": 1789569739.2553258,
+    "ast_hash": "9378bd03d56baaf78bd738ab3848f142",
+    "semantic_hash": "9378bd03d56baaf78bd738ab3848f142"
+  },
+  "AGENTS.md": {
+    "mtime": 1789568319.6103237,
+    "seen": 1789569739.2553258,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": "21ceb6533048be51308e69e7b74a35cf"
+  },
+  "README.md": {
+    "mtime": 1785450121.305843,
+    "seen": 1789569739.2553258,
+    "ast_hash": "b4b479d08cdb07748b155de5f901889c",
+    "semantic_hash": "b4b479d08cdb07748b155de5f901889c"
+  },
+  "docker-compose.yml": {
+    "mtime": 1781046240.5548906,
+    "seen": 1789569739.2553258,
+    "ast_hash": "974dcdeb30c94302eea8dd4426d8e47c",
+    "semantic_hash": "974dcdeb30c94302eea8dd4426d8e47c"
+  }
+}
